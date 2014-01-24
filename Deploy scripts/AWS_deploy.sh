@@ -34,18 +34,15 @@ echo "INSTALLING: node.js & npm. This will take a while"
 
 # Taken from: https://gist.github.com/isaacs/579814
 
-cd node export JOBS=2 # optional, sets number of parallel commands
-mkdir ~/local
-./configure –prefix=$HOME/local/node
+cd node
+./configure 
 sudo make
 sudo make install
-export PATH=$HOME/local/node/bin:$PATH
-echo ‘export PATH=$HOME/local/bin:$PATH’ >> ~/.bashrc # Add to bashrc so that you can access to node everywhere
 
 sudo yum -y install curl
 
 #sudo chown -R $USER /home/ec2-user/local #Change nodejs folder permissions
-sudo curl https://npmjs.org/install.sh | sh
+sudo curl https://npmjs.org/install.sh | sudo sh
 npm install express
 npm ls installed #See what npm packages are installed
 
@@ -83,14 +80,14 @@ pause 'Press [Enter] key to continue...'
 
 echo "INSTALLING: bower.  "
 
-sudo npm install -g bower
+npm install -g bower
 
 echo "END INSTALLING: bower. Moving on."
 
 
 echo "INSTALLING: grunt.  "
 
-sudo npm install -g grunt-cli
+npm install -g grunt-cli
 
 echo "END INSTALLING: grunt. Moving on."
 
@@ -108,6 +105,6 @@ echo "END CLONING: MEAN. Moving on."
 
 cd mean
 
-sudo npm install
+npm install
 
 
