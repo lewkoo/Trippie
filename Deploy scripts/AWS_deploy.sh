@@ -14,10 +14,12 @@ echo "Please, provide your sudo password so we don't have to stop anymore"
 
 sudo yum -y update
 
-sudo yum install openssl openssl-devel
-sudo yum groupinstall "Development Tools"
+sudo yum -y install openssl openssl-devel
+sudo yum -y groupinstall "Development Tools"
 
-sudo yum install git-core
+sudo yum -y install git-core
+
+cd $HOME
 git clone git://github.com/joyent/node.git
 
 # Install node.js
@@ -36,7 +38,7 @@ make
 sudo make install
 node -v # see the version of node
 
-sudo yum install curl
+sudo yum -y install curl
 
 sudo su
 PATH=$PATH:/home/ec2-user/node
