@@ -19,6 +19,8 @@ sudo yum -y groupinstall "Development Tools"
 
 sudo yum -y install git-core
 
+
+exit
 cd $HOME
 git clone git://github.com/joyent/node.git
 
@@ -43,7 +45,7 @@ sudo yum -y install curl
 sudo su
 PATH=$PATH:/home/ec2-user/node
 export PATH
-curl http://npmjs.org/install.sh | sh
+curl https://npmjs.org/install.sh | sh
 exit
 
 echo "END INSTALLING: node.js & npm. Moving on."
