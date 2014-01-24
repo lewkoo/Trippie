@@ -14,8 +14,9 @@ echo "Please, provide your sudo password so we don't have to stop anymore"
 
 sudo yum -y update
 
-sudo yum -y install openssl openssl-devel
-sudo yum -y groupinstall "Development Tools"
+sudo yum -y install gcc-c++
+sudo yum -y install openssl-devel
+sudo yum -y install make
 
 sudo yum -y install git-core
 
@@ -33,20 +34,20 @@ echo "INSTALLING: node.js & npm. This will take a while"
 
 # Taken from: https://gist.github.com/isaacs/579814
 
-cd node
-./configure
-make
-
+cd node export JOBS=2 # optional, sets number of parallel commands
+mkdir ~/local
+./configure –prefix=$HOME/local/node
+sudo make
 sudo make install
-node -v # see the version of node
+export PATH=$HOME/local/node/bin:$PATH
+echo ‘export PATH=$HOME/local/bin:$PATH’ >> ~/.bashrc # Add to bashrc so that you can access to node everywhere
 
 sudo yum -y install curl
 
-sudo su
-PATH=$PATH:/home/ec2-user/node
-export PATH
-curl https://npmjs.org/install.sh | sh
-exit
+sudo chown -R $USER /home/ec2-user/local #Change nodejs folder permissions
+sudo curl http://npmjs.org/install.sh | sh
+npm install express
+npm ls installed #See what npm packages are installed
 
 echo "END INSTALLING: node.js & npm. Moving on."
 
