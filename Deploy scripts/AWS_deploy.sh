@@ -44,8 +44,8 @@ echo ‘export PATH=$HOME/local/bin:$PATH’ >> ~/.bashrc # Add to bashrc so tha
 
 sudo yum -y install curl
 
-sudo chown -R $USER /home/ec2-user/local #Change nodejs folder permissions
-sudo curl http://npmjs.org/install.sh | sh
+#sudo chown -R $USER /home/ec2-user/local #Change nodejs folder permissions
+sudo curl https://npmjs.org/install.sh | sh
 npm install express
 npm ls installed #See what npm packages are installed
 
