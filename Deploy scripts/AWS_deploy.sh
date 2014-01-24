@@ -20,7 +20,7 @@ sudo yum -y groupinstall "Development Tools"
 sudo yum -y install git-core
 
 
-exit
+
 cd $HOME
 git clone git://github.com/joyent/node.git
 
