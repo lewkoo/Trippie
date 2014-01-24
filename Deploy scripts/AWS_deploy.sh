@@ -41,7 +41,7 @@ sudo make install
 
 sudo yum -y install curl
 
-#sudo chown -R $USER /home/ec2-user/local #Change nodejs folder permissions
+sudo chown -R $USER /usr/local/ #Change nodejs folder permissions
 sudo curl https://npmjs.org/install.sh | sudo sh
 npm install express
 npm ls installed #See what npm packages are installed
@@ -107,4 +107,6 @@ cd mean
 
 npm install
 
+sudo mkdir -p /data/db/
 
+sudo mongod
