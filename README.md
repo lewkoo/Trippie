@@ -1,7 +1,18 @@
-COMP 4350 Group 2 Project Proposal
+#Trippie
 
-Chris Ventura (7646215), Dave Horsman (6831152), Adam Walker (7598941), 
+
+by Chris Ventura (7646215), Dave Horsman (6831152), Adam Walker (7598941), 
 Levko Ivanchuk (7670173) , Jordan Wood (7638065), Joel Wiebe (7621384)
+
+### Live environment
+
+For production server pleace visit: http://chrisv.ca
+
+### Instructions on deployment & testing: 
+
+https://github.com/lewkoo/Trippie/wiki/Deploying-MEAN-for-development-of-Trippie
+
+## Description
 
 Trippie is a travel planning application, perfect for business, pleasure, or group trips. You can plan your trips, from flights to lodging to attractions. Create trip itineraries that track your progress and remind you when you are running late. Tell Trippie where you want to go and how you want to get there. Trippie will guide you along your way, keeping you up to date with expected flight departure times and weather forecasts. Trippie is an all-in-one application for planning, organizing, and sharing your travel experience, even while you are on-the-go.
 
@@ -19,3 +30,5 @@ Trippie is your all-in-one application and handy travelling companion for any tr
 
 Trello Board: https://trello.com/b/AJhZGo8r/4350-group-2
 Github Repo: https://github.com/lewkoo/Trippie
+
+
