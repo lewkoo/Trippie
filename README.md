@@ -6,7 +6,7 @@ Levko Ivanchuk (7670173) , Jordan Wood (7638065), Joel Wiebe (7621384)
 
 ### Live environment
 
-For production server pleace visit: http://chrisv.ca
+For production server please visit: http://chrisv.ca
 
 ### Instructions on deployment & testing: 
 
