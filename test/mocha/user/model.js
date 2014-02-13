@@ -15,14 +15,12 @@ describe('<Unit Test>', function() {
     describe('Model User:', function() {
         before(function(done) {
             user = new User({
-                name: 'Full name',
-                email: 'test@test.com',
+                email: 'mail@trippie.com',
                 username: 'user',
                 password: 'password'
             });
             user2 = new User({
-                name: 'Full name',
-                email: 'test@test.com',
+                email: 'mail@trippie.com',
                 username: 'user',
                 password: 'password'
             });
@@ -57,6 +55,31 @@ describe('<Unit Test>', function() {
                     done();
                 });
             });
+
+            it('should be able to show an error when try to save with incorrect email <- no @', function(done) {
+                user.email = 'test_mail.com'; // not @
+                return user.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
+            it('should be able to show an error when try to save with incorrect email <- multiple @', function(done) {
+                user.email = 'a@test@mail.com';
+                return user.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
+            it('should be able to show an error when try to save with incorrect email <- invalid charactes', function(done) {
+                user.email = 'a"b(c)d,e:f;g<h>i[j\k]l@example.com';
+                return user.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
         });
 
         after(function(done) {
