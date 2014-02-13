@@ -14,13 +14,13 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(app) {
 
+		// Finish with setting up the articleId param
+    //app.param('articleId', articles.article);
+
     app.get('/articles', articles.all);
     app.post('/articles', authorization.requiresLogin, articles.create);
     app.get('/articles/:articleId', articles.show);
     app.put('/articles/:articleId', authorization.requiresLogin, hasAuthorization, articles.update);
     app.del('/articles/:articleId', authorization.requiresLogin, hasAuthorization, articles.destroy);
-
-    // Finish with setting up the articleId param
-    app.param('articleId', articles.article);
 
 };

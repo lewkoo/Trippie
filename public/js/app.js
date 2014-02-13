@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles']);
+angular.module('trippie', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'trippie.system', 'trippie.trips']);
 
-angular.module('mean.system', []);
-angular.module('mean.articles', []);
+angular.module('trippie.system', []);
+angular.module('trippie.trips', []);

@@ -1,20 +1,20 @@
 'use strict';
 
 //Setting up route
-angular.module('mean').config(['$routeProvider',
+angular.module('trippie').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-        when('/articles', {
-            templateUrl: 'views/articles/list.html'
+        when('/trips', {
+            templateUrl: 'views/trips/list.html'
         }).
-        when('/articles/create', {
-            templateUrl: 'views/articles/create.html'
+        when('/trips/create', {
+            templateUrl: 'views/trips/create.html'
         }).
-        when('/articles/:articleId/edit', {
-            templateUrl: 'views/articles/edit.html'
+        when('/trips/:tripId/edit', {
+            templateUrl: 'views/trips/edit.html'
         }).
-        when('/articles/:articleId', {
-            templateUrl: 'views/articles/view.html'
+        when('/trips/:tripId', {
+            templateUrl: 'views/trips/view.html'
         }).
         when('/', {
             templateUrl: 'views/index.html'
@@ -26,7 +26,7 @@ angular.module('mean').config(['$routeProvider',
 ]);
 
 //Setting HTML5 Location Mode
-angular.module('mean').config(['$locationProvider',
+angular.module('trippie').config(['$locationProvider',
     function($locationProvider) {
         $locationProvider.hashPrefix('!');
     }
