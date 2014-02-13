@@ -43,7 +43,11 @@ var validatePresenceOf = function(value) {
 UserSchema.path('email').validate(function(email) {
     // if you are authenticating by any of the oauth strategies, don't validate
     if (this.provider) return true;
-    return (typeof email === 'string' && email.length > 0);
+
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    return (typeof email === 'string' && email.length > 0 && filter.test(email));
+
 }, 'Email cannot be blank');
 
 UserSchema.path('hashed_password').validate(function(hashed_password) {
