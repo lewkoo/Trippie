@@ -1,0 +1,8 @@
+<section data-ng-controller="TripsController" data-ng-init="find()">
+	<ul class="trips unstyled">
+		<li data-ng-repeat="trip in trips">
+			<h2><a data-ng-href="#!/trips/{{trip._id}}">{{trip.name}}</a></h2>
+		</li>
+	</ul>
+	<h1 data-ng-hide="!trips || trips.length">No trips yet. <br> Why don't you <a href="/#!/trips/create">Create One</a>?</h1>
+</section>
