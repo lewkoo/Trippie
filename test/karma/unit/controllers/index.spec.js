@@ -4,7 +4,7 @@
     describe('MEAN controllers', function() {
         describe('IndexController', function() {
             // Load the controllers module
-            beforeEach(module('mean'));
+            beforeEach(module('trippie'));
 
             var scope, IndexController;
 

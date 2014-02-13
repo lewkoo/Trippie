@@ -11,16 +11,28 @@ var mongoose = require('mongoose'),
  */
 var TripSchema = new Schema({
     name: {
-			type: String,
-			trim: true
-    	},
+		type: String,
+		trim: true
+    },
     emailAccess: {
-			type: [String],
-			default: '',
-			trim: true
-    	},
+		type: [String],
+		default: '',
+		trim: true
+    },
     initialDestinationID: Schema.Types.ObjectId
-		});
+});
+
+// var UserSchema = new Schema({
+//     email: {
+//         type: String,
+//         unique: true
+//     },
+//     homeAddress: String,
+//     hashed_password: String,
+//     provider: String,
+//     salt: String,
+//     tripIDs: [Schema.Types.ObjectId]
+// });
 
 /**
  * Validations
