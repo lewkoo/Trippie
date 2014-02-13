@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A73752618AD6B1100A346E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A73752518AD6B1100A346E1 /* Foundation.framework */; };
+		2A73752818AD6B1100A346E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A73752718AD6B1100A346E1 /* CoreGraphics.framework */; };
+		2A73752A18AD6B1100A346E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A73752918AD6B1100A346E1 /* UIKit.framework */; };
+		2A73753018AD6B1100A346E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A73752E18AD6B1100A346E1 /* InfoPlist.strings */; };
+		2A73753218AD6B1100A346E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A73753118AD6B1100A346E1 /* main.m */; };
+		2A73753618AD6B1100A346E1 /* TrippieAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A73753518AD6B1100A346E1 /* TrippieAppDelegate.m */; };
+		2A73753818AD6B1100A346E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A73753718AD6B1100A346E1 /* Images.xcassets */; };
+		2A73753F18AD6B1100A346E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A73753E18AD6B1100A346E1 /* XCTest.framework */; };
+		2A73754018AD6B1100A346E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A73752518AD6B1100A346E1 /* Foundation.framework */; };
+		2A73754118AD6B1100A346E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A73752918AD6B1100A346E1 /* UIKit.framework */; };
+		2A73754918AD6B1100A346E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A73754718AD6B1100A346E1 /* InfoPlist.strings */; };
+		2A73754B18AD6B1100A346E1 /* TrippieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A73754A18AD6B1100A346E1 /* TrippieTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A73754218AD6B1100A346E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A73751A18AD6B1100A346E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A73752118AD6B1100A346E1;
+			remoteInfo = Trippie;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A73752218AD6B1100A346E1 /* Trippie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trippie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A73752518AD6B1100A346E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2A73752718AD6B1100A346E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2A73752918AD6B1100A346E1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2A73752D18AD6B1100A346E1 /* Trippie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Trippie-Info.plist"; sourceTree = "<group>"; };
+		2A73752F18AD6B1100A346E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2A73753118AD6B1100A346E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A73753318AD6B1100A346E1 /* Trippie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trippie-Prefix.pch"; sourceTree = "<group>"; };
+		2A73753418AD6B1100A346E1 /* TrippieAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrippieAppDelegate.h; sourceTree = "<group>"; };
+		2A73753518AD6B1100A346E1 /* TrippieAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrippieAppDelegate.m; sourceTree = "<group>"; };
+		2A73753718AD6B1100A346E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2A73753D18AD6B1100A346E1 /* TrippieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrippieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A73753E18AD6B1100A346E1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2A73754618AD6B1100A346E1 /* TrippieTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrippieTests-Info.plist"; sourceTree = "<group>"; };
+		2A73754818AD6B1100A346E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2A73754A18AD6B1100A346E1 /* TrippieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrippieTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A73751F18AD6B1100A346E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A73752818AD6B1100A346E1 /* CoreGraphics.framework in Frameworks */,
+				2A73752A18AD6B1100A346E1 /* UIKit.framework in Frameworks */,
+				2A73752618AD6B1100A346E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A73753A18AD6B1100A346E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A73753F18AD6B1100A346E1 /* XCTest.framework in Frameworks */,
+				2A73754118AD6B1100A346E1 /* UIKit.framework in Frameworks */,
+				2A73754018AD6B1100A346E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A73751918AD6B1100A346E1 = {
+			isa = PBXGroup;
+			children = (
+				2A73752B18AD6B1100A346E1 /* Trippie */,
+				2A73754418AD6B1100A346E1 /* TrippieTests */,
+				2A73752418AD6B1100A346E1 /* Frameworks */,
+				2A73752318AD6B1100A346E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A73752318AD6B1100A346E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A73752218AD6B1100A346E1 /* Trippie.app */,
+				2A73753D18AD6B1100A346E1 /* TrippieTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A73752418AD6B1100A346E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A73752518AD6B1100A346E1 /* Foundation.framework */,
+				2A73752718AD6B1100A346E1 /* CoreGraphics.framework */,
+				2A73752918AD6B1100A346E1 /* UIKit.framework */,
+				2A73753E18AD6B1100A346E1 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A73752B18AD6B1100A346E1 /* Trippie */ = {
+			isa = PBXGroup;
+			children = (
+				2A73753418AD6B1100A346E1 /* TrippieAppDelegate.h */,
+				2A73753518AD6B1100A346E1 /* TrippieAppDelegate.m */,
+				2A73753718AD6B1100A346E1 /* Images.xcassets */,
+				2A73752C18AD6B1100A346E1 /* Supporting Files */,
+			);
+			path = Trippie;
+			sourceTree = "<group>";
+		};
+		2A73752C18AD6B1100A346E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A73752D18AD6B1100A346E1 /* Trippie-Info.plist */,
+				2A73752E18AD6B1100A346E1 /* InfoPlist.strings */,
+				2A73753118AD6B1100A346E1 /* main.m */,
+				2A73753318AD6B1100A346E1 /* Trippie-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2A73754418AD6B1100A346E1 /* TrippieTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A73754A18AD6B1100A346E1 /* TrippieTests.m */,
+				2A73754518AD6B1100A346E1 /* Supporting Files */,
+			);
+			path = TrippieTests;
+			sourceTree = "<group>";
+		};
+		2A73754518AD6B1100A346E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A73754618AD6B1100A346E1 /* TrippieTests-Info.plist */,
+				2A73754718AD6B1100A346E1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A73752118AD6B1100A346E1 /* Trippie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A73754E18AD6B1100A346E1 /* Build configuration list for PBXNativeTarget "Trippie" */;
+			buildPhases = (
+				2A73751E18AD6B1100A346E1 /* Sources */,
+				2A73751F18AD6B1100A346E1 /* Frameworks */,
+				2A73752018AD6B1100A346E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trippie;
+			productName = Trippie;
+			productReference = 2A73752218AD6B1100A346E1 /* Trippie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A73753C18AD6B1100A346E1 /* TrippieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A73755118AD6B1100A346E1 /* Build configuration list for PBXNativeTarget "TrippieTests" */;
+			buildPhases = (
+				2A73753918AD6B1100A346E1 /* Sources */,
+				2A73753A18AD6B1100A346E1 /* Frameworks */,
+				2A73753B18AD6B1100A346E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A73754318AD6B1100A346E1 /* PBXTargetDependency */,
+			);
+			name = TrippieTests;
+			productName = TrippieTests;
+			productReference = 2A73753D18AD6B1100A346E1 /* TrippieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A73751A18AD6B1100A346E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Trippie;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Group 2 COMP 4350";
+				TargetAttributes = {
+					2A73753C18AD6B1100A346E1 = {
+						TestTargetID = 2A73752118AD6B1100A346E1;
+					};
+				};
+			};
+			buildConfigurationList = 2A73751D18AD6B1100A346E1 /* Build configuration list for PBXProject "Trippie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2A73751918AD6B1100A346E1;
+			productRefGroup = 2A73752318AD6B1100A346E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A73752118AD6B1100A346E1 /* Trippie */,
+				2A73753C18AD6B1100A346E1 /* TrippieTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A73752018AD6B1100A346E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A73753018AD6B1100A346E1 /* InfoPlist.strings in Resources */,
+				2A73753818AD6B1100A346E1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A73753B18AD6B1100A346E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A73754918AD6B1100A346E1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A73751E18AD6B1100A346E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A73753618AD6B1100A346E1 /* TrippieAppDelegate.m in Sources */,
+				2A73753218AD6B1100A346E1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A73753918AD6B1100A346E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A73754B18AD6B1100A346E1 /* TrippieTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A73754318AD6B1100A346E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A73752118AD6B1100A346E1 /* Trippie */;
+			targetProxy = 2A73754218AD6B1100A346E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A73752E18AD6B1100A346E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A73752F18AD6B1100A346E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2A73754718AD6B1100A346E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A73754818AD6B1100A346E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A73754C18AD6B1100A346E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A73754D18AD6B1100A346E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A73754F18AD6B1100A346E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Trippie/Trippie-Prefix.pch";
+				INFOPLIST_FILE = "Trippie/Trippie-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2A73755018AD6B1100A346E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Trippie/Trippie-Prefix.pch";
+				INFOPLIST_FILE = "Trippie/Trippie-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2A73755218AD6B1100A346E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Trippie.app/Trippie";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Trippie/Trippie-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TrippieTests/TrippieTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2A73755318AD6B1100A346E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Trippie.app/Trippie";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Trippie/Trippie-Prefix.pch";
+				INFOPLIST_FILE = "TrippieTests/TrippieTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A73751D18AD6B1100A346E1 /* Build configuration list for PBXProject "Trippie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A73754C18AD6B1100A346E1 /* Debug */,
+				2A73754D18AD6B1100A346E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A73754E18AD6B1100A346E1 /* Build configuration list for PBXNativeTarget "Trippie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A73754F18AD6B1100A346E1 /* Debug */,
+				2A73755018AD6B1100A346E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2A73755118AD6B1100A346E1 /* Build configuration list for PBXNativeTarget "TrippieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A73755218AD6B1100A346E1 /* Debug */,
+				2A73755318AD6B1100A346E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A73751A18AD6B1100A346E1 /* Project object */;
+}
