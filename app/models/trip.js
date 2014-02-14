@@ -14,10 +14,9 @@ var TripSchema = new Schema({
 		type: String,
 		trim: true
     },
-    emailAccess: {
-		type: [String],
-		default: '',
-		trim: true
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
     },
     initialDestinationID: Schema.Types.ObjectId
 });
