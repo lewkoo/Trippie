@@ -15,6 +15,7 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+    name: String,
     homeAddress: String,
     hashed_password: String,
     provider: String,
@@ -40,6 +41,14 @@ var validatePresenceOf = function(value) {
     return value && value.length;
 };
 
+UserSchema.path('name').validate(function(name) {
+    // if you are authenticating by any of the oauth strategies, don't validate
+    if (!this.provider) return true;
+
+    return (typeof name === 'string' && name.length > 0);
+
+}, 'Name cannot be blank');
+
 UserSchema.path('email').validate(function(email) {
     // if you are authenticating by any of the oauth strategies, don't validate
     if (this.provider) return true;
@@ -48,11 +57,12 @@ UserSchema.path('email').validate(function(email) {
 
     return (typeof email === 'string' && email.length > 0 && filter.test(email));
 
-}, 'Email cannot be blank');
+}, 'Empty or invalid email');
 
 UserSchema.path('hashed_password').validate(function(hashed_password) {
     // if you are authenticating by any of the oauth strategies, don't validate
-    if (this.provider) return true;
+    if (!this.provider) return true;
+
     return (typeof hashed_password === 'string' && hashed_password.length > 0);
 }, 'Password cannot be blank');
 
