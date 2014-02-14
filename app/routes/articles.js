@@ -14,7 +14,7 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(app) {
 
-		// Finish with setting up the articleId param
+	// Finish with setting up the articleId param
     //app.param('articleId', articles.article);
 
     app.get('/articles', articles.all);

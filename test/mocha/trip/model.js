@@ -48,6 +48,34 @@ describe('<Unit Test>', function() {
                     done();
                 });
             });
+
+            it('should be able to show an error when try to save without a user', function(done) {
+                trip.user = null;
+
+                return trip.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
+            it('should be able to show an error when try to save without a trip start date', function(done) {
+                trip.tripStartDate = null;
+
+                return trip.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
+            it('should be able to show an error when try to save without a trip end date', function(done) {
+                trip.tripEndDate = null;
+
+                return trip.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
         });
 
         afterEach(function(done) {
