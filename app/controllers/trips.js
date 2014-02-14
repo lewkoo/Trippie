@@ -24,6 +24,7 @@ exports.trip = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var trip = new Trip(req.body);
+    trip.user = req.user;
 
     trip.save(function(err) {
         if (err) {
