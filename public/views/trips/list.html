@@ -1,7 +1,11 @@
 <section data-ng-controller="TripsController" data-ng-init="find()">
 	<ul class="trips unstyled">
-		<li data-ng-repeat="trip in trips">
-			<h2><a data-ng-href="#!/trips/{{trip._id}}">{{trip.name}}</a></h2>
+		<li style="list-style: none;" data-ng-repeat="trip in trips">
+			<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{trip.name}}</button>
+			<hr>
+			<div collapse="!isCollapsed">
+				<div class="well well-lg">Some content</div> 
+			</div>
 		</li>
 	</ul>
 	<h1 data-ng-hide="!trips || trips.length">No trips yet. <br> Why don't you <a href="/#!/trips/create">Create One</a>?</h1>
