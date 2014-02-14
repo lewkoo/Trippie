@@ -29,6 +29,7 @@ exports.signin = function(req, res) {
 exports.signup = function(req, res) {
     res.render('users/signup', {
         title: 'Sign up',
+        message: req.flash('error'),
         user: new User()
     });
 };
@@ -58,13 +59,25 @@ exports.create = function(req, res, next) {
     user.provider = 'local';
     user.save(function(err) {
         if (err) {
+
             switch (err.code) {
                 case 11000:
                 case 11001:
                     message = 'Username already exists';
                     break;
                 default:
-                    message = 'Please fill all the required fields';
+                    //push the error messages into the array
+                    var result = [];
+                    for(var i in err.errors)
+                        result.push([i, err.errors [i]]);
+
+                    console.log(result);
+
+                    //grab the first error
+                    var error = result[0];
+                    //store the message
+                    message = error[1].message;
+
             }
 
             return res.render('users/signup', {
