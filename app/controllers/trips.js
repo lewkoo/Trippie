@@ -81,6 +81,7 @@ exports.destroy = function(req, res) {
  * Show a trip
  */
 exports.show = function(req, res) {
+    console.log(req.trip);
     res.jsonp(req.trip);
 };
 

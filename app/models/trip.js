@@ -51,4 +51,13 @@ TripSchema.path('tripEndDate').validate(function(tripEndDate) {
     return tripEndDate;
 }, 'Trip must be created with a trip start date');
 
+/**
+ * Statics
+ */
+TripSchema.statics.load = function(id, cb) {
+    this.findOne({
+        _id: id
+    }).populate('user', 'email name').exec(cb);
+};
+
 mongoose.model('Trip', TripSchema);
