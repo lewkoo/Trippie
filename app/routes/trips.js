@@ -14,8 +14,7 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(app) {
 
-	// Finish with setting up the tripId param
-    //app.param('tripId', trips.trip);
+
 
     app.get('/trips', trips.all);
     app.post('/trips', authorization.requiresLogin, trips.create);
@@ -23,5 +22,6 @@ module.exports = function(app) {
     app.put('/trips/:tripId', authorization.requiresLogin, hasAuthorization, trips.update);
     app.del('/trips/:tripId', authorization.requiresLogin, hasAuthorization, trips.destroy);
 
-
+    // Finish with setting up the tripId param
+    app.param('tripId', trips.trip);
 };
