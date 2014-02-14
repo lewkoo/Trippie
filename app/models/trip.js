@@ -18,26 +18,24 @@ var TripSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    initialDestinationID: Schema.Types.ObjectId
+    initialDestinationID: {
+        type: Schema.ObjectId,
+        ref: 'Destination'
+    },
+    tripStartDate: {
+        type: Date,
+        default: Date.now
+    },
+    tripEndDate: {
+        type: Date
+    }
 });
-
-// var UserSchema = new Schema({
-//     email: {
-//         type: String,
-//         unique: true
-//     },
-//     homeAddress: String,
-//     hashed_password: String,
-//     provider: String,
-//     salt: String,
-//     tripIDs: [Schema.Types.ObjectId]
-// });
 
 /**
  * Validations
  */
 TripSchema.path('name').validate(function(name) {
     return name.length;
-}, 'Name cannot be blank');
+}, 'Trip name cannot be blank');
 
 mongoose.model('Trip', TripSchema);
