@@ -27,7 +27,8 @@ var TripSchema = new Schema({
         default: Date.now
     },
     tripEndDate: {
-        type: Date
+        type: Date,
+        default: Date.now
     }
 });
 
@@ -37,5 +38,17 @@ var TripSchema = new Schema({
 TripSchema.path('name').validate(function(name) {
     return name.length;
 }, 'Trip name cannot be blank');
+
+TripSchema.path('user').validate(function(user) {
+    return user;
+}, 'Trip must be created by a user');
+
+TripSchema.path('tripStartDate').validate(function(tripStartDate) {
+    return tripStartDate;
+}, 'Trip must be created with a trip start date');
+
+TripSchema.path('tripEndDate').validate(function(tripEndDate) {
+    return tripEndDate;
+}, 'Trip must be created with a trip start date');
 
 mongoose.model('Trip', TripSchema);
