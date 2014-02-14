@@ -57,7 +57,7 @@ TripSchema.path('tripEndDate').validate(function(tripEndDate) {
 TripSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).populate('user', 'email name').exec(cb);
+    }).populate('user').exec(cb);
 };
 
 mongoose.model('Trip', TripSchema);
