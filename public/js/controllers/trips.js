@@ -3,10 +3,21 @@
 angular.module('trippie.trips').controller('TripsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', function ($scope, $routeParams, $location, Global, Trips) {
     $scope.global = Global;
 
+    $scope.today = function() {
+        $scope.dt = new Date();
+        $scope.minDate = new Date();
+    };
+    $scope.today();
+
     $scope.create = function() {
+
+        console.log(this.dt);
+        console.log(this.dt.getUTCDate());
+        console.log(this.dt.toISOString());
+
         var trip = new Trips({
             name: this.name,
-            tripStartDate: this.tripStartDate,
+            tripStartDate: this.dt.toISOString(),
             tripEndDate: this.tripEndDate
         });
         trip.$save(function(response) {
@@ -14,6 +25,8 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
         });
 
         this.name = '';
+        this.tripStartDate = null;
+
     };
 
     $scope.remove = function(trip) {
@@ -57,4 +70,7 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             $scope.trip = trip;
         });
     };
+
+
+
 }]);
