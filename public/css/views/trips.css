@@ -4,4 +4,5 @@ h1 {
 
 ul.trips li:not(:last-child) {
     border-bottom:1px solid #ccc
+    text-align:center; 
 }
