@@ -5,7 +5,9 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
 
     $scope.create = function() {
         var trip = new Trips({
-            name: this.name
+            name: this.name,
+            tripStartDate: this.tripStartDate,
+            tripEndDate: this.tripEndDate
         });
         trip.$save(function(response) {
             $location.path('trips/' + response._id);
