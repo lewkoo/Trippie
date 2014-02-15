@@ -49,7 +49,7 @@ TripSchema.path('tripStartDate').validate(function(tripStartDate) {
 
 TripSchema.path('tripEndDate').validate(function(tripEndDate) {
     return tripEndDate;
-}, 'Trip must be created with a trip start date');
+}, 'Trip must be created with a trip end date');
 
 /**
  * Statics
