@@ -81,7 +81,14 @@ exports.destroy = function(req, res) {
  * Show a trip
  */
 exports.show = function(req, res) {
-    res.jsonp(req.trip);
+
+    if(String(req.trip.user._id) === String(req.user._id))
+    {
+        res.jsonp(req.trip);
+    }else{
+        res.redirect('/');
+    }
+
 };
 
 /**

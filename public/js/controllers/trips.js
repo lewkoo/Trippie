@@ -59,8 +59,6 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
 
     $scope.find = function() {
 
-        console.log($scope.global);
-
         Trips.query(function(trips) {
             $scope.trips = trips;
         });
