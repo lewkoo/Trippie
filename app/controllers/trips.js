@@ -88,7 +88,7 @@ exports.show = function(req, res) {
  * List of Trips
  */
 exports.all = function(req, res) {
-    Trip.find().sort('-created').exec(function(err, trips) {
+    Trip.find( { user: req.user} ).sort('-created').exec(function(err, trips) {
         if (err) {
             res.render('error', {
                 status: 500
