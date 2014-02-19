@@ -15,7 +15,11 @@ var transportTypesEnum = {
     message: 'enum validator failed for path `{PATH}` with value `{VALUE}`'
 };
 var TransportationSchema = new Schema({
-    type: {
+    trip: {
+        type: Schema.ObjectId,
+        ref: 'Trip'
+    },
+    transportType: {
         type: String,
         enum: transportTypesEnum,
         trim: true
@@ -25,8 +29,7 @@ var TransportationSchema = new Schema({
         trim: true
     },
     departureTime: {
-        type: Date,
-        default: Date.now
+        type: Date
     },
     destinationStartID: {
         type: Schema.ObjectId,
@@ -44,26 +47,26 @@ var TransportationSchema = new Schema({
 TransportationSchema.path('departureTime').validate(function(departureTime) {
     return departureTime;
 }, 'Transportation departure time cannot be blank');
-/*
-TransportationSchema.path('user').validate(function(user) {
-    return user;
-}, 'Transportation must be created by a user');
-*/
-TransportationSchema.path('destinationStartID').validate(function(destinationStartID) {
-    return destinationStartID;
-}, 'Transportation must be created with a start destination');
 
-TransportationSchema.path('destinationEndID').validate(function(destinationEndID) {
-    return destinationEndID;
-}, 'Transportation must be created with an end destination');
+// Validating this way makes sure trip wasn't forgotton to be set instead of
+// just testing if it was set as null
+TransportationSchema.pre('save', function(next) {
+    var error;
+
+    if (!this.trip) {
+        error = new Error('Saving Transportation without Trip');
+    }/* else if (!this.departureTime) {
+        error = new Error('Saving Transportation without Departure Time');
+    }*/
+
+    if (error) {
+        next(error);
+    } else {
+        next();
+    }
+});
 
 /**
- * Statics
+ * Transportation Model
  */
-TransportationSchema.statics.load = function(id, cb) {
-    this.findOne({
-        _id: id
-    })/*.populate('user')*/.exec(cb);
-};
-
 mongoose.model('Transportation', TransportationSchema);
