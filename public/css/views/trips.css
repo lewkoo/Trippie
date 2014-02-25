@@ -7,6 +7,25 @@ ul.trips li:not(:last-child) {
     text-align:center; 
 }
 
+.trips {
+	border-top: 1px solid;
+}
+
 .trip {
-	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid;
+}
+
+.trip .name {
+	font-size: 18pt;
+}
+
+.glyphicon {
+	font-size: 9pt;
+}
+
+.trip-details .name {
+	font-size: 21pt;
+	font-weight: 500;
 }

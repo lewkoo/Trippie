@@ -1,6 +1,22 @@
-<section data-ng-controller="TripsController" data-ng-init="find()">
-	<div data-ng-repeat="trip in trips" class="col-md-6 col-md-offset-3">
-		<a href="/#!/trips/{{trip._id}}" type="button" class="trip btn btn-primary btn-lg btn-block">{{trip.name}}</a>
+	<section data-ng-controller="TripsController" data-ng-init="find()">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 text-center"><a data-ng-href="#!/trips/create" class="btn btn-default btn-block"><span class="glyphicon glyphicon-plus"></span> New Trip</a></div>
 	</div>
-	<h1 data-ng-hide="!trips || trips.length">No trips yet. <br> Why don't you <a href="/#!/trips/create">Create One</a>?</h1>
+	<br/>
+	<div data-ng-repeat="trip in trips" class="col-md-10 col-md-offset-1 trip">
+		<div class="row">
+			<div class="col-sm-9"><a data-ng-href="/#!/trips/{{trip._id}}" class="name">{{trip.name}}</a></div>
+			<div class="col-sm-3 hidden-xs">
+				<span class="glyphicon glyphicon-calendar"></span> {{trip.tripStartDate | date:'longDate'}} <br/>
+				<span class="glyphicon glyphicon-map-marker"></span> # destinations</span>
+			</div><div class="col-sm-4 visible-xs">
+				<span class="glyphicon glyphicon-calendar"></span> {{trip.tripStartDate | date:'longDate'}} &nbsp;
+				<span class="glyphicon glyphicon-map-marker"></span> # destinations</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12"><h2 data-ng-hide="!trips || trips.length">No trips yet. <br> Why don't you <a href="/#!/trips/create">Create One</a>?</h2></div>
+	</div>
 </section>
