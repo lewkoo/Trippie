@@ -23,10 +23,7 @@ var DestinationSchema = new Schema({
         ref: 'Transportation'
     },
     eventIDs: [Schema.Types.ObjectId],
-    lodgingIDs: {
-        type: Schema.ObjectId,
-        ref: 'Lodging'
-    },
+    lodgingIDs: [Schema.Types.ObjectId],
     noteIDs: {
         type: Schema.ObjectId,
         ref: 'Notes'

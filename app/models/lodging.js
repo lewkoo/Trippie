@@ -21,12 +21,13 @@ var LodgingSchema = new Schema({
         trim: true
     },
     arrivalDate: {
-        type: Date,
-        default: Date.now
+        type: Date
     },
     departureDate: {
-        type: Date,
-        default: Date.now
+        type: Date
+    },
+    information: {
+        type: String
     }
 });
 
@@ -40,9 +41,5 @@ LodgingSchema.path('name').validate(function(name) {
 LodgingSchema.path('address').validate(function(address) {
     return address.length;
 }, 'Lodging address cannot be blank');
-
-LodgingSchema.path('arrivalDate').validate(function(arrivalDate) {
-    return arrivalDate.length;
-}, 'Lodging arrival date cannot be blank');
 
 mongoose.model('Lodging', LodgingSchema);
