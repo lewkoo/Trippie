@@ -59,11 +59,7 @@ TransportationSchema.pre('save', function(next) {
         error = new Error('Saving Transportation without Departure Time');
     }*/
 
-    if (error) {
-        next(error);
-    } else {
-        next();
-    }
+    next(error);
 });
 
 /**
