@@ -40,8 +40,10 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             }
         }
         else {
-            $scope.trip.$remove();
-            $location.path('trips');
+            $scope.trip.$remove(function() {
+                $location.path('trips');
+            });
+            
         }
     };
 
@@ -71,7 +73,4 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             $scope.trip = trip;
         });
     };
-
-
-
 }]);

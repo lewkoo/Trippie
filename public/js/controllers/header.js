@@ -6,10 +6,9 @@ angular.module('trippie.system').controller('HeaderController', ['$scope', 'Glob
     $scope.menu = [{
         'title': 'Trips',
         'link': 'trips'
-    }, {
-        'title': 'Create New Trip',
-        'link': 'trips/create'
     }];
     
     $scope.isCollapsed = false;
+
+
 }]);

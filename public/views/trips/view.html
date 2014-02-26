@@ -1,7 +1,15 @@
-<section data-ng-controller="TripsController" data-ng-init="findOne()">
-    <h2>{{trip.name}}</h2>
-    <h3>Trip start date: {{trip.tripStartDate | date:'shortDate'}}</h3>
-    <p>
-        <a href="/#!/events" type="button" class="btn btn-primary btn-lg btn-block">Itinerary</a>
-    </p>
+<section data-ng-controller="TripsController" data-ng-init="findOne()" class="trip-details">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<h2>{{trip.name}}</h2>
+    		<span class="glyphicon glyphicon-calendar" title="Start Date"></span> {{trip.tripStartDate | date:'longDate'}}
+    		
+    		<a class="pull-right" data-ng-click="remove();"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+    		<a class="pull-right button-margin" href="/#!/trips/{{trip._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+    		<br/><hr/>
+    	</div>
+	</div>
+        <p>
+                <a href="/#!/events" type="button" class="btn btn-primary btn-lg btn-block">Itinerary</a>
+        </p>   
 </section>
