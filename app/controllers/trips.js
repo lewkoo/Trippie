@@ -88,7 +88,6 @@ exports.show = function(req, res) {
     }else{
         res.redirect('/');
     }
-
 };
 
 /**

@@ -3,17 +3,30 @@
 angular.module('trippie.events').controller('EventsController', ['$scope', '$routeParams', '$location', 'Global', 'Events', function ($scope, $routeParams, $location, Global, Events) {
     $scope.global = Global;
 
+    $scope.today = function() {
+        $scope.dt = new Date();
+        $scope.minDate = new Date();
+    };
+    $scope.today();
+
     $scope.create = function() {
+
+        console.log(this.dt);
+        console.log(this.dt.getUTCDate());
+        console.log(this.dt.toISOString());
+
         var event = new Events({
             name: this.name,
-            eventStartDate: this.eventStartDate,
+            eventStartDate: this.dt.toISOString(),
             eventEndDate: this.eventEndDate
         });
         event.$save(function(response) {
-            $location.path('trips/' + response._id);
+            $location.path('events/' + response._id);
         });
 
         this.name = '';
+        this.eventStartDate = null;
+
     };
 
     $scope.remove = function(event) {
@@ -28,7 +41,7 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
         }
         else {
             $scope.event.$remove();
-            $location.path('trips');
+            $location.path('events');
         }
     };
 
@@ -40,11 +53,12 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
         event.updated.push(new Date().getTime());
 
         event.$update(function() {
-            $location.path('trips');
+            $location.path('events/' + event._id);
         });
     };
 
     $scope.find = function() {
+
         Events.query(function(events) {
             $scope.events = events;
         });
@@ -57,4 +71,5 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
             $scope.event = event;
         });
     };
+
 }]);

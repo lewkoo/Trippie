@@ -76,6 +76,17 @@ describe('<Unit Test>', function() {
                 });
             });
 
+            it('should be able to show an error when tripEndDate < tripStartDate', function(done) {
+                trip.tripEndDate   = new Date(2014, 2, 11, 12, 0, 0, 0);//trip End Date is one day earlier here
+                trip.tripStartDate = new Date(2014, 2, 12, 12, 0, 0, 0); 
+
+                return trip.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
+
         });
 
         afterEach(function(done) {

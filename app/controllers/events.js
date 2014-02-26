@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
     _ = require('lodash');
   
 /**
- * Find event by id
+ * Find by id
  */
 exports.event = function(req, res, next, id) {
     Event.load(id, function(err, event) {
@@ -20,7 +20,7 @@ exports.event = function(req, res, next, id) {
 };
     
 /**
- * Create a event
+ * Create
  */
 exports.create = function(req, res) {
     var event = new Event(req.body);
@@ -38,7 +38,7 @@ exports.create = function(req, res) {
 };
 
 /**
- * Update a event
+ * Update
  */
 exports.update = function(req, res) {
     var event = req.event;
@@ -58,7 +58,7 @@ exports.update = function(req, res) {
 };
 
 /**
- * Delete a event
+ * Delete
  */
 exports.destroy = function(req, res) {
     var event = req.event;
@@ -77,17 +77,24 @@ exports.destroy = function(req, res) {
 
 
 /**
- * Show a event
+ * Show
  */
 exports.show = function(req, res) {
-    res.jsonp(req.event);
+
+    if(String(req.event._id) === String(req.event._id))//String(req.user._id))
+    {
+        res.jsonp(req.event);
+    }else{
+        res.redirect('/');
+    }
+
 };
 
 /**
- * List of Events
+ * List
  */
 exports.all = function(req, res) {
-    Event.find().sort('-created').exec(function(err, events) {
+    Event.find().exec(function(err, events) {
         if (err) {
             res.render('error', {
                 status: 500

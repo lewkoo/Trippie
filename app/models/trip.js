@@ -51,6 +51,19 @@ TripSchema.path('tripEndDate').validate(function(tripEndDate) {
     return tripEndDate;
 }, 'Trip must be created with a trip end date');
 
+TripSchema.path('tripStartDate').validate(function(tripStartDate) {
+
+    if(tripStartDate > this.tripEndDate)
+    {
+        return false;
+    }else
+    {
+        return true;
+    }
+
+}, 'Trip End Date must be greater or equal to Trip End Date');
+
+
 /**
  * Statics
  */

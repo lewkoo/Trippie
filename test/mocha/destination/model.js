@@ -25,7 +25,7 @@ describe('<Unit Test>', function() {
             });
 
             user.save(function() {
-		destination = new Destination({
+                destination = new Destination({
                     name: 'Test destination'
                 });
                 trip = new Trip({
