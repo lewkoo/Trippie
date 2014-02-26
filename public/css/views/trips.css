@@ -3,14 +3,14 @@ h1 {
 }
 
 ul.trips li:not(:last-child) {
-    border-bottom:1px solid #ccc
+    border-bottom:1px solid #ccc;
     text-align:center; 
 }
 
-<<<<<<< HEAD
 .trip {
 	margin-bottom: 10px;
-=======
+}
+
 .trips {
 	border-top: 1px solid;
 }
@@ -32,5 +32,4 @@ ul.trips li:not(:last-child) {
 .trip-details .name {
 	font-size: 21pt;
 	font-weight: 500;
->>>>>>> master
 }
