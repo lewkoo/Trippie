@@ -31,17 +31,17 @@ describe('<Unit Test>', function() {
             });
 
             user.save(function() {
-                event = new Event({
-                    name: testEventName,
-		    address: testAddress,
-		    information: testInfo,
-		    eventStartDate: testDate,
-		    eventEndDate: testDate
-                });
+ 		event = new Event({
+                	name: testEventName,
+		    	address: testAddress,
+		    	information: testInfo,
+		    	eventStartDate: testDate,
+		    	eventEndDate: testDate
+               	});
 		destination = new Destination({
-                    name: 'Test destination',
-                    eventIDs: [event]
-                });
+                	name: 'Test destination',
+                	eventIDs: [event]
+               	});
                 trip = new Trip({
                     name: 'Test trip',
                     user: user,
@@ -111,57 +111,55 @@ describe('<Unit Test>', function() {
 
 		/* Structure */ 
          	it('should save event in a destination', function(done) {
-                	var isMatch = false;
-                	var i;
-                	for (i = 0; i < destination.eventIDs.length; i++) {
-                    		if (destination.eventIDs[i].should.equal(event._id)) {
-                	        	isMatch = true;
-                	    	}
-               	 	}
-               		 isMatch.should.equal(true);
-                	done();
+			destination.eventIDs[0].should.equal(event._id)
+	         	done();
             	});
 
 		/* Read from DB */	
 
 		it('should have the saved event name', function(done){
-			event.save();
-                	Event.findOne({}, function(err, dbEvent) {
-                    		dbEvent.name.should.equal(testEventName);
-                    		done();
-                	});
+			event.save(function(){
+                		Event.findOne({}, function(err, dbEvent) {
+                    			dbEvent.name.should.equal(testEventName);
+                    			done();
+                		});
+			});
 		});
 
  		it('should have the saved event address', function(done){
-                        event.save();
-                        Event.findOne({}, function(err, dbEvent) {
-                                dbEvent.address.should.equal(testAddress);
-                                done();
+                        event.save(function(){
+				Event.findOne({}, function(err, dbEvent) {
+					dbEvent.address.should.equal(testAddress);
+					done();
+				});
                         });
                 });
 
 		it('should have the saved event information', function(done) {
-                        event.save();
-                        Event.findOne({}, function(err, dbEvent) {
-                                dbEvent.information.should.equal(testInfo);
-                                done();
-                        });
+                        event.save(function(){
+				Event.findOne({}, function(err, dbEvent) {
+					dbEvent.information.should.equal(testInfo);
+					done();
+				});
+			});
                 });
 
 		it('should have the saved eventStartDate', function(done) {
-                        event.save();
-                        Event.findOne({}, function(err, dbEvent) {
-                                String(dbEvent.eventStartDate).should.equal(String(testDate));
-                                done();
-                        });
+                        event.save(function(){
+				Event.findOne({}, function(err, dbEvent) {
+					String(dbEvent.eventStartDate).should.equal(String(testDate));
+					done();
+				});
+			});
                 });
 
 		it('should have the saved event eventEndDate', function(done) {
-                        event.save();
-                        Event.findOne({}, function(err, dbEvent) {
-                                String(dbEvent.eventEndDate).should.equal(String(testDate));
-                                done();
-                        });
+                        event.save(function(){
+				Event.findOne({}, function(err, dbEvent) {
+					String(dbEvent.eventEndDate).should.equal(String(testDate));
+					done();
+				});
+			});
                 });
 		
 		/* Update DB */
