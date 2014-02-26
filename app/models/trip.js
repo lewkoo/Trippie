@@ -63,6 +63,7 @@ TripSchema.path('tripStartDate').validate(function(tripStartDate) {
 
 }, 'Trip End Date must be greater or equal to Trip End Date');
 
+
 /**
  * Statics
  */

@@ -6,6 +6,7 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     $scope.today = function() {
         $scope.tripStartDate = new Date();
         $scope.tripEndDate = new Date();
+
         $scope.minDate = new Date();
     };
     $scope.today();
@@ -39,8 +40,10 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             }
         }
         else {
-            $scope.trip.$remove();
-            $location.path('trips');
+            $scope.trip.$remove(function() {
+                $location.path('trips');
+            });
+            
         }
     };
 
