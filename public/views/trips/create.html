@@ -7,16 +7,27 @@
 			</div>
 		</div>
 
+		<!-- Trip Start Date picker -->
 		<div class="form-group">
 			<label for="tripStartDate" class="col-md-2 control-label">Trip Start Date</label>
 			<div class="col-md-10">
-				<div class="well well-sm" ng-model="dt" >
-					<datepicker min="minDate" ng-model="dt" show-weeks="false"></datepicker>
+				<div class="well well-sm" ng-model="tripStartDate" >
+					<datepicker min="minDate" ng-model="tripStartDate" show-weeks="false"></datepicker>
 				</div>			
 			</div>
 		</div>
+		<!-- End Trip Start Date picker -->
 
-
+		<!-- Trip End Date picker -->
+		<div class="form-group">
+			<label for="tripEndDate" class="col-md-2 control-label">Trip End Date</label>
+			<div class="col-md-10">
+				<div class="well well-sm" ng-model="tripEndDate" >
+					<datepicker min="tripStartDate" ng-model="tripEndDate" show-weeks="false"></datepicker>
+				</div>			
+			</div>
+		</div>
+		<!-- End Trip End Date picker -->
 
 			<div class="form-group">
 				<div class="col-md-offset-2 col-md-10">
