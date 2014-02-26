@@ -9,16 +9,13 @@ ul.trips li:not(:last-child) {
 
 .trip {
 	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid;
 }
 
 .trips {
 	border-top: 1px solid;
-}
-
-.trip {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid;
 }
 
 .trip .name {
