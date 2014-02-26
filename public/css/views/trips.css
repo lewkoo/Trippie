@@ -3,18 +3,19 @@ h1 {
 }
 
 ul.trips li:not(:last-child) {
-    border-bottom:1px solid #ccc
+    border-bottom:1px solid #ccc;
     text-align:center; 
+}
+
+.trip {
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid;
 }
 
 .trips {
 	border-top: 1px solid;
-}
-
-.trip {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid;
 }
 
 .trip .name {
