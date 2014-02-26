@@ -1,0 +1,8 @@
+
+<section data-ng-controller="EventsController" data-ng-init="find()">
+	<div data-ng-repeat="event in events" class="col-md-6 col-md-offset-3">
+		<a href="/#!/events/{{event._id}}" type="button" class="event btn btn-primary btn-lg btn-block">{{event.name}}</a>
+	</div>
+	<h1 data-ng-hide="!events || events.length">No events yet.</h1>
+<!-- <br> Why don't you <a href="/#!/events/create">Create One</a>?</h1>-->
+</section>
