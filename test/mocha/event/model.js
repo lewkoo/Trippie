@@ -119,11 +119,12 @@ describe('<Unit Test>', function() {
                     		should.not.exist(err);
                     		done();
                		 });
-           	 });
+		});
+	});
 
 		/* Read from DB */	
-
-		it('should have the saved event name', function(done){
+	describe('Method findOne', function() {
+		it('should read the event name from database', function(done){
 			event.save(function(){
                 		Event.findOne({}, function(err, dbEvent) {
                     			dbEvent.name.should.equal(testEventName);
@@ -132,7 +133,7 @@ describe('<Unit Test>', function() {
 			});
 		});
 
- 		it('should have the saved event address', function(done){
+ 		it('should read the event address from database', function(done){
                         event.save(function(){
 				Event.findOne({}, function(err, dbEvent) {
 					dbEvent.address.should.equal(testAddress);
@@ -141,7 +142,7 @@ describe('<Unit Test>', function() {
                         });
                 });
 
-		it('should have the saved event information', function(done) {
+		it('should read the event information from database', function(done) {
                         event.save(function(){
 				Event.findOne({}, function(err, dbEvent) {
 					dbEvent.information.should.equal(testInfo);
@@ -150,7 +151,7 @@ describe('<Unit Test>', function() {
 			});
                 });
 
-		it('should have the saved eventStartDate', function(done) {
+		it('should read the event start date from database', function(done) {
                         event.save(function(){
 				Event.findOne({}, function(err, dbEvent) {
 					String(dbEvent.eventStartDate).should.equal(String(testDate));
@@ -159,7 +160,7 @@ describe('<Unit Test>', function() {
 			});
                 });
 
-		it('should have the saved event eventEndDate', function(done) {
+		it('should read the event end date from database', function(done) {
                         event.save(function(){
 				Event.findOne({}, function(err, dbEvent) {
 					String(dbEvent.eventEndDate).should.equal(String(testDate));
@@ -167,9 +168,60 @@ describe('<Unit Test>', function() {
 				});
 			});
                 });
-		
-		/* Update DB */
+	});
 
+	/* Update DB */
+	describe('Method update', function() {
+		it('should update the name in the database', function(done) {
+                        var newEventName = 'Attend Soccer Game';
+			event.name = newEventName;
+			event.update({'_id': event._id}, {$set: {'name': newEventName}}, function(err, dbEvent){
+				if (!err){
+					dbEvent.name.should.equal(newEventName);
+				}
+				done();
+			});
+                });
+		it('should update the address in the database', function(done) {
+                        var newAddress = 'North Pole';
+			event.address = newAddress;
+			event.update({'_id': event._id}, {$set: {'address': newAddress}}, function(err, dbEvent){
+				if (!err){
+					dbEvent.address.should.equal(newAddress);
+				}
+				done();
+			});
+                });
+		it('should update the info in the database', function(done) {
+                        var newInfo = 'Big Day';
+			event.information = newInfo;
+			event.update({'_id': event._id}, {$set: {'information': newInfo}}, function(err, dbEvent){
+				if (!err){
+					dbEvent.information.should.equal(newInfo);
+				}
+				done();
+			});
+                });
+		it('should update the event start date in the database', function(done) {
+                        var newDate = new Date(2014, 12, 12);
+			event.eventStartDate = newDate;
+			event.update({'_id': event._id}, {$set: {'eventStartDate': newDate}}, function(err, dbEvent){
+				if (!err){
+					dbEvent.eventStartDate.should.equal(newDate);
+				}
+				done();
+			});
+                });
+		it('should update the event end date in the database', function(done) {
+                        var newDate = new Date(2014, 11, 11);
+			event.eventEndDate = newDate;
+			event.update({'_id': event._id}, {$set: {'eventEndDate': newDate}}, function(err, dbEvent){
+				if (!err){
+					dbEvent.eventEndDate.should.equal(newDate);
+				}
+				done();
+			});
+                });
         });
  
        afterEach(function(done) {
