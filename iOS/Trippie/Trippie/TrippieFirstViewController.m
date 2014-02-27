@@ -7,6 +7,7 @@
 //
 
 #import "TrippieFirstViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
 
 @interface TrippieFirstViewController ()
@@ -29,7 +30,24 @@
 
 - (IBAction)log_in:(id)sender {
     //NSLog(NSString);
-    printf("Log in button pressed");
+    printf("\nLog in button pressed\n\n");
+    
+    NSString *emailInput = _email_textbox.text;
+    NSString *passwordInput = _password_textbox.text;
+    
+    
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"email": emailInput, @"password": passwordInput};
+    [manager POST:@"http://localhost:3000/users/session" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+    
+    
 }
 
 @end

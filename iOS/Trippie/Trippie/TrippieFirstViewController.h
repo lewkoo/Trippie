@@ -10,4 +10,8 @@
 
 @interface TrippieFirstViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *email_textbox;
+
+@property (weak, nonatomic) IBOutlet UITextField *password_textbox;
+
 @end
