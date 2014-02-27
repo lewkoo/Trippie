@@ -30,8 +30,8 @@ var EventSchema = new Schema({
         default: Date.now()
     },
     destinationID: {
-	type: Schema.ObjectId,
-	ref: 'Destination'
+        type: Schema.ObjectId,
+        ref: 'Destination'
     }
 });
 
