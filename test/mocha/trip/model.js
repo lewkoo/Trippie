@@ -76,7 +76,7 @@ describe('<Unit Test>', function() {
                 });
             });
 
-<<<<<<< HEAD
+
             it('should be able to show an error when tripEndDate < tripStartDate', function(done) {
                 trip.tripEndDate   = new Date(2014, 2, 11, 12, 0, 0, 0);//trip End Date is one day earlier here
                 trip.tripStartDate = new Date(2014, 2, 12, 12, 0, 0, 0); 
@@ -87,9 +87,6 @@ describe('<Unit Test>', function() {
                 });
             });
 
-
-=======
->>>>>>> master
         });
 
         afterEach(function(done) {
