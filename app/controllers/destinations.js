@@ -20,7 +20,7 @@ exports.destination = function(req, res, next, id) {
 };
     
 /**
- * Create
+ * Create a destination
  */
 exports.create = function(req, res) {
     var destination = new Destination(req.body);
@@ -38,7 +38,7 @@ exports.create = function(req, res) {
 };
 
 /**
- * Update
+ * Update a destination
  */
 exports.update = function(req, res) {
     var destination = req.destination;
@@ -58,7 +58,7 @@ exports.update = function(req, res) {
 };
 
 /**
- * Delete
+ * Delete a destination
  */
 exports.destroy = function(req, res) {
     var destination = req.destination;
@@ -77,14 +77,14 @@ exports.destroy = function(req, res) {
 
 
 /**
- * Show
+ * Show a destination
  */
 exports.show = function(req, res) {
     res.jsonp(req.destination);
 };
 
 /**
- * List
+ * List of destinations
  */
 exports.all = function(req, res) {
     Destination.find().sort('-created').exec(function(err, destinations) {

@@ -5,18 +5,21 @@
 	<br/>
 	<div data-ng-repeat="trip in trips" class="col-md-10 col-md-offset-1 trip">
 		<div class="row">
-			<div class="col-sm-9"><a data-ng-href="/#!/trips/{{trip._id}}" class="name">{{trip.name}}</a></div>
-			<div class="col-sm-3 hidden-xs">
-				<span class="glyphicon glyphicon-calendar"></span> {{trip.tripStartDate | date:'longDate'}} <br/>
-				<span class="glyphicon glyphicon-map-marker"></span> # destinations</span>
-			</div><div class="col-sm-4 visible-xs">
-				<span class="glyphicon glyphicon-calendar"></span> {{trip.tripStartDate | date:'longDate'}} &nbsp;
-				<span class="glyphicon glyphicon-map-marker"></span> # destinations</span>
+			<div class="col-sm-6"><a data-ng-href="/#!/trips/{{trip._id}}" class="name">{{trip.name}}</a></div>
+			<div class="col-sm-6 hidden-xs">
+				Start: <span class="glyphicon glyphicon-calendar"></span> {{trip.tripStartDate | date:'longDate'}}</br>
+				End: <span class="glyphicon glyphicon-calendar"></span> {{trip.tripEndDate | date:'longDate'}}</br>
+				<span class="glyphicon glyphicon-map-marker"></span> # destinations
+			</div>
+			<div class="col-sm-6 visible-xs">
+				Start: <span class="glyphicon glyphicon-calendar"></span> {{trip.tripStartDate | date:'longDate'}}</br>
+				End: <span class="glyphicon glyphicon-calendar"></span> {{trip.tripEndDate | date:'longDate'}}</br>
+				<span class="glyphicon glyphicon-map-marker"></span> # destinations
 			</div>
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="col-md-12"><h2 data-ng-hide="!trips || trips.length">No trips yet. <br> Why don't you <a href="/#!/trips/create">Create One</a>?</h2></div>
+		<div class="col-md-12 text-center"><h2 data-ng-hide="!trips || trips.length">No trips yet. Why don't you <a href="/#!/trips/create">create one</a>?</h2></div>
 	</div>
 </section>
