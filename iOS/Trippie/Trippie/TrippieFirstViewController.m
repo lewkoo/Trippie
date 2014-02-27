@@ -35,11 +35,11 @@
     NSString *emailInput = _email_textbox.text;
     NSString *passwordInput = _password_textbox.text;
     
-    
-    
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
     NSDictionary *parameters = @{@"email": emailInput, @"password": passwordInput};
+    
+    
     [manager POST:@"http://localhost:3000/users/session" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
