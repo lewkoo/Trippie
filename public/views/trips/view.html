@@ -4,10 +4,11 @@
     		<div class="col-md-10">
                 <div class="trip-name">{{trip.name}}</div>
                 Start: <span class="glyphicon glyphicon-calendar" title="Start Date"></span> {{trip.tripStartDate | date:'longDate'}}</br>
-                End: <span class="glyphicon glyphicon-calendar" title="End Date"></span> {{trip.tripEndDate | date:'longDate'}}
+                End: <span class="glyphicon glyphicon-calendar" title="End Date"></span> {{trip.tripEndDate | date:'longDate'}}</br>
+		<a data-ng-href="/#!/events">View Itinerary</a>
     		</div>
             <div class="col-md-2 text-right trip-options">
-                <a class="" href="/#!/trips/{{trip._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
+                <a class="" data-ng-href="/#!/trips/{{trip._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
         		<a class="" data-ng-click="remove();"><span class="glyphicon glyphicon-trash"></span> Delete</a>
             </div>
     	</div>

@@ -16,7 +16,7 @@ module.exports = function(app) {
 
     app.get('/events', events.all);
     app.post('/events', authorization.requiresLogin, events.create);
-    app.get('/events/:tripId', events.show);
+    app.get('/events/:eventId', events.all);
     app.put('/events/:eventId', authorization.requiresLogin, hasAuthorization, events.update);
     app.del('/events/:eventId', authorization.requiresLogin, hasAuthorization, events.destroy);
 

@@ -27,6 +27,10 @@ var DestinationSchema = new Schema({
     noteIDs: {
         type: Schema.ObjectId,
         ref: 'Notes'
+    },
+    tripID: {
+        type: Schema.ObjectId,
+        ref: 'Trip'
     }
 });
 
