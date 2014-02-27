@@ -31,17 +31,20 @@ describe('<Unit Test>', function() {
             });
 
             user.save(function() {
- 		event = new Event({
+ 		
+		destination = new Destination({
+                	name: 'Test destination',
+			eventIDs: []
+               	});
+		event = new Event({
                 	name: testEventName,
 		    	address: testAddress,
 		    	information: testInfo,
 		    	eventStartDate: testDate,
-		    	eventEndDate: testDate
+		    	eventEndDate: testDate,
+			destinationID: destination
                	});
-		destination = new Destination({
-                	name: 'Test destination',
-                	eventIDs: [event]
-               	});
+		
                 trip = new Trip({
                     name: 'Test trip',
                     user: user,
@@ -91,6 +94,15 @@ describe('<Unit Test>', function() {
                 		done();
                 	});
         	});
+		it('should be able to show an error when try to save without a destination', function(done) {
+                	event.destinationID = null;
+
+                	return event.save(function(err) {
+                    		should.exist(err);
+                		done();
+                	});
+        	});
+
 		/* Optional fields */
 		it('should be able to save without address data', function(done) {
                 	event.address = '';
@@ -108,12 +120,6 @@ describe('<Unit Test>', function() {
                     		done();
                		 });
            	 });
-
-		/* Structure */ 
-         	it('should save event in a destination', function(done) {
-			destination.eventIDs[0].should.equal(event._id)
-	         	done();
-            	});
 
 		/* Read from DB */	
 
