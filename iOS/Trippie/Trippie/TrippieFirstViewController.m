@@ -8,6 +8,7 @@
 
 #import "TrippieFirstViewController.h"
 
+
 @interface TrippieFirstViewController ()
 
 @end
@@ -24,6 +25,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)log_in:(id)sender {
+    //NSLog(NSString);
+    printf("Log in button pressed");
 }
 
 @end

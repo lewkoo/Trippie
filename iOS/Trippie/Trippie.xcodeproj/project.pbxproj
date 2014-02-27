@@ -208,6 +208,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "COMP 4350 Group 2";
 				TargetAttributes = {
+					3AA5AED118BFC49B009CD832 = {
+						DevelopmentTeam = 98CS97VCGJ;
+					};
 					3AA5AEF818BFC49B009CD832 = {
 						TestTargetID = 3AA5AED118BFC49B009CD832;
 					};
@@ -399,6 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trippie/Trippie-Prefix.pch";
 				INFOPLIST_FILE = "Trippie/Trippie-Info.plist";
@@ -412,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Trippie/Trippie-Prefix.pch";
 				INFOPLIST_FILE = "Trippie/Trippie-Info.plist";
@@ -481,6 +486,7 @@
 				3AA5AF0C18BFC49B009CD832 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3AA5AF0D18BFC49B009CD832 /* Build configuration list for PBXNativeTarget "TrippieTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +495,7 @@
 				3AA5AF0F18BFC49B009CD832 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
