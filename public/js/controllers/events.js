@@ -17,7 +17,7 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
         var event = new Events({
             name: this.name,
-            eventStartDate: this.dt.toISOString(),
+            eventStartDate: this.eventStartDate,
             eventEndDate: this.eventEndDate
         });
         event.$save(function(response) {
@@ -26,7 +26,7 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
         this.name = '';
         this.eventStartDate = null;
-
+        this.eventEndDate = null;
     };
 
     $scope.remove = function(event) {

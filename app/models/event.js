@@ -42,7 +42,6 @@ EventSchema.path('name').validate(function(name) {
     return name.length;
 }, 'Event name cannot be blank');
 
-
 EventSchema.path('eventStartDate').validate(function(eventStartDate) {
     return eventStartDate;
 }, 'Event must be created with an event start date');
