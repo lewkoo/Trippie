@@ -20,6 +20,8 @@ module.exports = function(app) {
     app.put('/trips/:tripId', authorization.requiresLogin, hasAuthorization, trips.update);
     app.del('/trips/:tripId', authorization.requiresLogin, hasAuthorization, trips.destroy);
 
+    app.get('/newEvents/:tripId', trips.showEventList);
+
     // Finish with setting up the tripId param
     app.param('tripId', trips.trip);
 };

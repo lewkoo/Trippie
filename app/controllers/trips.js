@@ -5,6 +5,8 @@
  */
 var mongoose = require('mongoose'),
     Trip = mongoose.model('Trip'),
+    Destination = mongoose.model('Destination'),
+    Event = mongoose.model('Event'),
     _ = require('lodash');
   
 /**
@@ -103,4 +105,54 @@ exports.all = function(req, res) {
             res.jsonp(trips);
         }
     });
+};
+
+exports.emptyList = function(req, res) {
+    if (req.user._id === req.user._id) {
+        res.jsonp([]);
+    }
+};
+
+/**
+ *  Show List of Events
+ *   */
+exports.showEventList = function(req, res) {
+    var destination;
+    var event;
+    var testAddress = '201 Main St, Winnipeg, MB';
+    var testInfo = 'My workplace; do not be late';
+    var testDate = new Date();
+    var testEventName = 'Test event';
+    destination = new Destination({
+        name: 'Test destination',
+        eventIDs: []
+    });
+    event = new Event({
+        name: testEventName,
+        address: testAddress,
+        information: testInfo,
+        eventStartDate: testDate,
+        eventEndDate: testDate,
+        destinationID: destination
+    });
+    if (req.user._id === req.user._id) {
+        res.jsonp(event);
+    }
+ /* console.log('logging: '+req.body);
+    if(String(req.trip.user._id) === String(req.user._id))
+    {
+        console.log('reached showList');
+        Destination.findOne({name: 'stubDestination', tripID: req.trip._id}).exec(function(err, destination) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(destination.eventIDs);
+            }
+        });
+    } else {
+        res.redirect('/');
+        console.log('showList redirect');
+    }*/
 };
