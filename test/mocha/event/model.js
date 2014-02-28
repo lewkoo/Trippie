@@ -102,6 +102,15 @@ describe('<Unit Test>', function() {
                 		done();
                 	});
         	});
+		it('should be able to show an error when eventEndDate < eventStartDate', function(done) {
+			event.eventEndDate   = new Date(2014, 2, 11, 12, 0, 0, 0);//event End Date is one day earlier here
+			event.eventStartDate = new Date(2014, 2, 12, 12, 0, 0, 0);
+			
+			return event.save(function(err) {
+				should.exist(err);
+				done();
+                	});
+            	});
 
 		/* Optional fields */
 		it('should be able to save without address data', function(done) {
