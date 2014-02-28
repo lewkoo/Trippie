@@ -35,6 +35,7 @@ module.exports = function(config) {
             'public/js/controllers/events.js',
             'public/js/controllers/index.js',
             'public/js/controllers/header.js',
+            'public/js/controllers/transportations.js',
             'public/js/init.js',
             'test/karma/unit/**/*.js'
         ],
