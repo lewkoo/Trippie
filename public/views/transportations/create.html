@@ -5,7 +5,9 @@
 
 		<!-- destination.name input -->
 		<div class="form-group">
-			<label for="name" class="col-md-2 control-label">Name</label>
+			<label for="trip" class="col-md-2 control-label">Trip ID</label>
+			<input type="text" name="trip" class="form-control" data-ng-model="trip" id="trip" disabled=disabled>
+			<label for="transportationType" class="col-md-2 control-label">Type</label>
 			<div class="col-md-10">
 				<select name="transportationType" class="form-control" data-ng-model="transportationType" id="transportationType">
 					<option value="bus">Bus</option>

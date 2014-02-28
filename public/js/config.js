@@ -22,6 +22,9 @@ angular.module('trippie').config(['$routeProvider',
         when('/trips/:tripId/transportations/create', {
             templateUrl: 'views/transportations/create.html'
         }).
+        when('trips/:tripId/transportations/:transportationId/view', {
+            templateUrl: 'views/transportations/view.html'
+        }).
         when('trips/:tripId/transportations/:transportationId/edit', {
             templateUrl: 'views/transportations/edit.html'
         }).

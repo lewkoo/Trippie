@@ -8,7 +8,7 @@ angular.module('trippie.transportations').controller('TransportationsController'
             name: this.name
         });
         transportation.$save(function(response) {
-            $location.path('trips/' + response._id);
+            $location.path('transportations/' + response._id);
         });
 
         this.name = '';
@@ -26,7 +26,7 @@ angular.module('trippie.transportations').controller('TransportationsController'
         }
         else {
             $scope.transportation.$remove();
-            $location.path('trips');
+            $location.path('transportations');
         }
     };
 
@@ -38,7 +38,7 @@ angular.module('trippie.transportations').controller('TransportationsController'
         transportation.updated.push(new Date().getTime());
 
         transportation.$update(function() {
-            $location.path('trips');
+            $location.path('transportations');
         });
     };
 
