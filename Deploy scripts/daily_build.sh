@@ -13,10 +13,12 @@ git pull --ff --all  #ensure only fast-forward, fetch all branches (because why 
 
 #start up the DB
 screen -dmS database
-screen -S database -X stuff 'sudo mongod^M'
+screen -S database -X stuff 'sudo mongod
+'
 
 sleep 60 #wait for 30 seconds for the DB to load and initialize itself
 
 #start up the Grunt with development settings to make it faster
 screen -dmS server
-screen -S server -p 0 -X stuff 'NODE_ENV=production grunt^M'
+screen -S server -p 0 -X stuff 'NODE_ENV=production grunt
+'
