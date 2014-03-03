@@ -18,7 +18,7 @@ var TripSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    initialDestinationID: {
+    initialDestination: {
         type: Schema.ObjectId,
         ref: 'Destination'
     },

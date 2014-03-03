@@ -19,6 +19,7 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             tripEndDate: this.tripEndDate.toISOString()
         });
         trip.$save(function(response) {
+            
             $location.path('trips/' + response._id);
         });
 
