@@ -7,18 +7,17 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Transportation Schema
+ * Enum
  */
-
 var transportTypesEnum = {
-    values: 'plane train bus car'.split(' '),
+    values: 'plane train bus car other'.split(' '),
     message: 'enum validator failed for path `{PATH}` with value `{VALUE}`'
 };
+
+/**
+ * Schema
+ */
 var TransportationSchema = new Schema({
-    trip: {
-        type: Schema.ObjectId,
-        ref: 'Trip'
-    },
     transportType: {
         type: String,
         enum: transportTypesEnum,
@@ -55,6 +54,6 @@ TransportationSchema.pre('save', function(next) {
 });
 
 /**
- * Transportation Model
+ * Model
  */
 mongoose.model('Transportation', TransportationSchema);
