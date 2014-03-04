@@ -31,6 +31,7 @@ module.exports = function(config) {
             'public/js/services/global.js',
             'public/js/services/articles.js',
             'public/js/services/events.js',
+            'public/js/services/transportations.js',
             'public/js/controllers/articles.js',
             'public/js/controllers/events.js',
             'public/js/controllers/index.js',
@@ -91,7 +92,7 @@ module.exports = function(config) {
         // - Safari (only Mac)
         // - PhantomJS
         // - IE (only Windows)
-        browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
 
 
         // If browser does not capture in given timeout [ms], kill it

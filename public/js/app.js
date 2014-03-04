@@ -10,7 +10,8 @@ angular.module('trippie', [
 	'trippie.trips',
 	'trippie.events',
 	'trippie.articles',
-	'trippie.transportations']);
+	'trippie.transportations'
+]);
 
 angular.module('trippie.system', []);
 angular.module('trippie.trips', []);

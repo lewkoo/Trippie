@@ -30,14 +30,6 @@ var TransportationSchema = new Schema({
     },
     departureTime: {
         type: Date
-    },
-    destinationStartID: {
-        type: Schema.ObjectId,
-        ref: 'Destination'
-    },
-    destinationEndID: {
-        type: Schema.ObjectId,
-        ref: 'Destination'
     }
 });
 

@@ -5,10 +5,14 @@ angular.module('trippie.transportations').controller('TransportationsController'
 
     $scope.create = function() {
         var transportation = new Transportations({
-            name: this.name
+            trip: this.trip,
+            transportType: this.transportType,
+            information: this.information,
+            departureTime: this.departureTime
         });
+
         transportation.$save(function(response) {
-            $location.path('transportations/' + response._id);
+            $location.path('trips/' + response.trip + '/transportations/' + response._id);
         });
 
         this.name = '';
