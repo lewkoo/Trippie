@@ -48,7 +48,6 @@
                 'fetched from XHR', function() {
                     // test expected GET request
                     $httpBackend.expectGET('/transportations').respond([{
-                        trip: '530392a84296d018083481e1',
                         transportType: 'plane',
                         information: 'WS1119',
                         departureTime: new Date(2140, 12, 12)
@@ -62,7 +61,6 @@
 
                     // test scope value
                     expect(scope.transportations).toEqualData([{
-                        trip: '530392a84296d018083481e1',
                         transportType: 'plane',
                         information: 'WS1119',
                         departureTime: new Date(2140, 12, 12)
@@ -78,10 +76,9 @@
                     // fixture response object
                     var testTransportationData = function() {
                         return {
-                            trip: '530392a84296d018083481e1',
-                        transportType: 'plane',
-                        information: 'WS1119',
-                        departureTime: new Date(2140, 12, 12)
+                            transportType: 'plane',
+                            information: 'WS1119',
+                            departureTime: new Date(2140, 12, 12)
                         };
                     };
 
