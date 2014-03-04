@@ -7,17 +7,15 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Lodging Schema
  */
 var LodgingSchema = new Schema({
     name: {
         type: String,
-        default: '',
         trim: true
     },
     address: {
         type: String,
-        default: '',
         trim: true
     },
     arrivalDate: {
@@ -28,6 +26,10 @@ var LodgingSchema = new Schema({
     },
     information: {
         type: String
+    },
+    destinationID: {
+        type: Schema.ObjectId,
+        ref: 'Destination'
     }
 });
 
@@ -41,5 +43,17 @@ LodgingSchema.path('name').validate(function(name) {
 LodgingSchema.path('address').validate(function(address) {
     return address.length;
 }, 'Lodging address cannot be blank');
+
+// Validating this way makes sure destination wasn't forgotten to be set instead of
+// just testing if it was set as null
+LodgingSchema.pre('save', function(next) {
+    var error;
+
+    if (!this.destinationID) {
+        error = new Error('Saving Lodging without Destination');
+    }
+
+    next(error);
+});
 
 mongoose.model('Lodging', LodgingSchema);
