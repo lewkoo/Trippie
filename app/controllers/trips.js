@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Trip = mongoose.model('Trip'),
+    Destination = mongoose.model('Destination'),
     _ = require('lodash');
   
 /**
@@ -26,14 +27,32 @@ exports.create = function(req, res) {
     var trip = new Trip(req.body);
     trip.user = req.user;
 
-    trip.save(function(err) {
+    var dest = new Destination({
+        name: 'Initial Destination'
+    });
+
+    console.log('Destination \"%s\" object created', dest.name);
+
+    dest.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
                 trip: trip
             });
         } else {
-            res.jsonp(trip);
+            console.log('Destination \"%s\" saved', dest._id);
+            trip.initialDestinationId = dest;
+
+            trip.save(function(err) {
+                if (err) {
+                    return res.send('users/signup', {
+                        errors: err.errors,
+                        trip: trip
+                    });
+                } else {
+                    res.jsonp(trip);
+                }
+            });
         }
     });
 };
