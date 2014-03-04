@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
     
 /**
- * Trip Schema
+ * Schema
  */
 var TripSchema = new Schema({
     name: {
@@ -18,10 +18,10 @@ var TripSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    initialDestination: {
+    destinationList: [{
         type: Schema.ObjectId,
         ref: 'Destination'
-    },
+    }],
     tripStartDate: {
         type: Date,
         default: Date.now
@@ -68,9 +68,12 @@ TripSchema.path('tripStartDate').validate(function(tripStartDate) {
  * Statics
  */
 TripSchema.statics.load = function(id, cb) {
-    this.findOne({
-        _id: id
-    }).populate('user').exec(cb);
+    this.findOne({  _id: id   }).populate('user')
+        .populate('destinationList')
+        .exec(cb);
 };
 
+/**
+ * Model
+ */
 mongoose.model('Trip', TripSchema);
