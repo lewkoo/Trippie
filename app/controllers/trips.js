@@ -41,8 +41,8 @@ exports.create = function(req, res) {
             });
         } else {
             console.log('Destination \"%s\" saved', dest._id);
-            trip.initialDestinationId = dest;
-
+            trip.initialDestination = dest._id;
+            
             trip.save(function(err) {
                 if (err) {
                     return res.send('users/signup', {
@@ -50,6 +50,7 @@ exports.create = function(req, res) {
                         trip: trip
                     });
                 } else {
+                    console.log(trip);
                     res.jsonp(trip);
                 }
             });
