@@ -94,107 +94,106 @@
 
                 });
 
-            // it('$scope.create() with valid form data should send a POST request ' +
-            //     'with the form input values and then ' +
-            //     'locate to new object URL', function() {
+            it('$scope.create() with valid form data should send a POST request ' +
+                'with the form input values and then ' +
+                'locate to new object URL', function() {
 
-            //         // fixture expected POST data
-            //         var postTransportationData = function() {
-            //             return {
-            //                 title: 'An Transportation about Trippie',
-            //                 content: 'Trippie rocks!'
-            //             };
-            //         };
+                    // fixture mock form input values
+                    scope.transportType = 'plane';
+                    scope.information = 'WS1119';
+                    // scope.departureTime = new Date(2014, 2, 12);
 
-            //         // fixture expected response data
-            //         var responseTransportationData = function() {
-            //             return {
-            //                 _id: '525cf20451979dea2c000001',
-            //                 title: 'An Transportation about Trippie',
-            //                 content: 'Trippie rocks!'
-            //             };
-            //         };
+                    // fixture expected POST data
+                    var postTransportationData = function() {
+                        return {
+                            transportType: scope.transportType,
+                            information: scope.information,
+                            // departureTime: scope.departureTime
+                        };
+                    };
 
-            //         // fixture mock form input values
-            //         scope.title = 'An Transportation about Trippie';
-            //         scope.content = 'Trippie rocks!';
+                    // fixture expected response data
+                    var responseTransportationData = function() {
+                        return {
+                            _id: '525cf20451979dea2c000001',
+                            transportType: scope.transportType,
+                            information: scope.information,
+                            // departureTime: scope.departureTime
+                        };
+                    };
 
-            //         // test post request is sent
-            //         $httpBackend.expectPOST('transportations', postTransportationData()).respond(responseTransportationData());
+                    // test post request is sent
+                    $httpBackend.expectPOST('/transportations', postTransportationData()).respond(responseTransportationData());
 
-            //         // Run controller
-            //         scope.create();
-            //         $httpBackend.flush();
+                    // Run controller
+                    scope.create();
+                    $httpBackend.flush();
 
-            //         // test form input(s) are reset
-            //         expect(scope.title).toEqual('');
-            //         expect(scope.content).toEqual('');
+                    // test form input(s) are reset
+                    expect(scope.transportType).toEqual('');
+                    expect(scope.information).toEqual('');
+                    expect(scope.departureTime).toEqual(null);
 
-            //         // test URL location to new object
-            //         expect($location.path()).toBe('/transportations/' + responseTransportationData()._id);
-            //     });
+                    // test URL location to new object
+                    expect($location.path()).toBe('/transportations/' + responseTransportationData()._id);
+                });
 
-            // it('$scope.update() should update a valid transportation', inject(function(Transportations) {
+            it('$scope.update() should update a valid transportation', inject(function(Transportations) {
 
-            //     // fixture rideshare
-            //     var putTransportationData = function() {
-            //         return {
-            //             _id: '525a8422f6d0f87f0e407a33',
-            //             title: 'An Transportation about Trippie',
-            //             to: 'Trippie is great!'
-            //         };
-            //     };
+                // fixture rideshare
+                var putTransportationData = function() {
+                    return {
+                        _id: '525a8422f6d0f87f0e407a33',
+                        transportType: 'plane',
+                        information: 'WS216',
+                        departureTime: new Date(2014, 2, 13)
+                    };
+                };
 
-            //     // mock transportation object from form
-            //     var transportation = new Transportations(putTransportationData());
+                // mock transportation object from form
+                var transportation = new Transportations(putTransportationData());
 
-            //     // mock transportation in scope
-            //     scope.transportation = transportation;
+                // mock transportation in scope
+                scope.transportation = transportation;
 
-            //     // test PUT happens correctly
-            //     $httpBackend.expectPUT(/transportations\/([0-9a-fA-F]{24})$/).respond();
+                // test PUT happens correctly
+                $httpBackend.expectPUT(/transportations\/([0-9a-fA-F]{24})$/).respond();
 
-            //     // testing the body data is out for now until an idea for testing the dynamic updated array value is figured out
-            //     //$httpBackend.expectPUT(/transportations\/([0-9a-fA-F]{24})$/, putTransportationData()).respond();
-            //     /*
-            //     Error: Expected PUT /transportations\/([0-9a-fA-F]{24})$/ with different data
-            //     EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","title":"An Transportation about Trippie","to":"Trippie is great!"}
-            //     GOT:      {"_id":"525a8422f6d0f87f0e407a33","title":"An Transportation about Trippie","to":"Trippie is great!","updated":[1383534772975]}
-            //     */
+                // run controller
+                scope.update();
+                $httpBackend.flush();
 
-            //     // run controller
-            //     scope.update();
-            //     $httpBackend.flush();
+                // test URL location to new object
+                expect($location.path()).toBe('/transportations/' + putTransportationData()._id);
 
-            //     // test URL location to new object
-            //     expect($location.path()).toBe('/transportations/' + putTransportationData()._id);
+            }));
 
-            // }));
+            it('$scope.remove() should send a DELETE request with a valid transportationId ' +
+                'and remove the transportation from the scope', inject(function(Transportations) {
 
-            // it('$scope.remove() should send a DELETE request with a valid transportationId' +
-            //     'and remove the transportation from the scope', inject(function(Transportations) {
+                    // fixture rideshare
+                    var transportation = new Transportations({
+                        _id: '525a8422f6d0f87f0e407a33'
+                    });
 
-            //         // fixture rideshare
-            //         var transportation = new Transportations({
-            //             _id: '525a8422f6d0f87f0e407a33'
-            //         });
+                    // mock rideshares in scope
+                    scope.transportations = [];
+                    scope.transportations.push(transportation);
 
-            //         // mock rideshares in scope
-            //         scope.transportations = [];
-            //         scope.transportations.push(transportation);
+                    // test expected rideshare DELETE request
+                    $httpBackend.expectDELETE(/transportations\/([0-9a-fA-F]{24})$/).respond(204);
 
-            //         // test expected rideshare DELETE request
-            //         $httpBackend.expectDELETE(/transportations\/([0-9a-fA-F]{24})$/).respond(204);
+                    // run controller
+                    scope.remove(transportation);
+                    $httpBackend.flush();
 
-            //         // run controller
-            //         scope.remove(transportation);
-            //         $httpBackend.flush();
+                    // The URL actually shouldn't change after successful delete...
+                    // test after successful delete URL location transportations is
+                    //expect($location.path()).toBe('/transportations');
 
-            //         // test after successful delete URL location transportations lis
-            //         //expect($location.path()).toBe('/transportations');
-            //         expect(scope.transportations.length).toBe(0);
-
-            //     }));
+                    // Test that the scope's length is 0
+                    expect(scope.transportations.length).toBe(0);
+                }));
         });
     });
 }());

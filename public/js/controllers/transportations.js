@@ -5,17 +5,18 @@ angular.module('trippie.transportations').controller('TransportationsController'
 
     $scope.create = function() {
         var transportation = new Transportations({
-            trip: this.trip,
             transportType: this.transportType,
             information: this.information,
             departureTime: this.departureTime
         });
 
         transportation.$save(function(response) {
-            $location.path('trips/' + response.trip + '/transportations/' + response._id);
+            $location.path('transportations/' + response._id);
         });
 
-        this.name = '';
+        this.transportType = '';
+        this.information = '';
+        this.departureTime = null;
     };
 
     $scope.remove = function(transportation) {
@@ -42,7 +43,7 @@ angular.module('trippie.transportations').controller('TransportationsController'
         transportation.updated.push(new Date().getTime());
 
         transportation.$update(function() {
-            $location.path('transportations');
+            $location.path('transportations/' + $scope.transportation._id);
         });
     };
 

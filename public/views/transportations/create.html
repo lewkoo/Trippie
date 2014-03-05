@@ -3,18 +3,35 @@
 		<h1 class="text-left col-md-offset-2">Create Transportation</h1>
 		<hr/>
 
-		<!-- destination.name input -->
+		<!-- transportation.transportationType select -->
 		<div class="form-group">
-			<label for="trip" class="col-md-2 control-label">Trip ID</label>
-			<input type="text" name="trip" class="form-control" data-ng-model="trip" id="trip" disabled=disabled>
 			<label for="transportationType" class="col-md-2 control-label">Type</label>
 			<div class="col-md-10">
 				<select name="transportationType" class="form-control" data-ng-model="transportationType" id="transportationType">
 					<option value="bus">Bus</option>
-					<option value="car" selected=selected>Car</option>
+					<option value="car">Car</option>
 					<option value="plane">Plane</option>
 					<option value="train">Train</option>
+					<option value="other">Other</option>
 				</select>
+			</div>
+		</div>
+
+		<!-- transportation.information input -->
+		<div class="form-group">
+			<label for="information" class="col-md-2 control-label">Information</label>
+			<div class="col-md-10">
+				<input type="text" name="information" class="form-control" data-ng-model="information" id="information">
+			</div>
+		</div>
+
+		<!-- transportation.departureTime datePicker -->
+		<div class="form-group">
+			<label for="departureTime" class="col-md-2 control-label">Departure Time</label>
+			<div class="col-md-10">
+				<div class="well well-sm">
+					<datepicker min="tripStartDate" ng-model="tripEndDate" show-weeks="false"></datepicker>
+				</div>			
 			</div>
 		</div>
 
