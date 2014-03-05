@@ -19,6 +19,6 @@ module.exports = function(app) {
     app.put('/trips/:tripId/:tripID/destinations/:destinationId', authorization.requiresLogin, hasAuthorization, destinations.update);
     app.del('/trips/:tripId/:tripID/destinations/:destinationId', authorization.requiresLogin, hasAuthorization, destinations.destroy);
 
-    // Finish with setting up the tripId param
+    // Finish with setting up the destinationId param
     app.param('destinationId', destinations.destination);
 };

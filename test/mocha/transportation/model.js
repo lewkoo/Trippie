@@ -30,9 +30,9 @@ describe('<Unit Test>', function() {
 
                 trip.save(function(errTrip, objTrip, numAffectedTrip) {
                     transportation = new Transportation({
-                        trip: trip,
                         transportType: 'plane',
-                        information: 'WJ404'
+                        information: 'WJ404',
+                        departureTime: new Date(2014, 6, 12)
                     });
 
                     done();
@@ -51,15 +51,6 @@ describe('<Unit Test>', function() {
             it('should be able to save whithout problems', function(done) {
                 return transportation.save(function(err) {
                     should.not.exist(err);
-                    done();
-                });
-            });
-
-            it('should show an error saving without a trip', function(done) {
-                transportation.trip = null;
-
-                return transportation.save(function(err) {
-                    should.exist(err);
                     done();
                 });
             });

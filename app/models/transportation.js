@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-    
+
 /**
  * Enum
  */
@@ -38,20 +38,6 @@ var TransportationSchema = new Schema({
 TransportationSchema.path('departureTime').validate(function(departureTime) {
     return departureTime;
 }, 'Transportation departure time cannot be blank');
-
-// Validating this way makes sure trip wasn't forgotton to be set instead of
-// just testing if it was set as null
-TransportationSchema.pre('save', function(next) {
-    var error;
-
-    if (!this.trip) {
-        error = new Error('Saving Transportation without Trip');
-    }/* else if (!this.departureTime) {
-        error = new Error('Saving Transportation without Departure Time');
-    }*/
-
-    next(error);
-});
 
 /**
  * Model

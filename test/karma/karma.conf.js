@@ -31,10 +31,12 @@ module.exports = function(config) {
             'public/js/services/global.js',
             'public/js/services/articles.js',
             'public/js/services/events.js',
+            'public/js/services/transportations.js',
             'public/js/controllers/articles.js',
             'public/js/controllers/events.js',
             'public/js/controllers/index.js',
             'public/js/controllers/header.js',
+            'public/js/controllers/transportations.js',
             'public/js/init.js',
             'test/karma/unit/**/*.js'
         ],

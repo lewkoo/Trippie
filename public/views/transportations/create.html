@@ -1,0 +1,29 @@
+<section data-ng-controller="TransportationsController">
+	<form class="form-horizontal col-md-10" role="form" data-ng-submit="create()">
+		<h1 class="text-left col-md-offset-2">Create Transportation</h1>
+		<hr/>
+
+		<!-- destination.name input -->
+		<div class="form-group">
+			<label for="trip" class="col-md-2 control-label">Trip ID</label>
+			<input type="text" name="trip" class="form-control" data-ng-model="trip" id="trip" disabled=disabled>
+			<label for="transportationType" class="col-md-2 control-label">Type</label>
+			<div class="col-md-10">
+				<select name="transportationType" class="form-control" data-ng-model="transportationType" id="transportationType">
+					<option value="bus">Bus</option>
+					<option value="car" selected=selected>Car</option>
+					<option value="plane">Plane</option>
+					<option value="train">Train</option>
+				</select>
+			</div>
+		</div>
+
+		<!-- Submit button -->
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<button type="submit" class="btn btn-default">Create</button>
+			</div>
+		</div>
+
+	</form>
+</section>

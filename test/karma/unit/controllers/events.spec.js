@@ -43,7 +43,6 @@
                 $httpBackend = _$httpBackend_;
 
                 $location = _$location_;
-
             }));
 
             it('$scope.find() should create an array with at least one event object ' +
