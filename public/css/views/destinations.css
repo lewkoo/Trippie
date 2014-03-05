@@ -1,3 +1,7 @@
+.destination {
+	margin-top: 10px;
+}
+
 .destination-info {
 	border: 1px solid black;
 	position: relative;
@@ -12,6 +16,6 @@
 
 .destination-options {
 	position: absolute;
-	bottom: 10px;
+	top: 10px;
 	right: 0px;
 }

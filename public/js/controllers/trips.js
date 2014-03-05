@@ -12,14 +12,13 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     $scope.today();
 
     $scope.create = function() {
-
         var trip = new Trips({
             name: this.name,
             tripStartDate: this.tripStartDate.toISOString(),
             tripEndDate: this.tripEndDate.toISOString()
         });
+
         trip.$save(function(response) {
-            
             $location.path('trips/' + response._id);
         });
 
@@ -27,7 +26,6 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
         this.name = '';
         this.tripStartDate = null;
         this.tripEndDate = null;
-
     };
 
     $scope.remove = function(trip) {
@@ -44,7 +42,6 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             $scope.trip.$remove(function() {
                 $location.path('trips');
             });
-            
         }
     };
 
@@ -61,7 +58,6 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     };
 
     $scope.find = function() {
-
         Trips.query(function(trips) {
             $scope.trips = trips;
         });
@@ -74,7 +70,5 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             $scope.trip = trip;
         });
     };
-
-
 
 }]);

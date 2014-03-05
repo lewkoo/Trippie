@@ -7,8 +7,9 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         var destination = new Destinations({
             name: this.name
         });
+
         destination.$save(function(response) {
-            $location.path('trips/' + response._id);
+            $location.path('trips/' + $scope.trip._id);
         });
 
         this.name = '';

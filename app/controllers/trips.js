@@ -27,33 +27,64 @@ exports.create = function(req, res) {
     var trip = new Trip(req.body);
     trip.user = req.user;
 
-    var dest = new Destination({
-        name: 'Initial Destination'
+    var startDest = new Destination({
+        name: 'Start Destination'
+        //TODO set name to User.homeAddress if not blank
     });
 
-    console.log('Destination \"%s\" object created', dest.name);
+    var initialDest= new Destination({
+        name: 'Destination 1'
+    });
 
-    dest.save(function(err) {
+    var endDest = new Destination({
+        name: 'End Destination'
+        //TODO set name to User.homeAddress if not blank
+    });
+
+    startDest.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
                 trip: trip
             });
         } else {
-            console.log('Destination \"%s\" saved', dest._id);
-            trip.initialDestination = dest._id;
-            
-            trip.save(function(err) {
-                if (err) {
-                    return res.send('users/signup', {
-                        errors: err.errors,
-                        trip: trip
-                    });
-                } else {
-                    console.log(trip);
-                    res.jsonp(trip);
-                }
+            console.log('Created:\n %s', startDest);
+        }
+    });
+
+    initialDest.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
             });
+        } else {
+            console.log('Created:\n %s', initialDest);
+        }
+    });
+
+    endDest.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
+            });
+        } else {
+            console.log('Created:\n %s', endDest);
+        }
+    });
+
+    trip.destinationList = [startDest._id, initialDest._id, endDest._id];
+            
+    trip.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
+            });
+        } else {
+            console.log('Created:\n %s', trip);
+            res.jsonp(trip);
         }
     });
 };

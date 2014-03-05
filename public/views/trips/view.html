@@ -1,16 +1,47 @@
 <section data-ng-controller="TripsController" data-ng-init="findOne()" class="trip-details">
     <div class="container-fluid">
-    	<div class="row trip-info">
+    	<!-- Trip info -->
+        <div class="row trip-info">
     		<div class="col-md-10">
                 <div class="trip-name">{{trip.name}}</div>
                 Start: <span class="glyphicon glyphicon-calendar" title="Start Date"></span> {{trip.tripStartDate | date:'longDate'}}</br>
                 End: <span class="glyphicon glyphicon-calendar" title="End Date"></span> {{trip.tripEndDate | date:'longDate'}}</br>
-		<a data-ng-href="/#!/events">View Itinerary</a>
     		</div>
             <div class="col-md-2 text-right trip-options">
                 <a class="" data-ng-href="/#!/trips/{{trip._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
         		<a class="" data-ng-click="remove();"><span class="glyphicon glyphicon-trash"></span> Delete</a>
             </div>
     	</div>
+
+        <!-- Destinations -->
+        <div data-ng-repeat="destination in trip.destinationList" class="col-md-10 col-md-offset-1 destination">
+            <div class="destination-info">
+                <div class="row">
+                    <div class="col-sm-10"><a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}" class="name">{{destination.name}}</a></div>
+                    <div class="col-md-2 text-right destination-options">
+                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
+                        <span data-ng-if="!$first && !$last && trip.destinationList.length > 3"><a class="" data-ng-click="remove();"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 hidden-xs">
+                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/events">{{destination.eventIDs.length}} events</a><br/>
+                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/lodgings">{{destination.lodgingIDs.length}} lodgings</a><br/>
+                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/notes">{{destination.noteIDs.length}} notes</a><br/>
+                    </div>
+                </div>
+            </div>
+            <!--<br/>
+            <div class="row">
+                put transportation row here
+            </div>-->
+            <br/>
+            <div class="row" ng-if="!$last">
+                <div class="col-sm-12 text-center">
+                    <button type="button" class="btn btn-default" data-ng-click="">Insert Destination</button> <!-- TODO figure out flow for inserting dest -->
+                </div>
+            </div>
+            <br/>
+        </div>
     </div>
 </section>
