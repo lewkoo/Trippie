@@ -56,4 +56,13 @@ LodgingSchema.pre('save', function(next) {
     next(error);
 });
 
+/**
+ * Statics
+ */
+LodgingSchema.statics.load = function(id, cb) {
+    this.findOne({
+        _id: id
+    }).exec(cb);
+};
+
 mongoose.model('Lodging', LodgingSchema);
