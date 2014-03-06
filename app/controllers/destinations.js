@@ -84,6 +84,14 @@ exports.show = function(req, res) {
 };
 
 /**
+ * Show a destination
+ */
+exports.showEvents = function(req, res) {
+    res.jsonp(req.destination);
+};
+
+
+/**
  * List of destinations
  */
 exports.all = function(req, res) {

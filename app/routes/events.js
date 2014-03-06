@@ -14,9 +14,9 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(app) {
 
-    app.get('/events', events.all);
+    app.get('/trips/:tripId/destinations/:destinationId/events', events.all);
     app.post('/events', authorization.requiresLogin, events.create);
-    app.get('/events/:eventId', events.all);
+//    app.get('/events/:eventId', events.all);
     app.put('/events/:eventId', authorization.requiresLogin, hasAuthorization, events.update);
     app.del('/events/:eventId', authorization.requiresLogin, hasAuthorization, events.destroy);
 
