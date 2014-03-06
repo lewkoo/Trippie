@@ -114,3 +114,47 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
+
+
+/**
+ * REST API 
+ */
+
+exports.apiLogin = function(req, res) {
+    // probably should return something better than this
+    res.jsonp({ success: true });
+};
+
+exports.apiCreate = function (req, res) {
+    var user = new User(req.body);
+    var message = null;
+
+    user.save(function(err) {
+        if (err) {
+            switch (err.code) {
+                case 11000:
+                case 11001:
+                    message = 'Username already exists';
+                    break;
+                default:
+                    //push the error messages into the array
+                    var result = [];
+                    for(var i in err.errors)
+                        result.push([i, err.errors [i]]);
+
+                    console.log(result);
+
+                    //grab the first error
+                    var error = result[0];
+                    //store the message
+                    message = error[1].message;
+
+            }
+            res.status(409);
+            return res.jsonp({ message: message });
+        }
+        
+        res.status(201);
+        return res.jsonp({ user: user.email });
+    });
+};

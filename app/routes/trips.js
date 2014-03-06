@@ -12,7 +12,7 @@ var hasAuthorization = function(req, res, next) {
     next();
 };
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
 
     app.get('/trips', trips.all);
     app.post('/trips', authorization.requiresLogin, trips.create);
@@ -22,4 +22,8 @@ module.exports = function(app) {
 
     // Finish with setting up the tripId param
     app.param('tripId', trips.trip);
+
+    // ** REST CALLS **
+    app.get('/api/trips', passport.authenticate('basic', { session: false }), trips.all);
+    app.post('/api/trips', passport.authenticate('basic', { session: false }), trips.create);
 };
