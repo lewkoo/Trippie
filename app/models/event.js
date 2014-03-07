@@ -65,6 +65,13 @@ EventSchema.path('eventStartDate').validate(function(eventStartDate) {
 }, 'Event End Date must be greater or equal to Event End Date');
 
 /**
+ * Statics
+ */
+EventSchema.statics.load = function(id, cb) {
+    this.findOne({  _id: id   }).populate('destinationID').exec(cb);
+};
+
+/**
  * Event Model
  */
 mongoose.model('Event', EventSchema);
