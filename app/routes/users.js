@@ -24,6 +24,6 @@ module.exports = function(app, passport) {
     }), users.session);
 
     // ** REST CALLS **
-    app.post('/api/signup', users.apiCreate);
-    app.post('/api/login', passport.authenticate('basic', { session: false }), users.apiLogin);
+    app.post('/api/signup', users.create);
+    app.post('/api/login', passport.authenticate('basic', { session: false }), users.session);
 };

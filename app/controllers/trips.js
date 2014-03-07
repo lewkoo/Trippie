@@ -145,11 +145,18 @@ exports.show = function(req, res) {
  * List of Trips
  */
 exports.all = function(req, res) {
+    var isApiCall = ((req.url).indexOf('api') > -1);
     Trip.find( { user: req.user} ).sort('-created').exec(function(err, trips) {
         if (err) {
-            res.render('error', {
-                status: 500
-            });
+            if (isApiCall) {
+                res.status(400);
+                res.jsonp('There was a problem retrieving your trips.');
+            }
+            else {
+                res.render('error', {
+                    status: 500
+                });
+            }
         } else {
             res.jsonp(trips);
         }

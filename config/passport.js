@@ -61,17 +61,13 @@ module.exports = function(passport) {
                 email: email
             }, function(err, user) {
                 if (err) {
-                    return done(err);
+                    return done(null, false);
                 }
                 if (!user) {
-                    return done(null, false, {
-                        message: 'Unknown user'
-                    });
+                    return done(null, false);
                 }
                 if (!user.authenticate(password)) {
-                    return done(null, false, {
-                        message: 'Invalid password'
-                    });
+                    return done(null, false);
                 }
                 return done(null, user);
             });
