@@ -101,14 +101,14 @@
                     // fixture mock form input values
                     scope.transportType = 'plane';
                     scope.information = 'WS1119';
-                    // scope.departureTime = new Date(2014, 2, 12);
+                    scope.departureTime = (new Date(2014, 2, 12)).toISOString();
 
                     // fixture expected POST data
                     var postTransportationData = function() {
                         return {
                             transportType: scope.transportType,
                             information: scope.information,
-                            // departureTime: scope.departureTime
+                            departureTime: scope.departureTime
                         };
                     };
 
@@ -118,7 +118,7 @@
                             _id: '525cf20451979dea2c000001',
                             transportType: scope.transportType,
                             information: scope.information,
-                            // departureTime: scope.departureTime
+                            departureTime: scope.departureTime
                         };
                     };
 
