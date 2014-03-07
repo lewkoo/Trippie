@@ -7,6 +7,10 @@ ul.trips li:not(:last-child) {
     text-align:center; 
 }
 
+a.link {
+	cursor: pointer;
+}
+
 .trip {
 	margin-bottom: 10px;
 	padding-top: 10px;
@@ -48,3 +52,4 @@ ul.trips li:not(:last-child) {
 	font-size: 21pt;
 	font-weight: 500;
 }
+
