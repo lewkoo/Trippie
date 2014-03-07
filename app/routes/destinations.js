@@ -1,6 +1,7 @@
 'use strict';
 
 // Destinations routes use destinations controller
+var trips = require('../controllers/trips');
 var destinations = require('../controllers/destinations');
 var authorization = require('./middlewares/authorization');
 
@@ -15,12 +16,12 @@ var hasAuthorization = function(req, res, next) {
 module.exports = function(app) {
 
     app.post('/trips/:tripId', authorization.requiresLogin, destinations.create);
-    app.get('/trips/destinations/:destinationId/events', destinations.showEvents);
+    app.get('/trips/:tripId/destinations/:destinationId/events', destinations.showEvents);
+    app.get('/trips/:tripId/destinations/:destinationId', destinations.show);
+    app.put('/trips/:tripId/destinations/:destinationId', authorization.requiresLogin, hasAuthorization, destinations.update);
+    app.del('/trips/:tripId/destinations/:destinationId', authorization.requiresLogin, hasAuthorization, destinations.destroy);
 
-app.get('/trips/:tripId/:tripID/destinations/:destinationId', destinations.show);
-    app.put('/trips/:tripId/:tripID/destinations/:destinationId', authorization.requiresLogin, hasAuthorization, destinations.update);
-    app.del('/trips/:tripId/:tripID/destinations/:destinationId', authorization.requiresLogin, hasAuthorization, destinations.destroy);
-
-    // Finish with setting up the destinationId param
+    // Finish with setting up the destinationId and tripID params
     app.param('destinationId', destinations.destination);
+    app.param('tripId', trips.trip);
 };

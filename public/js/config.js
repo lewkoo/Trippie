@@ -4,6 +4,7 @@
 angular.module('trippie').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+        // *************** Trips *************** 
         when('/trips', {
             templateUrl: 'views/trips/list.html'
         }).
@@ -16,23 +17,31 @@ angular.module('trippie').config(['$routeProvider',
         when('/trips/:tripId', {
             templateUrl: 'views/trips/view.html'
         }).
-        // Destinations
-
-        // Transportations
-        when('/trips/:tripId/transportations/create', {
+        // *************** Destinations *************** 
+        when('/trips/:tripId/destinations/:destinationId/', {
+            templateUrl: 'views/destinations/view.html'
+        }).
+        when('/trips/:tripId/destinations/:destinationId/create', {
+            templateUrl: 'views/destinations/create.html'
+        }).
+        when('/trips/:tripId/destinations/:destinationId/edit', {
+            templateUrl: 'views/destinations/edit.html'
+        }).
+        // *************** Transportations *************** 
+        when('/trips/:tripId/destinations/:destinationId/transportations/create', {
             templateUrl: 'views/transportations/create.html'
         }).
-        when('/trips/:tripId/transportations/:transportationId/view', {
+        when('/trips/:tripId/destinations/:destinationId/transportations/:transportationId/view', {
             templateUrl: 'views/transportations/view.html'
         }).
-        when('/trips/:tripId/transportations/:transportationId/edit', {
+        when('/trips/:tripId/destinations/:destinationId/transportations/:transportationId/edit', {
             templateUrl: 'views/transportations/edit.html'
         }).
-        // Events
+        // *************** Events *************** 
         when('/trips/:tripId/destinations/:destinationId/events', {
             templateUrl: 'views/destinations/viewEvents.html'
         }).
-        when('/events/create', {
+        when('/trips/:tripId/destinations/:destinationId/events/create', {
             templateUrl: 'views/events/create.html'
         }).
         when('/', {

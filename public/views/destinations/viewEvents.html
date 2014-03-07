@@ -13,16 +13,17 @@
 
         <!-- Events -->
         <div data-ng-repeat="event in destination.eventList" class="col-md-10 col-md-offset-1 event">
-		<div class="row">
-                        <div class="col-sm-9">{{event.name}}</div>
-                        <div class="col-sm-3 hidden-xs">
-                                <span class="glyphicon glyphicon-calendar"></span> {{event.eventStartDate | date:'longDate'}} <br/>
-                                <span class="glyphicon glyphicon-calendar"></span> {{event.eventEndDate | date:'longDate'}} <br/>
-                        </div><div class="col-sm-4 visible-xs">
-                                <span class="glyphicon glyphicon-calendar"></span> {{event.eventStartDate | date:'longDate'}} &nbsp;
-                                <span class="glyphicon glyphicon-calendar"></span> {{event.eventEndDate | date:'longDate'}} &nbsp;
-                        </div>
+    		<div class="row">
+                <div class="col-sm-9">{{event.name}}</div>
+                <div class="col-sm-3 hidden-xs">
+                        <span class="glyphicon glyphicon-calendar"></span> {{event.eventStartDate | date:'longDate'}} <br/>
+                        <span class="glyphicon glyphicon-calendar"></span> {{event.eventEndDate | date:'longDate'}} <br/>
                 </div>
+                <div class="col-sm-4 visible-xs">
+                        <span class="glyphicon glyphicon-calendar"></span> {{event.eventStartDate | date:'longDate'}} &nbsp;
+                        <span class="glyphicon glyphicon-calendar"></span> {{event.eventEndDate | date:'longDate'}} &nbsp;
+                </div>
+            </div>
         </div>
 	<div class="row">
                 <div class="col-md-12"><h2 data-ng-hide="destination.evenList.length">No events yet.<br> <!--Why don't you <a href="/#!/events/create">Create One</a>?-->But the event creation feature is coming soon!</h2></div>
