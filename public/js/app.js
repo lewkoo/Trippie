@@ -8,6 +8,7 @@ angular.module('trippie', [
 	'ui.route',
 	'trippie.system',
 	'trippie.trips',
+	'trippie.destinations',
 	'trippie.events',
 	'trippie.articles',
 	'trippie.transportations'
@@ -15,6 +16,7 @@ angular.module('trippie', [
 
 angular.module('trippie.system', []);
 angular.module('trippie.trips', []);
+angular.module('trippie.destinations', []);
 angular.module('trippie.events', []);
 angular.module('trippie.articles', []);
 angular.module('trippie.transportations', []);
