@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose'),
     LocalStrategy = require('passport-local').Strategy,
-    BasicStrategy = require('passport-http').BasicStrategy  ,
+    BasicStrategy = require('passport-http').BasicStrategy,
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
     GitHubStrategy = require('passport-github').Strategy,
