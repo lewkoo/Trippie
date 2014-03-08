@@ -36,6 +36,13 @@ var TransportationSchema = new Schema({
 });
 
 /**
+ * Statics
+ */
+TransportationSchema.statics.load = function(id, cb) {
+    this.findOne({  _id: id   }).exec(cb);
+};
+
+/**
  * Validations
  */
 TransportationSchema.path('departureTime').validate(function(departureTime) {

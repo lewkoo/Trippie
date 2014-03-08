@@ -20,7 +20,7 @@ exports.trip = function(req, res, next, id) {
         next();
     });
 };
-    
+
 /**
  * Create a trip
  */
@@ -29,10 +29,12 @@ exports.create = function(req, res) {
     var trip = new Trip(req.body);
     trip.user = req.user;
 
+
+    var name = req.user.homeAddress ? req.user.homeAddress : '';
+    
     // Destination Objects
     var startDest = new Destination({
-        name: 'Start Destination',
-        //TODO set name to User.homeAddress if not blank
+        name: (name.length <= 0 ? 'Start Destination' : name)
     });
 
     var initialDest = new Destination({
@@ -41,8 +43,7 @@ exports.create = function(req, res) {
     });
 
     var endDest = new Destination({
-        name: 'End Destination'
-        //TODO set name to User.homeAddress if not blank
+        name: (name.length <= 0 ? 'End Destination' : name)
     });
 
     // Transportation Objects
@@ -189,22 +190,19 @@ exports.destroy = function(req, res) {
         if (err) {
             console.log('Error deleting transportation: ' + trip.destinationList[i].outgoingTransportationID +
                 'in trip: ' + trip);
-        } else {
-            console.log('Successfully deleted transportation: ' + trip.destinationList[i].outgoingTransportationID +
-                'in trip: ' + trip);
         }
     };
 
     var removeDestination = function(err) {
         if (err) {
             console.log('Error deleting destination: ' + trip.destinationList[i] + 'in trip: ' + trip);
-        } else {
-            console.log('Successfully deleted destination: ' + trip.destinationList[i] + 'in trip: ' + trip);
         }
     };
 
     for (var i=0; i < trip.destinationList.length; i++) {
-        trip.destinationList[i].outgoingTransportationID.remove(removeTransportation);
+        if (trip.destinationList[i].outgoingTransportationID) {
+            Transportation.remove({id: trip.destinationList[i].outgoingTransportationID._id}, removeTransportation);
+        }
 
         trip.destinationList[i].remove(removeDestination);
     }
