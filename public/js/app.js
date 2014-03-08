@@ -11,9 +11,9 @@ angular.module('trippie', [
 	'trippie.destinations',
 	'trippie.events',
 	'trippie.articles',
-	'trippie.transportations'
+	'trippie.transportations',
+	'ui.bootstrap.datetimepicker'
 ]);
-
 angular.module('trippie.system', []);
 angular.module('trippie.trips', []);
 angular.module('trippie.destinations', []);

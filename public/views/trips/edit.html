@@ -9,12 +9,12 @@
 			<!-- trip.name input -->
 			<div class="row form-group">
 				<label for="name" class="control-label">Trip Name</label>
-				<input type="text" class="form-control" data-ng-model="trip.name" id="name" placeholder="Name" required>
+				<input type="text" class="form-control" data-ng-model="trip.name" id="name" placeholder="Name" required />
 			</div>
 
 			<div class="row">
 				<!-- trip.tripStartDate picker -->
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-6 datepicker">
 					<label for="tripStartDate" class="control-label">Start Date</label>
 					<div class="well well-sm">
 						<datepicker min="minDate" id="tripStartDate" ng-model="trip.tripStartDate" show-weeks="false"></datepicker>
@@ -22,7 +22,7 @@
 				</div>
 
 				<!-- trip.tripEndDate picker -->
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-6 datepicker">
 					<label for="tripEndDate" class="control-label">End Date</label>
 					<div class="well well-sm">
 						<datepicker min="tripStartDate" id="tripEndDate" ng-model="trip.tripEndDate" show-weeks="false"></datepicker>
