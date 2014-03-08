@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A4B79EB18C6D0B0005DC14B"
+               BlueprintIdentifier = "2A1A9BAB18CB984400172120"
                BuildableName = "SimpleWeather.app"
                BlueprintName = "SimpleWeather"
                ReferencedContainer = "container:SimpleWeather.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A4B7A0618C6D0B0005DC14B"
+               BlueprintIdentifier = "2A1A9BC618CB984400172120"
                BuildableName = "SimpleWeatherTests.xctest"
                BlueprintName = "SimpleWeatherTests"
                ReferencedContainer = "container:SimpleWeather.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A4B79EB18C6D0B0005DC14B"
+            BlueprintIdentifier = "2A1A9BAB18CB984400172120"
             BuildableName = "SimpleWeather.app"
             BlueprintName = "SimpleWeather"
             ReferencedContainer = "container:SimpleWeather.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A4B79EB18C6D0B0005DC14B"
+            BlueprintIdentifier = "2A1A9BAB18CB984400172120"
             BuildableName = "SimpleWeather.app"
             BlueprintName = "SimpleWeather"
             ReferencedContainer = "container:SimpleWeather.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A4B79EB18C6D0B0005DC14B"
+            BlueprintIdentifier = "2A1A9BAB18CB984400172120"
             BuildableName = "SimpleWeather.app"
             BlueprintName = "SimpleWeather"
             ReferencedContainer = "container:SimpleWeather.xcodeproj">

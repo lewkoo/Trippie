@@ -26,6 +26,7 @@
     "crypto": "0.0.3",
     "passport": "~0.1.18",
     "passport-local": "~0.1.6",
+    "passport-http": "*",
     "passport-facebook": "~1.0.2",
     "passport-twitter": "~1.0.2",
     "passport-github": "~0.1.5",

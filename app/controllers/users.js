@@ -46,13 +46,20 @@ exports.signout = function(req, res) {
  * Session
  */
 exports.session = function(req, res) {
-    res.redirect('/');
+    var isApiCall = ((req.url).indexOf('api') > -1);
+
+    if (isApiCall) {
+        res.jsonp({ success: true });
+    } else {
+        res.redirect('/');
+    }
 };
 
 /**
  * Create user
  */
 exports.create = function(req, res, next) {
+    var isApiCall = ((req.url).indexOf('api') > -1);
     var user = new User(req.body);
     var message = null;
 
@@ -80,15 +87,28 @@ exports.create = function(req, res, next) {
 
             }
 
-            return res.render('users/signup', {
-                message: message,
-                user: user
+            if (isApiCall) {
+                res.status(409);
+                return res.jsonp({ message: message });
+            }
+            else {
+                return res.render('users/signup', {
+                    message: message,
+                    user: user
+                });
+            }
+            
+        }
+
+        if (isApiCall) {
+            res.status(201);
+            return res.jsonp({ user: user.email });
+        } else {
+            req.logIn(user, function(err) {
+                if (err) return next(err);
+                return res.redirect('/');
             });
         }
-        req.logIn(user, function(err) {
-            if (err) return next(err);
-            return res.redirect('/');
-        });
     });
 };
 

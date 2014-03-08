@@ -80,6 +80,7 @@ describe('<Unit Test>', function() {
                 });
             });
 
+
             it('should be able to show an error when tripEndDate < tripStartDate', function(done) {
                 trip.tripEndDate   = new Date(2014, 2, 11, 12, 0, 0, 0);//trip End Date is one day earlier here
                 trip.tripStartDate = new Date(2014, 2, 12, 12, 0, 0, 0); 
@@ -89,8 +90,6 @@ describe('<Unit Test>', function() {
                     done();
                 });
             });
-
-
         });
 
 describe('Method findOne', function() {
@@ -129,10 +128,10 @@ describe('Method update', function() {
         trip.name = newTripName;
         trip.update({'_id': trip._id}, {$set: {'name': newTripName}}, function(err, dbEvent){
             if (!err){
-               dbEvent.name.should.equal(newTripName);
-           }
-           done();
-       });
+             dbEvent.name.should.equal(newTripName);
+         }
+         done();
+     });
     });
 
     it('should update the trip start date in the database', function(done) {
@@ -140,10 +139,10 @@ describe('Method update', function() {
         trip.tripStartDate = newTripStartDate;
         trip.update({'_id': trip._id}, {$set: {'name': newTripStartDate}}, function(err, dbEvent){
             if (!err){
-               dbEvent.name.should.equal(newTripStartDate);
-           }
-           done();
-       });
+             dbEvent.name.should.equal(newTripStartDate);
+         }
+         done();
+     });
     });
 
     it('should update the trip end date in the database', function(done) {
@@ -151,10 +150,10 @@ describe('Method update', function() {
         trip.tripEndDate = newTripEndDate;
         trip.update({'_id': trip._id}, {$set: {'name': newTripEndDate}}, function(err, dbEvent){
             if (!err){
-               dbEvent.name.should.equal(newTripEndDate);
-           }
-           done();
-       });
+             dbEvent.name.should.equal(newTripEndDate);
+         }
+         done();
+     });
     });
 });
 
