@@ -7,16 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "WXController.h"
+#include <TSMessage.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    // 1 - Inicialize and set the WXController instance
+    self.window.rootViewController = [[WXController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    // 2 - set the default view controller to display your TSMessages.
+    [TSMessage setDefaultViewController: self.window.rootViewController];
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
