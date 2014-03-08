@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
     Trip = mongoose.model('Trip'),
     Destination = mongoose.model('Destination'),
+    Transportation = mongoose.model('Transportation'),
     _ = require('lodash');
   
 /**
@@ -24,16 +25,19 @@ exports.trip = function(req, res, next, id) {
  * Create a trip
  */
 exports.create = function(req, res) {
+    // Trip Object
     var trip = new Trip(req.body);
     trip.user = req.user;
 
+    // Destination Objects
     var startDest = new Destination({
-        name: 'Start Destination'
+        name: 'Start Destination',
         //TODO set name to User.homeAddress if not blank
     });
 
-    var initialDest= new Destination({
-        name: 'Destination 1'
+    var initialDest = new Destination({
+        name: 'Destination 1',
+        //TODO set name to User.homeAddress if not blank
     });
 
     var endDest = new Destination({
@@ -41,7 +45,46 @@ exports.create = function(req, res) {
         //TODO set name to User.homeAddress if not blank
     });
 
-    startDest.save(function(err) {
+    // Transportation Objects
+    var startDestTransportation = new Transportation({
+        transportationType: 'other',
+        information: 'Transportation placeholder',
+        departureTime: Date.now()
+    });
+
+    var initialDestTransportation = new Transportation({
+        transportationType: 'other',
+        information: 'Transportation placeholder',
+        departureTime: Date.now()
+    });
+
+    // Destination Save Functions
+    var startDestSaveFxn, initialDestSaveFxn, endDestSaveFxn;
+
+    // Transportation Save Functions
+    var startDestTransportationSaveFxn, initialDestTransportationSaveFxn;
+
+    // Trip Save Function
+    var tripSaveFxn;
+
+    // 1
+    startDestTransportationSaveFxn = function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
+            });
+        } else {
+            console.log('Created:\n %s', startDestTransportation);
+
+            startDest.outgoingTransportationID = startDestTransportation;
+
+            startDest.save(startDestSaveFxn);
+        }
+    };
+
+    // 2
+    startDestSaveFxn = function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
@@ -49,21 +92,45 @@ exports.create = function(req, res) {
             });
         } else {
             console.log('Created:\n %s', startDest);
+            trip.destinationList[0] = startDest._id;
+            initialDestTransportation.save(initialDestTransportationSaveFxn);
         }
-    });
+    };
 
-    initialDest.save(function(err) {
+    // 3
+    initialDestTransportationSaveFxn = function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
                 trip: trip
             });
         } else {
-            console.log('Created:\n %s', initialDest);
-        }
-    });
+            console.log('Created:\n %s', initialDestTransportation);
 
-    endDest.save(function(err) {
+            initialDest.outgoingTransportationID = initialDestTransportation;
+
+            initialDest.save(initialDestSaveFxn);
+        }
+    };
+
+    // 4
+    initialDestSaveFxn = function(err) {
+        if (err) {
+            console.log('Debug: error');
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
+            });
+        } else {
+            console.log('Created:\n %s', initialDest);
+            trip.destinationList[1] = initialDest._id;
+
+            endDest.save(endDestSaveFxn);
+        }
+    };
+
+    // 5
+    endDestSaveFxn = function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
@@ -71,12 +138,13 @@ exports.create = function(req, res) {
             });
         } else {
             console.log('Created:\n %s', endDest);
+            trip.destinationList[2] = endDest._id;
+            trip.save(tripSaveFxn);
         }
-    });
+    };
 
-    trip.destinationList = [startDest._id, initialDest._id, endDest._id];
-            
-    trip.save(function(err) {
+    // 6
+    tripSaveFxn = function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
@@ -86,7 +154,9 @@ exports.create = function(req, res) {
             console.log('Created:\n %s', trip);
             res.jsonp(trip);
         }
-    });
+    };
+
+    startDestTransportation.save(startDestTransportationSaveFxn);
 };
 
 /**
@@ -114,6 +184,30 @@ exports.update = function(req, res) {
  */
 exports.destroy = function(req, res) {
     var trip = req.trip;
+
+    var removeTransportation = function(err) {
+        if (err) {
+            console.log('Error deleting transportation: ' + trip.destinationList[i].outgoingTransportationID +
+                'in trip: ' + trip);
+        } else {
+            console.log('Successfully deleted transportation: ' + trip.destinationList[i].outgoingTransportationID +
+                'in trip: ' + trip);
+        }
+    };
+
+    var removeDestination = function(err) {
+        if (err) {
+            console.log('Error deleting destination: ' + trip.destinationList[i] + 'in trip: ' + trip);
+        } else {
+            console.log('Successfully deleted destination: ' + trip.destinationList[i] + 'in trip: ' + trip);
+        }
+    };
+
+    for (var i=0; i < trip.destinationList.length; i++) {
+        trip.destinationList[i].outgoingTransportationID.remove(removeTransportation);
+
+        trip.destinationList[i].remove(removeDestination);
+    }
 
     trip.remove(function(err) {
         if (err) {
