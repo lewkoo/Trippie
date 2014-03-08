@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Trip = mongoose.model('Trip'),
+    Destination = mongoose.model('Destination'),
     _ = require('lodash');
   
 /**
@@ -26,6 +27,55 @@ exports.create = function(req, res) {
     var trip = new Trip(req.body);
     trip.user = req.user;
 
+    var startDest = new Destination({
+        name: 'Start Destination'
+        //TODO set name to User.homeAddress if not blank
+    });
+
+    var initialDest= new Destination({
+        name: 'Destination 1'
+    });
+
+    var endDest = new Destination({
+        name: 'End Destination'
+        //TODO set name to User.homeAddress if not blank
+    });
+
+    startDest.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
+            });
+        } else {
+            console.log('Created:\n %s', startDest);
+        }
+    });
+
+    initialDest.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
+            });
+        } else {
+            console.log('Created:\n %s', initialDest);
+        }
+    });
+
+    endDest.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                trip: trip
+            });
+        } else {
+            console.log('Created:\n %s', endDest);
+        }
+    });
+
+    trip.destinationList = [startDest._id, initialDest._id, endDest._id];
+            
     trip.save(function(err) {
         if (err) {
             return res.send('users/signup', {
@@ -33,6 +83,7 @@ exports.create = function(req, res) {
                 trip: trip
             });
         } else {
+            console.log('Created:\n %s', trip);
             res.jsonp(trip);
         }
     });
@@ -88,7 +139,6 @@ exports.show = function(req, res) {
     }else{
         res.redirect('/');
     }
-
 };
 
 /**

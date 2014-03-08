@@ -1,0 +1,21 @@
+.destination {
+	margin-top: 10px;
+}
+
+.destination-info {
+	border: 1px solid black;
+	position: relative;
+	border-radius: 15px;
+	padding: 10px;
+}
+
+.destination-name {
+	font-size: 30pt;
+	font-weight: bold;
+}
+
+.destination-options {
+	position: absolute;
+	top: 10px;
+	right: 0px;
+}

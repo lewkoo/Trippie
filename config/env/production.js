@@ -2,6 +2,7 @@
 
 module.exports = {
     db: "mongodb://localhost/trippie",
+    port: 80,
     app: {
         name: "Trippie - Your Travel Companion - Production"
     },

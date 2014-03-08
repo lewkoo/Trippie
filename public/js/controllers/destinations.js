@@ -1,14 +1,15 @@
 'use strict';
 
-angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Destinations', function ($scope, $routeParams, $location, Global, Destinations) {
+angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', function ($scope, $routeParams, $location, Global, Trips, Destinations) {
     $scope.global = Global;
 
     $scope.create = function() {
         var destination = new Destinations({
             name: this.name
         });
-        destination.$save(function(response) {
-            $location.path('trips/' + response._id);
+
+        destination.$save(function() {
+            $location.path('trips/' + $scope.trip._id);
         });
 
         this.name = '';
@@ -26,19 +27,15 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         }
         else {
             $scope.destination.$remove();
-            $location.path('trips');
+            $location.path('trips/' + $scope.trip._id);
         }
     };
 
     $scope.update = function() {
         var destination = $scope.destination;
-        if (!destination.updated) {
-            destination.updated = [];
-        }
-        destination.updated.push(new Date().getTime());
-
-        destination.$update(function() {
-            $location.path('trips');
+        
+        destination.$update({tripId: $scope.trip._id}, function() {
+            $location.path('trips/' + $scope.trip._id + '/destinations/' + $scope.destination._id);
         });
     };
 
@@ -49,7 +46,14 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
     };
 
     $scope.findOne = function() {
+        Trips.get({
+            tripId: $routeParams.tripId
+        }, function(trip) {
+            $scope.trip = trip;
+        });
+
         Destinations.get({
+            tripId: $routeParams.tripId,
             destinationId: $routeParams.destinationId
         }, function(destination) {
             $scope.destination = destination;

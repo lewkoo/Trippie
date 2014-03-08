@@ -16,18 +16,20 @@ var DestinationSchema = new Schema({
     },
     outgoingTransportationID: {
         type: Schema.ObjectId,
-        ref: 'Transporation'
-    },
-    incomingTransportationID: {
-        type: Schema.ObjectId,
         ref: 'Transportation'
     },
-    eventIDs: [Schema.Types.ObjectId],
-    lodgingIDs: [Schema.Types.ObjectId],
-    noteIDs: {
+    eventIDs: [{
+        type: Schema.ObjectId,
+        ref: 'Event'
+    }],
+    lodgingIDs: [{
+        type: Schema.ObjectId,
+        ref: 'Lodging'
+    }],
+    noteIDs: [{
         type: Schema.ObjectId,
         ref: 'Notes'
-    }
+    }]
 });
 
 /**
@@ -36,6 +38,17 @@ var DestinationSchema = new Schema({
 DestinationSchema.path('name').validate(function(name) {
     return name.length;
 }, 'Destination name cannot be blank');
+
+/**
+ * Statics
+ */
+DestinationSchema.statics.load = function(id, cb) {
+    this.findOne({  _id: id   }).populate('outgoingTransportationID')
+        .populate('eventIDs')
+        .populate('lodgingIDs')
+        .populate('noteIDs')
+        .exec(cb);
+};
 
 /**
  * Model

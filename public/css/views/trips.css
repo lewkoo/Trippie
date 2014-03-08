@@ -3,22 +3,41 @@ h1 {
 }
 
 ul.trips li:not(:last-child) {
-    border-bottom:1px solid #ccc
+    border-bottom:1px solid #ccc;
     text-align:center; 
 }
 
-<<<<<<< HEAD
-.trip {
-	margin-bottom: 10px;
-=======
-.trips {
-	border-top: 1px solid;
+a.link {
+	cursor: pointer;
 }
 
 .trip {
+	margin-bottom: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid;
+}
+
+.trip-info {
+	border: 1px solid black;
+	position: relative;
+	border-radius: 15px;
+	padding: 10px;
+}
+
+.trip-name {
+	font-size: 30pt;
+	font-weight: bold;
+}
+
+.trip-options {
+	position: absolute;
+	bottom: 10px;
+	right: 0px;
+}
+
+.trips {
+	border-top: 1px solid;
 }
 
 .trip .name {
@@ -32,5 +51,5 @@ ul.trips li:not(:last-child) {
 .trip-details .name {
 	font-size: 21pt;
 	font-weight: 500;
->>>>>>> master
 }
+

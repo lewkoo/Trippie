@@ -2,8 +2,8 @@
 //  TrippieTests.m
 //  TrippieTests
 //
-//  Created by Levko Ivanchuk on 2/13/2014.
-//  Copyright (c) 2014 Group 2 COMP 4350. All rights reserved.
+//  Created by Levko on 2014-02-27.
+//  Copyright (c) 2014 COMP 4350 Group 2. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

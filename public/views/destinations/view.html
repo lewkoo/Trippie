@@ -1,0 +1,13 @@
+<section data-ng-controller="DestinationsController" data-ng-init="findOne()" class="destination-details">
+    <div class="container-fluid">
+    	<div class="row destination-info">
+    		<div class="col-md-12">
+                <div class="destination-name">{{destination.name}}</div>
+    		</div>
+            <div class="col-md-2 text-right destination-options">
+                <a class="" href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
+        		<a class="" data-ng-click="remove();"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+            </div>
+    	</div>
+    </div>
+</section>

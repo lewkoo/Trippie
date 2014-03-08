@@ -1,0 +1,46 @@
+<section data-ng-controller="TransportationsController">
+	<form class="form-horizontal col-md-10" role="form" data-ng-submit="create()">
+		<h1 class="text-left col-md-offset-2">Create Transportation</h1>
+		<hr/>
+
+		<!-- transportation.transportationType select -->
+		<div class="form-group">
+			<label for="transportationType" class="col-md-2 control-label">Type</label>
+			<div class="col-md-10">
+				<select name="transportationType" class="form-control" data-ng-model="transportationType" id="transportationType">
+					<option value="bus">Bus</option>
+					<option value="car">Car</option>
+					<option value="plane">Plane</option>
+					<option value="train">Train</option>
+					<option value="other">Other</option>
+				</select>
+			</div>
+		</div>
+
+		<!-- transportation.information input -->
+		<div class="form-group">
+			<label for="information" class="col-md-2 control-label">Information</label>
+			<div class="col-md-10">
+				<input type="text" name="information" class="form-control" data-ng-model="information" id="information">
+			</div>
+		</div>
+
+		<!-- transportation.departureTime datePicker -->
+		<div class="form-group">
+			<label for="departureTime" class="col-md-2 control-label">Departure Time</label>
+			<div class="col-md-10">
+				<div class="well well-sm">
+					<datepicker min="tripStartDate" ng-model="tripEndDate" show-weeks="false"></datepicker>
+				</div>			
+			</div>
+		</div>
+
+		<!-- Submit button -->
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<button type="submit" class="btn btn-default">Create</button>
+			</div>
+		</div>
+
+	</form>
+</section>

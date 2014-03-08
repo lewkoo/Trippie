@@ -25,13 +25,13 @@ describe('<Unit Test>', function() {
             });
 
             user.save(function() {
-		destination = new Destination({
+                destination = new Destination({
                     name: 'Test destination'
                 });
                 trip = new Trip({
                     name: 'Test trip',
                     user: user,
-                    initialDestinationID: destination
+                    destinationList: [destination]
                 });
 
                 done();
@@ -56,7 +56,7 @@ describe('<Unit Test>', function() {
             });
 
             it('should be saved in a trip', function(done) {
-                trip.initialDestinationID.should.equal(destination._id);
+                (trip.destinationList).should.contain(destination._id);
                 done();
             });
 

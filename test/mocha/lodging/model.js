@@ -19,30 +19,37 @@ var lodging;
 //The tests
 describe('<Unit Test>', function() {
     describe('Model Lodging:', function() {
-        beforeEach(function(done) {
+        before(function(done) {
             user = new User({
-                email: 'test@test.com',
+                email: 'mail@trippie.com',
                 username: 'user',
                 password: 'password'
             });
 
-            user.save(function() {
-                lodging = new Lodging({
-                    name: 'Lodging Name',
-                    address: 'Lodging Address',
-                    arrivalDate: '2014-05-05'
-                });
-                destination = new Destination({
-                    name: 'Test destination',
-                    lodgingIDs: [lodging]
-                });
+            user.save(function(errUser, objUser, numAffectedUser) {
                 trip = new Trip({
                     name: 'Test trip',
-                    user: user,
-                    initialDestinationID: destination
+                    user: objUser
                 });
 
-                done();
+                trip.save(function(errTrip, objTrip, numAffectedTrip) {
+                    destination = new Destination({
+                        name: 'TestDest',
+                        trip: trip,
+                        information: 'ZZZZ11'
+                    });
+
+                    destination.save(function(errDest, objDest, numAffectedDest) {
+                        lodging = new Lodging({
+                            name: 'House of Cards',
+                            address: '123 Test St',
+                            destinationID: destination,
+                            arrivalDate: '2014-02-09',
+                            information: '12345'
+                        });
+                        done();
+                    });
+                });
             });
         });
 
@@ -63,16 +70,13 @@ describe('<Unit Test>', function() {
                 });
             });
 
-            it('should be saved in a destination', function(done) {
-                var isMatch = false;
-                var i;
-                for (i = 0; i < destination.lodgingIDs.length; i++) {
-                    if (destination.lodgingIDs[i].should.equal(lodging._id)) {
-                        isMatch = true;
-                    }
-                }
-                isMatch.should.equal(true);
-                done();
+            it('should be able to show an error when try to save without address', function(done) {
+                lodging.address = '';
+
+                return lodging.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
             });
         });
 

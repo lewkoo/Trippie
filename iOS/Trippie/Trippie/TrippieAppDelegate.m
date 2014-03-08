@@ -2,8 +2,8 @@
 //  TrippieAppDelegate.m
 //  Trippie
 //
-//  Created by Levko Ivanchuk on 2/13/2014.
-//  Copyright (c) 2014 Group 2 COMP 4350. All rights reserved.
+//  Created by Levko on 2014-02-27.
+//  Copyright (c) 2014 COMP 4350 Group 2. All rights reserved.
 //
 
 #import "TrippieAppDelegate.h"
@@ -12,13 +12,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     return YES;
 }
-
+							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

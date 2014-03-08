@@ -4,7 +4,7 @@
 var trips = require('../controllers/trips');
 var authorization = require('./middlewares/authorization');
 
-// Article authorization helpers
+// Trip authorization helpers
 var hasAuthorization = function(req, res, next) {
 	if (req.trip.user.id !== req.user.id) {
         return res.send(401, 'User is not authorized');
@@ -13,8 +13,6 @@ var hasAuthorization = function(req, res, next) {
 };
 
 module.exports = function(app) {
-
-
 
     app.get('/trips', trips.all);
     app.post('/trips', authorization.requiresLogin, trips.create);
