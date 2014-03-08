@@ -8,7 +8,7 @@ angular.module('trippie.system').controller('HeaderController', ['$scope', 'Glob
         'link': 'trips'
     }];
     
-    $scope.isCollapsed = false;
+    $scope.isCollapsed = true;
 
 
 }]);

@@ -70,7 +70,7 @@ exports.create = function(req, res, next) {
             switch (err.code) {
                 case 11000:
                 case 11001:
-                    message = 'Username already exists';
+                    message = 'Email already in use';
                     break;
                 default:
                     //push the error messages into the array
@@ -106,7 +106,7 @@ exports.create = function(req, res, next) {
         } else {
             req.logIn(user, function(err) {
                 if (err) return next(err);
-                return res.redirect('/');
+                return res.redirect('/#!/trips');
             });
         }
     });

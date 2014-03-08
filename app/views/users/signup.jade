@@ -3,14 +3,14 @@ extends auth
 block auth
   form.signup.form-horizontal(action="/users", method="post")
     .form-group
-      label.col-md-4.control-label(for='name') Full Name
-      .col-md-8
-        input#name.form-control(type='text', name="name", placeholder='Full name', value=user.name)
-
-    .form-group
       label.col-md-4.control-label(for='email') Email
       .col-md-8
         input#email.form-control(type='text', name="email", placeholder='Email', value=user.email)
+
+    .form-group
+      label.col-md-4.control-label(for='homeAddress') Home City
+      .col-md-8
+        input#email.form-control(type='text', name="homeAddress", placeholder='Home City', value=user.homeAddress)
 
     .form-group
       label.col-md-4.control-label(for='password') Password

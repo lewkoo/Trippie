@@ -19,7 +19,7 @@ exports.trip = function(req, res, next, id) {
         next();
     });
 };
-    
+
 /**
  * Create a trip
  */
@@ -27,9 +27,10 @@ exports.create = function(req, res) {
     var trip = new Trip(req.body);
     trip.user = req.user;
 
+    var name = req.user.homeAddress ? req.user.homeAddress : '';
+    
     var startDest = new Destination({
-        name: 'Start Destination'
-        //TODO set name to User.homeAddress if not blank
+        name: (name.length <= 0 ? 'Start Destination' : name)
     });
 
     var initialDest= new Destination({
@@ -37,8 +38,7 @@ exports.create = function(req, res) {
     });
 
     var endDest = new Destination({
-        name: 'End Destination'
-        //TODO set name to User.homeAddress if not blank
+        name: (name.length <= 0 ? 'End Destination' : name)
     });
 
     startDest.save(function(err) {
