@@ -1,22 +1,23 @@
-.destination {
+.transportation {
 	margin-top: 10px;
 }
 
-.destination-info {
+.transportation-info {
 	border: 1px solid black;
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 	position: relative;
 	padding: 10px;
+	margin-top: 10px;
 }
 
-.destination-name {
+.transportation-name {
 	font-size: 30pt;
 	font-weight: bold;
 }
 
-.destination-options {
+.transportation-options {
 	position: absolute;
 	top: 10px;
 	right: 0px;

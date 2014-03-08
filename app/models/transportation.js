@@ -29,6 +29,9 @@ var TransportationSchema = new Schema({
     },
     departureTime: {
         type: Date
+    },
+    arrivalTime: {
+        type: Date
     }
 });
 
