@@ -7,6 +7,7 @@
 //
 
 #import "WXController.h"
+#import "WXManager.h"
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 
 @interface WXController ()
@@ -175,6 +176,22 @@
     iconView.contentMode = UIViewContentModeScaleAspectFit;
     iconView.backgroundColor = [UIColor clearColor];
     [header addSubview:iconView];
+    
+    // 1
+    [[RACObserve([WXManager sharedManager], currentCondition)
+      // 2
+      deliverOn:RACScheduler.mainThreadScheduler]
+     subscribeNext:^(WXCondition *newCondition) {
+         // 3
+         temperatureLabel.text = [NSString stringWithFormat:@"%.0f°",newCondition.temperature.floatValue];
+         conditionsLabel.text = [newCondition.condition capitalizedString];
+         cityLabel.text = [newCondition.locationName capitalizedString];
+         
+         // 4
+         iconView.image = [UIImage imageNamed:[newCondition imageName]];
+     }];
+    
+    [[WXManager sharedManager] findCurrentLocation];
     
 }
 

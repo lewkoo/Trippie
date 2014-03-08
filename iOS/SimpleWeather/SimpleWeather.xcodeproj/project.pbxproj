@@ -51,6 +51,7 @@
 		2A456C5318CBA4E8006CECF3 /* WXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A456C5218CBA4E8006CECF3 /* WXManager.m */; };
 		2A456C5618CBA4F6006CECF3 /* WXCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A456C5518CBA4F6006CECF3 /* WXCondition.m */; };
 		2A456C5918CBA50C006CECF3 /* WXDailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A456C5818CBA50C006CECF3 /* WXDailyForecast.m */; };
+		2A456C5B18CBBFF6006CECF3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A456C5A18CBBFF6006CECF3 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		2A456C5518CBA4F6006CECF3 /* WXCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXCondition.m; sourceTree = "<group>"; };
 		2A456C5718CBA50C006CECF3 /* WXDailyForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXDailyForecast.h; sourceTree = "<group>"; };
 		2A456C5818CBA50C006CECF3 /* WXDailyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXDailyForecast.m; sourceTree = "<group>"; };
+		2A456C5A18CBBFF6006CECF3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5AA1217293F84D8E85B1FD3D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180F81AE4A049AD866CE56B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 			files = (
 				2A1A9BB218CB984400172120 /* CoreGraphics.framework in Frameworks */,
 				2A1A9BB418CB984400172120 /* UIKit.framework in Frameworks */,
+				2A456C5B18CBBFF6006CECF3 /* MapKit.framework in Frameworks */,
 				2A1A9BB018CB984400172120 /* Foundation.framework in Frameworks */,
 				1A4AE200EDA342369E3756D2 /* libPods.a in Frameworks */,
 			);
@@ -168,6 +171,7 @@
 		2A1A9BAE18CB984400172120 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A456C5A18CBBFF6006CECF3 /* MapKit.framework */,
 				2A1A9BAF18CB984400172120 /* Foundation.framework */,
 				2A1A9BB118CB984400172120 /* CoreGraphics.framework */,
 				2A1A9BB318CB984400172120 /* UIKit.framework */,
@@ -318,6 +322,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Levko Ivanchuk";
 				TargetAttributes = {
+					2A1A9BAB18CB984400172120 = {
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					2A1A9BC618CB984400172120 = {
 						TestTargetID = 2A1A9BAB18CB984400172120;
 					};
