@@ -189,22 +189,19 @@ exports.destroy = function(req, res) {
         if (err) {
             console.log('Error deleting transportation: ' + trip.destinationList[i].outgoingTransportationID +
                 'in trip: ' + trip);
-        } else {
-            console.log('Successfully deleted transportation: ' + trip.destinationList[i].outgoingTransportationID +
-                'in trip: ' + trip);
         }
     };
 
     var removeDestination = function(err) {
         if (err) {
             console.log('Error deleting destination: ' + trip.destinationList[i] + 'in trip: ' + trip);
-        } else {
-            console.log('Successfully deleted destination: ' + trip.destinationList[i] + 'in trip: ' + trip);
         }
     };
 
     for (var i=0; i < trip.destinationList.length; i++) {
-        trip.destinationList[i].outgoingTransportationID.remove(removeTransportation);
+        if (trip.destinationList[i].outgoingTransportationID) {
+            Transportation.remove({id: trip.destinationList[i].outgoingTransportationID._id}, removeTransportation);
+        }
 
         trip.destinationList[i].remove(removeDestination);
     }
