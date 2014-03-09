@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '$routeParams', '$location', 'Global', 'Lodgings', function ($scope, $routeParams, $location, Global, Lodgings) {
+angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '$routeParams', '$location', 'Global', 'Lodgings', 'Destinations', 'Trips', function ($scope, $routeParams, $location, Global, Lodgings, Destinations, Trips) {
     $scope.global = Global;
 
     $scope.create = function() {
