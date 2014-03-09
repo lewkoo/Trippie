@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>C31C06BF-9D61-4CBB-8C27-90275BEFF8B7</string>
+	<string>2046FD9F-C5AC-435C-9D1F-568059F91127</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Trippie</string>
+	<string>SimpleWeather</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D060E73D-89BB-44F2-B64E-0ACDBB3B952D</key>
 		<string>https://github.com/lewkoo/Trippie.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iOS/Trippie/Trippie.xcworkspace</string>
+	<string>iOS/SimpleWeather_Part_2/SimpleWeather.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D060E73D-89BB-44F2-B64E-0ACDBB3B952D</key>

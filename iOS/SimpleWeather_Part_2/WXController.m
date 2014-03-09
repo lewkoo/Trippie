@@ -68,6 +68,15 @@
     CGFloat tripsbuttonWight = 300;
     CGRect tripsButtonFrame = CGRectMake(tripsbuttonX, tripsbuttonY, tripsbuttonWight, tripsbuttonHeight);
     
+    CGFloat signInButtonX = tripsbuttonX;
+    CGFloat signInButtonY = tripsbuttonY + 50;
+    CGRect signInButtonFrame = CGRectMake(signInButtonX, signInButtonY, tripsbuttonWight, tripsbuttonHeight);
+    
+    CGFloat signUpButtonX = signInButtonX;
+    CGFloat signUpButtonY = signInButtonY + 50;
+    CGRect signUpButtonFrame = CGRectMake(signUpButtonX, signUpButtonY, tripsbuttonWight, tripsbuttonHeight);
+    
+    
     CGFloat temperatureHeight = 110;
     CGFloat hiloHeight = 40;
     CGFloat iconHeight = 30;
@@ -101,23 +110,37 @@
     hiloLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:28];
     [header addSubview:hiloLabel];
     
-    //bottom right - Trips button
-//    UIButton *tripsButton = [[UIButton alloc] initWithFrame:temperatureFrame];
-//    tripsButton.titleLabel.text = @"Trips";
-//    tripsButton.enabled=true;
-//    tripsButton.hidden=false;
     
+    //add 3 buttons - Trips, sign in, sign up
+    //adding tripsButton
     UIButton *tripsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [tripsButton addTarget:self
                action:@selector(aMethod:)
-     forControlEvents:UIControlEventTouchUpInside]; // wait until the user lifter his finger - gives them the ability to change their mind
-    [tripsButton setTitle:@"Trips" forState:UIControlStateNormal];
+     forControlEvents:UIControlEventTouchUpInside]; // wait until the user lifts his finger - gives them the ability to change their mind
+    [tripsButton setTitle:@"View Trips" forState:UIControlStateNormal];
+    tripsButton.enabled = false;
     tripsButton.frame = tripsButtonFrame;
     tripsButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:40];
-    
-    
     [header addSubview:tripsButton];
     
+    //adding Sign in button
+    UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [signInButton addTarget:self
+                    action:@selector(aMethod:)
+          forControlEvents:UIControlEventTouchUpInside]; // wait until the user lifts his finger - gives them the ability to change their mind
+    [signInButton setTitle:@"Sign In" forState:UIControlStateNormal];
+    signInButton.frame = signInButtonFrame;
+    signInButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:28];
+    [header addSubview:signInButton];
+    
+    UIButton *signUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [signUpButton addTarget:self
+                     action:@selector(aMethod:)
+           forControlEvents:UIControlEventTouchUpInside]; // wait until the user lifts his finger - gives them the ability to change their mind
+    [signUpButton setTitle:@"Sign Up" forState:UIControlStateNormal];
+    signUpButton.frame = signUpButtonFrame;
+    signUpButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:28];
+    [header addSubview:signUpButton];
     
     
     // top

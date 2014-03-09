@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A52F7B518CBE23E00723ECE /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A52F7B418CBE23E00723ECE /* SignIn.xib */; };
+		2A52F7B718CBE38E00723ECE /* trippieconcept.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A52F7B618CBE38E00723ECE /* trippieconcept.png */; };
 		867A4FA61831B19B003F9195 /* WXController.m in Sources */ = {isa = PBXBuildFile; fileRef = 867A4FA51831B19B003F9195 /* WXController.m */; };
 		867A4FC31831C733003F9195 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 867A4FA81831C733003F9195 /* bg.png */; };
 		867A4FC41831C733003F9195 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 867A4FA91831C733003F9195 /* bg@2x.png */; };
@@ -64,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A52F7B418CBE23E00723ECE /* SignIn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
+		2A52F7B618CBE38E00723ECE /* trippieconcept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trippieconcept.png; sourceTree = "<group>"; };
 		60CC2EC0E0B64B4FA10B1AFE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		867A4FA41831B19B003F9195 /* WXController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXController.h; sourceTree = "<group>"; };
 		867A4FA51831B19B003F9195 /* WXController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXController.m; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		867A4FA71831C733003F9195 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2A52F7B618CBE38E00723ECE /* trippieconcept.png */,
 				867A4FA81831C733003F9195 /* bg.png */,
 				867A4FA91831C733003F9195 /* bg@2x.png */,
 				867A4FAA1831C733003F9195 /* Weather Icons */,
@@ -189,6 +194,7 @@
 		868735B71831A1E700C0CCFA = {
 			isa = PBXGroup;
 			children = (
+				2A52F7B418CBE23E00723ECE /* SignIn.xib */,
 				867A4FE91831DF0B003F9195 /* WXCondition.h */,
 				867A4FEA1831DF0B003F9195 /* WXCondition.m */,
 				867A4FA41831B19B003F9195 /* WXController.h */,
@@ -352,6 +358,7 @@
 				867A4FC71831C733003F9195 /* weather-clear.png in Resources */,
 				867A4FD61831C733003F9195 /* weather-scattered@2x.png in Resources */,
 				867A4FD41831C733003F9195 /* weather-rain@2x.png in Resources */,
+				2A52F7B518CBE23E00723ECE /* SignIn.xib in Resources */,
 				867A4FCA1831C733003F9195 /* weather-few-night@2x.png in Resources */,
 				867A4FCD1831C733003F9195 /* weather-mist.png in Resources */,
 				867A4FD91831C733003F9195 /* weather-snow.png in Resources */,
@@ -363,6 +370,7 @@
 				867A4FDB1831C733003F9195 /* weather-tstorm.png in Resources */,
 				867A4FD71831C733003F9195 /* weather-shower.png in Resources */,
 				867A4FCF1831C733003F9195 /* weather-moon.png in Resources */,
+				2A52F7B718CBE38E00723ECE /* trippieconcept.png in Resources */,
 				867A4FD21831C733003F9195 /* weather-rain-night@2x.png in Resources */,
 				867A4FDA1831C733003F9195 /* weather-snow@2x.png in Resources */,
 				867A4FD81831C733003F9195 /* weather-shower@2x.png in Resources */,
