@@ -25,6 +25,7 @@ exports.lodging = function(req, res, next, id) {
 exports.create = function(req, res) {
     var lodging = new Lodging(req.body);
     lodging.user = req.user;
+    lodging.destinationID = req.destination._id;
 
     lodging.save(function(err) {
         if (err) {
@@ -33,7 +34,15 @@ exports.create = function(req, res) {
                 lodging: lodging
             });
         } else {
-            res.jsonp(lodging);
+            req.destination.lodgingIDs.push(lodging._id);
+            req.destination.save(function (err) {
+                if (err) {
+                    return res.send('users/signup', {
+                        errors: err.errors
+                    });
+                }
+                res.jsonp(lodging);
+            });
         }
     });
 };

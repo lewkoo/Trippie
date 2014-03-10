@@ -1,0 +1,7 @@
+<div class='col-md-5 col-md-offset-0' data-ng-controller="LodgingsController" data-ng-init='find()'>
+	<div class="lodgings">
+		<div class='name'>Lodgings<span class="pull-right hide">+ Add</span></div> <!-- hid Add for now, not implemented -->
+		<div data-ng-repeat="lodging in lodgings"><b>{{lodging.name}}</b> - {{lodging.address}}</div>
+		<div data-ng-hide="!lodgings || lodgings.length">No lodgings yet..</div>
+	</div>
+</div>
