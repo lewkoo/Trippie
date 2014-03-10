@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Lodging = mongoose.model('Lodging'),
+    Destination = mongoose.model('Destination'),
     _ = require('lodash');
 
 /**
@@ -26,13 +27,25 @@ exports.create = function(req, res) {
     var lodging = new Lodging(req.body);
     lodging.user = req.user;
 
+    var url = req.originalUrl;
+    var urlArray = url.split('/');
+    var destinationId = urlArray[urlArray.length-2];
+
     lodging.save(function(err) {
         if (err) {
+            console.log(err);
             return res.send('users/signup', {
                 errors: err.errors,
                 lodging: lodging
             });
         } else {
+            Destination.findOne({_id: destinationId}, function(err, destination){
+                if (err) { console.log(err); }
+                destination.lodgingIDs.push(lodging._id);
+                destination.save(function(err) {
+                    if (err) { console.log(err); }
+                });
+            });
             res.jsonp(lodging);
         }
     });
