@@ -44,6 +44,10 @@ LodgingSchema.path('address').validate(function(address) {
     return address.length;
 }, 'Lodging address cannot be blank');
 
+LodgingSchema.path('arrivalDate').validate(function(arrivalDate) {
+    return arrivalDate;
+}, 'Lodging arrival date cannot be blank');
+
 // Validating this way makes sure destination wasn't forgotten to be set instead of
 // just testing if it was set as null
 LodgingSchema.pre('save', function(next) {

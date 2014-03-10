@@ -97,6 +97,15 @@ describe('<Unit Test>', function() {
                     done();
                 });
             });
+
+            it('should be able to show an error when try to save without arrivalDate', function(done) {
+                lodging.arrivalDate = null;
+
+                return lodging.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
         });
 
         /* Update */
