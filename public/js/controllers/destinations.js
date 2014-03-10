@@ -35,7 +35,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         event.$save(function(){
             destination.eventIDs = event._id;
             destination.$update(function() {
-                $location.path('trips/' + $scope.trip._id + '/destinations/' + $scope.destination._id);
+                $location.path('trips/' + $scope.trip._id);
             });
         });
     };
