@@ -8,17 +8,17 @@ var should = require('should'),
     User = mongoose.model('User'),
     Trip = mongoose.model('Trip'),
     Destination = mongoose.model('Destination'),
-    Notes = mongoose.model('Notes');
+    Note = mongoose.model('Note');
 
 //Globals
 var user;
 var trip;
 var destination;
-var notes;
+var note;
 
 //The tests
 describe('<Unit Test>', function() {
-    describe('Model Notes:', function() {
+    describe('Model Note:', function() {
         before(function(done) {
             user = new User({
                 email: 'mail@trippie.com',
@@ -40,7 +40,7 @@ describe('<Unit Test>', function() {
                     });
 
                     destination.save(function(errDest, objDest, numAffectedDest) {
-                        notes = new Notes({
+                        note = new Note({
                             name: 'House of Cards',
                             destinationID: destination,
                             information: '12345'
@@ -53,16 +53,16 @@ describe('<Unit Test>', function() {
 
         describe('Method Save', function() {
             it('should be able to save without problems', function(done) {
-                return notes.save(function(err) {
+                return note.save(function(err) {
                     should.not.exist(err);
                     done();
                 });
             });
 
             it('should be able to show an error when try to save without name', function(done) {
-                notes.name = '';
+                note.name = '';
 
-                return notes.save(function(err) {
+                return note.save(function(err) {
                     should.exist(err);
                     done();
                 });
@@ -71,14 +71,14 @@ describe('<Unit Test>', function() {
         });
 
         afterEach(function(done) {
-            Notes.remove({});
+            Note.remove({});
             Destination.remove({});
             Trip.remove({});
             User.remove({});
             done();
         });
         after(function(done) {
-            Notes.remove().exec();
+            Note.remove().exec();
             Destination.remove().exec();
             Trip.remove().exec();
             User.remove().exec();

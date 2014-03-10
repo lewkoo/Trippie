@@ -116,8 +116,8 @@ describe('<Unit Test>', function() {
                 lodging.update({'_id': lodging._id}, {$set: {'name': newLodgingName}}, function(err, dbLodging){
                     if (!err){
                        dbLodging.name.should.equal(newLodgingName);
-                   }
-                   done();
+                    }
+                    done();
                });
             });
             it('should update the address in the database', function(done) {
@@ -126,8 +126,8 @@ describe('<Unit Test>', function() {
                 lodging.update({'_id': lodging._id}, {$set: {'address': newAddress}}, function(err, dbLodging){
                     if (!err){
                        dbLodging.address.should.equal(newAddress);
-                   }
-                   done();
+                    }
+                    done();
                });
             });
             it('should update the info in the database', function(done) {
@@ -136,8 +136,8 @@ describe('<Unit Test>', function() {
                 lodging.update({'_id': lodging._id}, {$set: {'information': newInfo}}, function(err, dbLodging){
                     if (!err){
                        dbLodging.information.should.equal(newInfo);
-                   }
-                   done();
+                    }
+                    done();
                 });
             });
             it('should update the arrival date in the database', function(done) {
@@ -146,8 +146,8 @@ describe('<Unit Test>', function() {
                 lodging.update({'_id': lodging._id}, {$set: {'arrivalDate': newDate}}, function(err, dbLodging){
                     if (!err){
                        dbLodging.arrivalDate.should.equal(newDate);
-                   }
-                   done();
+                    }
+                    done();
                });
             });
             it('should update the departure date in the database', function(done) {
@@ -156,8 +156,8 @@ describe('<Unit Test>', function() {
                 lodging.update({'_id': lodging._id}, {$set: {'departureDate': newDate}}, function(err, dbLodging){
                     if (!err){
                        dbLodging.departureDate.should.equal(newDate);
-                   }
-                   done();
+                    }
+                    done();
                });
             });
         });
