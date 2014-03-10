@@ -27,7 +27,7 @@ exports.create = function(req, res) {
 
     destination.save(function(err) {
         if (err) {
-            return res.send('users/signup', {
+            return res.send(err.message, {
                 errors: err.errors,
                 destination: destination
             });

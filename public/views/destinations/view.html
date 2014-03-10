@@ -10,7 +10,7 @@
             <div class="col-md-2 text-right destination-options">
                 <a class="link" href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
         		<span data-ng-if="trip.destinationList.length > 3 && trip.destinationList[0]._id != destination._id && 
-                    trip.destinationList[trip.destinationList.length -1]._id != destination._id"><a class="link" data-ng-click="remove();"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                    trip.destinationList[trip.destinationList.length -1]._id != destination._id"><a class="link" data-ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</a>
             </div>
     	</div>
 
