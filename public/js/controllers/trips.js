@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trippie.trips').controller('TripsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', function ($scope, $routeParams, $location, Global, Trips) {
+angular.module('trippie.trips').controller('TripsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', function ($scope, $routeParams, $location, Global, Trips, Destinations) {
     $scope.global = Global;
 
     $scope.today = function() {
@@ -43,6 +43,14 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
                 $location.path('trips');
             });
         }
+    };
+
+    $scope.removeDestination = function(index) {
+        var destination = $scope.trip.destinationList[index];
+        $scope.trip.destinationList.splice(index, 1);
+        Destinations.remove({tripId: $routeParams.tripId, destinationId: destination._id});
+        $scope.trip.$update();
+        $location.path('trips/' + $routeParams.tripId);
     };
 
     $scope.update = function() {

@@ -25,6 +25,7 @@ describe('<Unit Test>', function() {
             });
 
             user.save(function() {
+                // add transportation object to outgoingTransportationID of destination
                 destination = new Destination({
                     name: 'Test destination'
                 });

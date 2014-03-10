@@ -1,34 +1,54 @@
 'use strict';
 
-angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', function ($scope, $routeParams, $location, Global, Trips, Destinations) {
+angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Transportations', function ($scope, $routeParams, $location, Global, Trips, Destinations, Transportations) {
     $scope.global = Global;
 
     $scope.create = function() {
+        var departTime = new Date();
+
+        $scope.insertAfter = $routeParams.destinationId;
+
         var destination = new Destinations({
             name: this.name
         });
 
-        destination.$save(function() {
-            $location.path('trips/' + $scope.trip._id);
+        var promiseDestSave = destination.$save({ tripId: $routeParams.tripId }, function(dest){
+            $scope.destination = dest;
+        });
+        promiseDestSave.then(function(response) {
+            Trips.get({ tripId: $routeParams.tripId }, function(trip){
+                var len = trip.destinationList.length;
+                var i = 0, found = false;
+                while(!found && i < len){
+                    if(trip.destinationList[i]._id == $scope.insertAfter)
+                        found = true;
+                    i++;
+                }
+                trip.destinationList.splice(i, 0, $scope.destination);
+                trip.$update();
+                $location.path('trips/' + $routeParams.tripId);
+            });
         });
 
         this.name = '';
     };
 
-    $scope.remove = function(destination) {
-        if (destination) {
-            destination.$remove();
-
-            for (var i in $scope.destinations) {
-                if ($scope.destinations[i] === destination) {
-                    $scope.destinations.splice(i, 1);
-                }
+    $scope.remove = function() {
+        Trips.get({ tripId: $routeParams.tripId }, function(trip){
+            var len = trip.destinationList.length;
+            var i = 0, found = false;
+            while(!found && i < len -1){
+                if(trip.destinationList[i]._id == $scope.destination._id) 
+                    found = true;
+                else
+                    i++;
             }
-        }
-        else {
-            $scope.destination.$remove();
-            $location.path('trips/' + $scope.trip._id);
-        }
+            if(found) 
+                trip.destinationList.splice(i, 1);
+            $scope.destination.$remove({tripId: $routeParams.tripId});
+            trip.$update({tripId: $routeParams.tripId});
+            $location.path('trips/' + $routeParams.tripId);
+        });
     };
 
     $scope.update = function() {
