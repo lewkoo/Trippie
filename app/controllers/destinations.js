@@ -38,6 +38,41 @@ exports.create = function(req, res) {
 };
 
 /**
+ * Create an event
+ */
+exports.createEvent = function(req) {
+    /*
+    var event = new Event(req.body);
+    event.save(function(err) {
+        if (err) {
+            return res.send('trips', {
+                errors: err.errors,
+                event: event
+            });
+        } else {
+            res.jsonp(event);
+        }
+    });
+    */
+    /*
+    var destination = new Destination(req.body);
+
+    destination.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                destination: destination
+            });
+        } else {
+            res.jsonp(destination);
+        }
+    });
+    */
+    console.log(req.body);
+};
+
+
+/**
  * Update a destination
  */
 exports.update = function(req, res) {

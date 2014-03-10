@@ -29,11 +29,12 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         var event = new Events({
             name: this.name,
             eventStartDate: this.eventStartDate.toISOString(),
-            eventEndDate: this.eventEndDate.toISOString()
+            eventEndDate: this.eventEndDate.toISOString(),
+            destinationID: $scope.destination._id
         });
         event.$save(function(){
             destination.$update({eventId: event}, function() {
-                $location.path('/trips');
+                $location.path('trips/' + $scope.trip._id + '/destinations/' + $scope.destination._id);
             });
         });
     };
