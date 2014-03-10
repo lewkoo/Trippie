@@ -1,7 +1,17 @@
 'use strict';
 
-angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Transportations', function ($scope, $routeParams, $location, Global, Trips, Destinations, Transportations) {
+angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Events', 'Transportations', function ($scope, $routeParams, $location, Global, Trips, Destinations, Events, Transportations) {
+
     $scope.global = Global;
+ 
+    $scope.today = function() {
+        $scope.eventStartDate = new Date();
+        $scope.eventEndDate = new Date();
+
+        $scope.minDate = new Date();
+    };
+    $scope.today();
+
 
     $scope.create = function() {
         var departTime = new Date();
@@ -26,11 +36,25 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
                 }
                 trip.destinationList.splice(i, 0, $scope.destination);
                 trip.$update();
-                $location.path('trips/' + $routeParams.tripId);
+                $location.path('trips/' + $scope.trip._id);
             });
         });
 
         this.name = '';
+    };
+
+    $scope.createEvent = function() {
+        var destination = $scope.destination;
+        var event = new Events({
+            name: this.name,
+            eventStartDate: this.eventStartDate.toISOString(),
+            eventEndDate: this.eventEndDate.toISOString()
+        });
+        event.$save(function(){
+            destination.$update({eventId: event}, function() {
+                $location.path('/trips');
+            });
+        });
     };
 
     $scope.remove = function() {
@@ -42,12 +66,12 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
                     found = true;
                 else
                     i++;
-            }
+	    }
             if(found) 
                 trip.destinationList.splice(i, 1);
             $scope.destination.$remove({tripId: $routeParams.tripId});
             trip.$update({tripId: $routeParams.tripId});
-            $location.path('trips/' + $routeParams.tripId);
+            $location.path('trips/' + $scope.trip._id);
         });
     };
 

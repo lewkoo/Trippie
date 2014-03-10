@@ -3,10 +3,10 @@
 		<h1 class="text-left col-md-offset-2">Edit Transportation</h1>
 		<hr/>
 
-		<!-- transportation.name input -->
+		<!-- transportation.transportationType select -->
 		<div class="form-group">
-			<label for="name" class="col-md-2 control-label">Type</label>
-			<div class="col-md-10">
+			<label for="transportationType" class="control-label">Type</label>
+			<div>
 				<select name="transportationType" class="form-control" data-ng-model="transportation.transportationType" id="transportationType">
 					<option value="bus">Bus</option>
 					<option value="car">Car</option>
@@ -17,11 +17,33 @@
 			</div>
 		</div>
 
+        <!-- transportation.information input -->
+        <div class="form-group">
+            <label for="information" class="control-label">Information</label>
+            <input type="text" class="form-control" data-ng-model="transportation.information" id="information" />
+        </div>
+
+        <div class="row">
+            <!-- trip.tripStartDate picker -->
+            <div class="form-group col-md-6 datepicker">
+                <label for="tripStartDate" class="control-label">Departure Date</label>
+                <div class="well well-sm">
+                    <datetimepicker min="minDate" id="transportationDepartureTime" ng-model="transportation.departureTime" show-weeks="false"></datetimepicker>
+                </div>  
+            </div>
+
+            <!-- trip.tripEndDate picker -->
+            <div class="form-group col-md-6 datepicker">
+                <label for="tripEndDate" class="control-label">Arrival Date</label>
+                <div class="well well-sm">
+                    <datetimepicker min="transportationDepartureTime" id="transportationArrivalTime" ng-model="transportation.arrivalTime" show-weeks="false"></datetimepicker>
+                </div>  
+            </div>
+        </div>
+
 		<!-- Update button -->
-		<div class="form-group">
-			<div class="col-md-offset-2 col-md-10">
-				<button type="submit" class="btn btn-default">Update</button>
-			</div>
+		<div class=" row form-group">
+			<button type="submit" class="btn btn-default">Update</button>
 		</div>
 
 	</form>

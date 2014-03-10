@@ -24,6 +24,7 @@ module.exports = function(config) {
             'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
             'public/lib/angular-bootstrap/ui-bootstrap.js',
             'public/lib/angular-ui-utils/ui-utils.min.js',
+            'public/lib/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
             'public/js/app.js',
             'public/js/config.js',
             'public/js/directives.js',

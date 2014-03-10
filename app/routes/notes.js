@@ -14,6 +14,7 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(app) {
 
+    app.get('/trips/:tripId/destinations/:destinationId/notes', notes.all);
     app.post('/trips/:tripId/destinations/:destinationId/notes', authorization.requiresLogin, notes.create);
     app.get('/trips/:tripId/destinations/:destinationId/notes/:notesId', notes.show);
     app.put('/trips/:tripId/destinations/:destinationId/notes/:notesId', authorization.requiresLogin, hasAuthorization, notes.update);

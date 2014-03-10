@@ -28,7 +28,7 @@ var DestinationSchema = new Schema({
     }],
     noteIDs: [{
         type: Schema.ObjectId,
-        ref: 'Notes'
+        ref: 'Note'
     }]
 });
 

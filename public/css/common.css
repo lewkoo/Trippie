@@ -37,3 +37,8 @@ footer p {
 .button-margin {
     margin-right: 15px;
 }
+
+.form-group.datepicker {
+    margin-left: 0px;
+    margin-right: 0px;
+}
