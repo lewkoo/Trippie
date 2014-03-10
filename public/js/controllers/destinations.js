@@ -33,7 +33,8 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
             destinationID: $scope.destination._id
         });
         event.$save(function(){
-            destination.$update({eventId: event}, function() {
+            destination.eventIDs = event._id;
+            destination.$update(function() {
                 $location.path('trips/' + $scope.trip._id + '/destinations/' + $scope.destination._id);
             });
         });

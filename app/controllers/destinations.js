@@ -54,10 +54,9 @@ exports.createEvent = function(req, res) {
             res.jsonp(event);
         }
     });
-    
-    /*
-    var destination = new Destination(req.body);
-    console.log(Destination.find({"_id", event.destinationID});
+
+    /*var destination = new Destination(req.body);
+
     destination.save(function(err) {
         if (err) {
             return res.send('users/signup', {
