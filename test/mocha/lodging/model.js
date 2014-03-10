@@ -53,6 +53,25 @@ describe('<Unit Test>', function() {
             });
         });
 
+        /* Load */
+        describe('Method Load', function() {
+            it('should be able to load without problems', function(done) {
+                return Lodging.load(lodging._id, function(err, lodging) {
+                    should.not.exist(err);
+                    done();
+                });
+            });
+
+            it('should not be able to load with junk id', function(done) {
+                var id = '1232341234';
+                return Lodging.load(id, function(err, lodging) {
+                    should.exist(err);
+                    done();
+                });
+            });
+        });
+
+        /* Save */
         describe('Method Save', function() {
             it('should be able to save without problems', function(done) {
                 return lodging.save(function(err) {
@@ -75,6 +94,70 @@ describe('<Unit Test>', function() {
 
                 return lodging.save(function(err) {
                     should.exist(err);
+                    done();
+                });
+            });
+        });
+
+        /* Update */
+        describe('Method update', function() {
+            it('should update the name in the database', function(done) {
+                var newLodgingName = 'The Radisson';
+                lodging.name = newLodgingName;
+                lodging.update({'_id': lodging._id}, {$set: {'name': newLodgingName}}, function(err, dbLodging){
+                    if (!err){
+                       dbLodging.name.should.equal(newLodgingName);
+                   }
+                   done();
+               });
+            });
+            it('should update the address in the database', function(done) {
+                var newAddress = '3434 Portage Ave.';
+                lodging.address = newAddress;
+                lodging.update({'_id': lodging._id}, {$set: {'address': newAddress}}, function(err, dbLodging){
+                    if (!err){
+                       dbLodging.address.should.equal(newAddress);
+                   }
+                   done();
+               });
+            });
+            it('should update the info in the database', function(done) {
+                var newInfo = 'sick Hotel';
+                lodging.information = newInfo;
+                lodging.update({'_id': lodging._id}, {$set: {'information': newInfo}}, function(err, dbLodging){
+                    if (!err){
+                       dbLodging.information.should.equal(newInfo);
+                   }
+                   done();
+                });
+            });
+            it('should update the arrival date in the database', function(done) {
+                var newDate = new Date(2014, 12, 12);
+                lodging.arrivalDate = newDate;
+                lodging.update({'_id': lodging._id}, {$set: {'arrivalDate': newDate}}, function(err, dbLodging){
+                    if (!err){
+                       dbLodging.arrivalDate.should.equal(newDate);
+                   }
+                   done();
+               });
+            });
+            it('should update the departure date in the database', function(done) {
+                var newDate = new Date(2014, 11, 11);
+                lodging.departureDate = newDate;
+                lodging.update({'_id': lodging._id}, {$set: {'departureDate': newDate}}, function(err, dbLodging){
+                    if (!err){
+                       dbLodging.departureDate.should.equal(newDate);
+                   }
+                   done();
+               });
+            });
+        });
+
+        /* Delete */
+        describe('Method Delete', function() {
+            it('should be able to delete without problems', function(done) {
+                return Lodging.remove(lodging._id, function(err, lodging) {
+                    should.not.exist(err);
                     done();
                 });
             });
