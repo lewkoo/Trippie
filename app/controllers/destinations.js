@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Destination = mongoose.model('Destination'),
+    Event = mongoose.model('Event'),
     _ = require('lodash');
   
 /**
@@ -38,10 +39,10 @@ exports.create = function(req, res) {
 };
 
 /**
- * Create an event
+ * Link to an event
  */
-exports.createEvent = function(req) {
-    /*
+
+exports.createEvent = function(req, res) {
     var event = new Event(req.body);
     event.save(function(err) {
         if (err) {
@@ -53,10 +54,10 @@ exports.createEvent = function(req) {
             res.jsonp(event);
         }
     });
-    */
+    
     /*
     var destination = new Destination(req.body);
-
+    console.log(Destination.find({"_id", event.destinationID});
     destination.save(function(err) {
         if (err) {
             return res.send('users/signup', {
@@ -66,9 +67,8 @@ exports.createEvent = function(req) {
         } else {
             res.jsonp(destination);
         }
-    });
-    */
-    console.log(req.body);
+    });*/
+    /*console.log(req.body);*/
 };
 
 

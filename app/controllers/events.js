@@ -55,7 +55,21 @@ exports.create = function(req, res) {
         }
     });
 };
-
+/*
+exports.createEvent = function(req, res) {
+    var event = new Event(req.body);
+    event.save(function(err) {
+        if (err) {
+            return res.send('trips', {
+                errors: err.errors,
+                event: event
+            });
+        } else {
+            res.jsonp(event);
+        }
+    });
+};
+*/
 /**
  * Update
  */
