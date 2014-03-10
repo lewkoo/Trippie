@@ -10,6 +10,7 @@ angular.module('trippie', [
 	'trippie.trips',
 	'trippie.destinations',
 	'trippie.events',
+	'trippie.notes',
 	'trippie.articles',
 	'trippie.transportations',
 	'ui.bootstrap.datetimepicker'
@@ -18,5 +19,6 @@ angular.module('trippie.system', []);
 angular.module('trippie.trips', []);
 angular.module('trippie.destinations', []);
 angular.module('trippie.events', []);
+angular.module('trippie.notes',[]);
 angular.module('trippie.articles', []);
 angular.module('trippie.transportations', []);

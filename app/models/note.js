@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 /**
  * Notes Schema
  */
-var NotesSchema = new Schema({
+var NoteSchema = new Schema({
     name: {
         type: String,
         trim: true
@@ -26,17 +26,17 @@ var NotesSchema = new Schema({
 /**
  * Validations
  */
-NotesSchema.path('name').validate(function(name) {
+NoteSchema.path('name').validate(function(name) {
     return name.length;
 }, 'Notes name cannot be blank');
 
 // Validating this way makes sure destination wasn't forgotten to be set instead of
 // just testing if it was set as null
-NotesSchema.pre('save', function(next) {
+NoteSchema.pre('save', function(next) {
     var error;
 
     if (!this.destinationID) {
-        error = new Error('Saving Notes without Destination');
+        error = new Error('Saving Note without Destination');
     }
 
     next(error);
@@ -45,10 +45,10 @@ NotesSchema.pre('save', function(next) {
 /**
  * Statics
  */
-NotesSchema.statics.load = function(id, cb) {
+NoteSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
     }).exec(cb);
 };
 
-mongoose.model('Notes', NotesSchema);
+mongoose.model('Note', NoteSchema);

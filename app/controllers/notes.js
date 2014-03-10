@@ -4,14 +4,14 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Notes = mongoose.model('Notes'),
+    Note = mongoose.model('Note'),
     _ = require('lodash');
 
 /**
  * Find notes by id
  */
 exports.notes = function(req, res, next, id) {
-    Notes.load(id, function(err, notes) {
+    Note.load(id, function(err, notes) {
         if (err) return next(err);
         if (!notes) return next(new Error('Failed to load notes ' + id));
         req.notes = notes;
@@ -23,17 +23,26 @@ exports.notes = function(req, res, next, id) {
  * Create a notes
  */
 exports.create = function(req, res) {
-    var notes = new Notes(req.body);
-    notes.user = req.user;
+    var note = new Note(req.body);
+    note.user = req.user;
+    note.destinationID = req.destination._id;
 
-    notes.save(function(err) {
+    note.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                notes: notes
+                note: note
             });
         } else {
-            res.jsonp(notes);
+            req.destination.noteIDs.push(note._id);
+            req.destination.save(function (err) {
+                if (err) {
+                    return res.send('users/signup', {
+                        errors: err.errors
+                    });
+                }
+                res.jsonp(note);
+            });
         }
     });
 };
@@ -87,13 +96,13 @@ exports.show = function(req, res) {
  * List of Notess
  */
 exports.all = function(req, res) {
-    Notes.find().sort('-created').populate('user', 'name username').exec(function(err, notess) {
+    Note.find({ destinationID: req.destination._id }).sort('-created').exec(function(err, notes) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(notess);
+            res.jsonp(notes);
         }
     });
 };
