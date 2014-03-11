@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Events', function ($scope, $routeParams, $location, Global, Trips, Destinations, Events) {
+angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Events', 'Transportations', function ($scope, $routeParams, $location, Global, Trips, Destinations, Events, Transportations) {
+
     $scope.global = Global;
  
     $scope.today = function() {
@@ -13,14 +14,45 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
 
 
     $scope.create = function() {
+        var departTime = new Date();
+        var transportation = new Transportations({
+            departureTime: departTime.toISOString(),
+            information: 'Transportation placeholder'
+        });
+
+        $scope.insertAfter = $routeParams.destinationId;
+
         var destination = new Destinations({
             name: this.name
         });
 
-        destination.$save(function() {
-            $location.path('trips/' + $scope.trip._id);
+        var promiseTransSave = transportation.$save({ tripId: $scope.trip._id, destinationId: $scope.destination._id }, function(trans) {
+            $scope.transportation = trans;
         });
 
+        promiseTransSave.then(function() {
+            destination.outgoingTransportationID = $scope.transportation._id;
+            
+            var promiseDestSave = destination.$save({ tripId: $scope.trip._id }, function(dest){
+                $scope.destination = dest;
+            });
+
+            promiseDestSave.then(function() {
+                Trips.get({ tripId: $scope.trip._id }, function(trip){
+                    var len = trip.destinationList.length;
+                    var i = 0, found = false;
+                    while(!found && i < len){
+                        if(trip.destinationList[i]._id === $scope.insertAfter)
+                            found = true;
+                        i++;
+                    }
+                    trip.destinationList.splice(i, 0, $scope.destination);
+                    trip.$update({});
+                    $location.path('trips/' + $scope.trip._id);
+                });
+            });
+        });
+        
         this.name = '';
     };
 
@@ -29,29 +61,35 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         var event = new Events({
             name: this.name,
             eventStartDate: this.eventStartDate.toISOString(),
-            eventEndDate: this.eventEndDate.toISOString()
+            eventEndDate: this.eventEndDate.toISOString(),
+            destinationID: $scope.destination._id
         });
         event.$save(function(){
-            destination.$update({eventId: event}, function() {
-                $location.path('/trips');
+            destination.eventIDs = event._id;
+            destination.$update(function() {
+                $location.path('trips/' + $scope.trip._id);
             });
         });
     };
 
-    $scope.remove = function(destination) {
-        if (destination) {
-            destination.$remove();
-
-            for (var i in $scope.destinations) {
-                if ($scope.destinations[i] === destination) {
-                    $scope.destinations.splice(i, 1);
-                }
+    $scope.remove = function() {
+        Trips.get({ tripId: $routeParams.tripId }, function(trip){
+            var len = trip.destinationList.length;
+            var i = 0, found = false;
+            while(!found && i < len -1){
+                console.log(trip.destinationList[i]._id + ' == ' + $routeParams.destinationId);
+                if(trip.destinationList[i]._id == $routeParams.destinationId)
+                    found = true;
+                else
+                    i++;
             }
-        }
-        else {
-            $scope.destination.$remove();
+            if(found)
+                trip.destinationList.splice(i, 1);
+            Destinations.remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
+            console.log(JSON.stringify(trip));
+            trip.$update({});
             $location.path('trips/' + $scope.trip._id);
-        }
+        });
     };
 
     $scope.update = function() {

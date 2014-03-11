@@ -21,7 +21,7 @@
                     <div class="col-sm-10"><a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}" class="name">{{destination.name}}</a></div>
                     <div class="col-md-2 text-right destination-options">
                         <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
-                        <span data-ng-if="!$first && !$last && trip.destinationList.length > 3"><a class="" data-ng-click="remove();"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
+                        <span data-ng-if="!$first && !$last && trip.destinationList.length > 3"><a class="link" data-ng-click="removeDestination($index)"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
                     </div>
                 </div>
                 <div class="row">
@@ -47,7 +47,7 @@
             <br/>
             <div class="row" ng-if="!$last">
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-default" data-ng-click="">Insert Destination</button> <!-- TODO figure out flow for inserting dest -->
+                    <a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/create" class="name"><button type="button" class="btn btn-default" data-ng-click="">Insert Destination</button></a> <!-- TODO figure out flow for inserting dest -->
                 </div>
             </div>
             <br/>

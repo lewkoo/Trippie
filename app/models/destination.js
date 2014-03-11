@@ -43,7 +43,7 @@ DestinationSchema.path('name').validate(function(name) {
  * Statics
  */
 DestinationSchema.statics.load = function(id, cb) {
-    this.findOne({  _id: id   }).populate('outgoingTransportationID')
+    this.findOne({  _id: id   })
         .populate('eventIDs')
         .populate('lodgingIDs')
         .populate('noteIDs')

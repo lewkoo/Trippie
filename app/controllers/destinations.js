@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Destination = mongoose.model('Destination'),
+    Event = mongoose.model('Event'),
     _ = require('lodash');
   
 /**
@@ -27,7 +28,7 @@ exports.create = function(req, res) {
 
     destination.save(function(err) {
         if (err) {
-            return res.send('users/signup', {
+            return res.send(err.message, {
                 errors: err.errors,
                 destination: destination
             });
@@ -36,6 +37,39 @@ exports.create = function(req, res) {
         }
     });
 };
+
+/**
+ * Link to an event
+ */
+
+exports.createEvent = function(req, res) {
+    var event = new Event(req.body);
+    event.save(function(err) {
+        if (err) {
+            return res.send('trips', {
+                errors: err.errors,
+                event: event
+            });
+        } else {
+            res.jsonp(event);
+        }
+    });
+
+    /*var destination = new Destination(req.body);
+
+    destination.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                destination: destination
+            });
+        } else {
+            res.jsonp(destination);
+        }
+    });*/
+    /*console.log(req.body);*/
+};
+
 
 /**
  * Update a destination

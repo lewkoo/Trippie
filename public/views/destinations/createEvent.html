@@ -1,4 +1,4 @@
-<section data-ng-controller="DestinationsController">
+<section data-ng-controller="DestinationsController" data-ng-init="findOne()">
 	<form class="form-horizontal col-md-10" role="form" data-ng-submit="createEvent()">
 		<h1 class="text-left col-md-offset-2">Create Event</h1>
 		<hr/>
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 
-		<!-- Submit button -->
+                <!-- Submit button -->
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
 				<button type="submit" class="btn btn-default">Create</button>

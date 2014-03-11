@@ -92,81 +92,83 @@ describe('<Unit Test>', function() {
             });
         });
 
-describe('Method findOne', function() {
+        describe('Method findOne', function() {
 
-    it('should read the trip name from database', function(done){
-        trip.save(function(){
-            Trip.findOne({}, function(err, dbTrip) {
-                dbTrip.name.should.equal(testTripName);
-                done();
+            it('should read the trip name from database', function(done){
+                trip.save(function(){
+                    Trip.findOne({}, function(err, dbTrip) {
+                        dbTrip.name.should.equal(testTripName);
+                        done();
+                    });
+                });
+            });
+
+            it('should read the trip start date from database', function(done) {
+                trip.save(function(){
+                    Trip.findOne({}, function(err, dbTrip) {
+                        String(dbTrip.tripStartDate).should.equal(String(testDate));
+                        done();
+                    });
+                });
+            });
+
+            it('should read the trip end date from database', function(done) {
+                trip.save(function(){
+                    Trip.findOne({}, function(err, dbTrip) {
+                        String(dbTrip.tripEndDate).should.equal(String(testDate));
+                        done();
+                    });
+                });
             });
         });
-    });
 
-    it('should read the trip start date from database', function(done) {
-        trip.save(function(){
-            Trip.findOne({}, function(err, dbEvent) {
-                String(dbEvent.tripStartDate).should.equal(String(testDate));
-                done();
+        describe('Method update', function() {
+            it('should update the trip name in the database', function(done) {
+                var newTripName = 'Winnipeg - Warsaw - Lviv - Kyiv - Simferopol';
+                trip.name = newTripName;
+                trip.update({'_id': trip._id}, {$set: {'name': newTripName}}, function(err, dbTrip){
+                    if (!err){
+                        dbTrip.name.should.equal(newTripName);
+                    }
+                    done();
+                });
+            });
+
+            it('should update the trip start date in the database', function(done) {
+                var newTripStartDate = new Date();
+                trip.tripStartDate = newTripStartDate;
+                trip.update({'_id': trip._id}, {$set: {'name': newTripStartDate}}, function(err, dbTrip){
+                    if (!err){
+                        dbTrip.name.should.equal(newTripStartDate);
+                    }
+                    done();
+                });
+            });
+
+            it('should update the trip end date in the database', function(done) {
+                var newTripEndDate = new Date();
+                trip.tripEndDate = newTripEndDate;
+                trip.update({'_id': trip._id}, {$set: {'name': newTripEndDate}}, function(err, dbTrip){
+                    if (!err){
+                        dbTrip.name.should.equal(newTripEndDate);
+                    }
+                    done();
+                });
             });
         });
-    });
 
-    it('should read the trip end date from database', function(done) {
-        trip.save(function(){
-            Trip.findOne({}, function(err, dbEvent) {
-                String(dbEvent.tripEndDate).should.equal(String(testDate));
-                done();
-            });
+
+        afterEach(function(done) {
+            Trip.remove({});
+            User.remove({});
+            done();
         });
+
+        after(function(done) {
+            Trip.remove().exec();
+            User.remove().exec();
+            done();
+        });
+
     });
-});
-
-describe('Method update', function() {
-    it('should update the trip name in the database', function(done) {
-        var newTripName = 'Winnipeg - Warsaw - Lviv - Kyiv - Simferopol';
-        trip.name = newTripName;
-        trip.update({'_id': trip._id}, {$set: {'name': newTripName}}, function(err, dbEvent){
-            if (!err){
-             dbEvent.name.should.equal(newTripName);
-         }
-         done();
-     });
-    });
-
-    it('should update the trip start date in the database', function(done) {
-        var newTripStartDate = new Date();
-        trip.tripStartDate = newTripStartDate;
-        trip.update({'_id': trip._id}, {$set: {'name': newTripStartDate}}, function(err, dbEvent){
-            if (!err){
-             dbEvent.name.should.equal(newTripStartDate);
-         }
-         done();
-     });
-    });
-
-    it('should update the trip end date in the database', function(done) {
-        var newTripEndDate = new Date();
-        trip.tripEndDate = newTripEndDate;
-        trip.update({'_id': trip._id}, {$set: {'name': newTripEndDate}}, function(err, dbEvent){
-            if (!err){
-             dbEvent.name.should.equal(newTripEndDate);
-         }
-         done();
-     });
-    });
-});
-
-
-afterEach(function(done) {
-    Trip.remove({});
-    User.remove({});
-    done();
-});
-after(function(done) {
-    Trip.remove().exec();
-    User.remove().exec();
-    done();
-});
-});
 });

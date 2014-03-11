@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-    describe('MEAN controllers', function() {
+    describe('Trippie controllers', function() {
         describe('HeaderController', function() {
             // Load the controllers module
             beforeEach(module('trippie'));
