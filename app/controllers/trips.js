@@ -237,7 +237,7 @@ exports.show = function(req, res) {
  */
 exports.all = function(req, res) {
     var isApiCall = ((req.url).indexOf('api') > -1);
-    Trip.find( { user: req.user} ).sort('-created').exec(function(err, trips) {
+    Trip.find( { user: req.user} ).sort('-tripStartDate').exec(function(err, trips) {
         if (err) {
             if (isApiCall) {
                 res.status(400);
