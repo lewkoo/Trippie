@@ -26,11 +26,11 @@ var LodgingSchema = new Schema({
     },
     information: {
         type: String
-    }/*,
+    },
     destinationID: {
         type: Schema.ObjectId,
         ref: 'Destination'
-    }*/
+    }
 });
 
 /**
@@ -50,7 +50,7 @@ LodgingSchema.path('arrivalDate').validate(function(arrivalDate) {
 
 // Validating this way makes sure destination wasn't forgotten to be set instead of
 // just testing if it was set as null
-/*LodgingSchema.pre('save', function(next) {
+LodgingSchema.pre('save', function(next) {
     var error;
 
     if (!this.destinationID) {
@@ -58,7 +58,7 @@ LodgingSchema.path('arrivalDate').validate(function(arrivalDate) {
     }
 
     next(error);
-});*/
+});
 
 /**
  * Statics

@@ -39,7 +39,6 @@ exports.create = function(req, res) {
 
     var initialDest = new Destination({
         name: 'Destination 1',
-        //TODO set name to User.homeAddress if not blank
     });
 
     var endDest = new Destination({
