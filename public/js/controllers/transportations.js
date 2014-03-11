@@ -56,18 +56,9 @@ angular.module('trippie.transportations').controller('TransportationsController'
     };
 
     $scope.findOne = function() {
-        Trips.get({
-            tripId: $routeParams.tripId
-        }, function(trip) {
-            $scope.trip = trip;
-        });
 
-        Destinations.get({
-            tripId: $routeParams.tripId,
-            destinationId: $routeParams.destinationId
-        }, function(destination) {
-            $scope.destination = destination;
-        });
+
+
 
         Transportations.get({
             tripId: $routeParams.tripId,
@@ -75,6 +66,19 @@ angular.module('trippie.transportations').controller('TransportationsController'
             transportationId: $routeParams.transportationId
         }, function(transportation) {
             $scope.transportation = transportation;
+
+            Destinations.get({
+                tripId: $routeParams.tripId,
+                destinationId: $routeParams.destinationId
+            }, function(destination) {
+                $scope.destination = destination;
+
+                Trips.get({
+                    tripId: $routeParams.tripId
+                }, function(trip) {
+                    $scope.trip = trip;
+                });
+            });
         });
     };
 }]);

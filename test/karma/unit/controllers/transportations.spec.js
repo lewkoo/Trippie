@@ -47,10 +47,10 @@
             it('$scope.find() should create an array with at least one transportation object ' +
                 'fetched from XHR', function() {
                     // test expected GET request
-                    $httpBackend.expectGET('/transportations').respond([{
+                    $httpBackend.expectGET('/trips/destinations/transportations').respond([{
                         transportType: 'plane',
                         information: 'WS1119',
-                        departureTime: new Date(2140, 12, 12)
+                        departureTime: new Date(2014, 12, 12)
                     }]);
 
                     debugger;
@@ -63,7 +63,7 @@
                     expect(scope.transportations).toEqualData([{
                         transportType: 'plane',
                         information: 'WS1119',
-                        departureTime: new Date(2140, 12, 12)
+                        departureTime: new Date(2014, 12, 12)
                     }]);
 
                 });
@@ -72,18 +72,22 @@
                 'from XHR using a transportationId URL parameter', function() {
                     // fixture URL parament
                     $routeParams.transportationId = '525a8422f6d0f87f0e407a33';
+                    $routeParams.destinationId = '525a8422f6d0f87f0e407a32';
+                    $routeParams.tripId = '525a8422f6d0f87f0e407a31';
 
                     // fixture response object
                     var testTransportationData = function() {
                         return {
                             transportType: 'plane',
                             information: 'WS1119',
-                            departureTime: new Date(2140, 12, 12)
+                            departureTime: new Date(2014, 12, 12)
                         };
                     };
 
                     // test expected GET request with response object
-                    $httpBackend.expectGET(/transportations\/([0-9a-fA-F]{24})$/).respond(testTransportationData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/transportations\/([0-9a-fA-F]{24})$/).respond(testTransportationData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})/).respond(testTransportationData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})/).respond(testTransportationData());
 
                     // run controller
                     scope.findOne();
@@ -91,7 +95,6 @@
 
                     // test scope value
                     expect(scope.transportation).toEqualData(testTransportationData());
-
                 });
 
             it('$scope.create() with valid form data should send a POST request ' +
@@ -123,7 +126,7 @@
                     };
 
                     // test post request is sent
-                    $httpBackend.expectPOST('/transportations', postTransportationData()).respond(responseTransportationData());
+                    $httpBackend.expectPOST('/trips/destinations/transportations', postTransportationData()).respond(responseTransportationData());
 
                     // Run controller
                     scope.create();

@@ -49,13 +49,13 @@ exports.create = function(req, res) {
     // Transportation Objects
     var startDestTransportation = new Transportation({
         transportationType: 'other',
-        information: 'Transportation placeholder',
+        information: '',
         departureTime: Date.now()
     });
 
     var initialDestTransportation = new Transportation({
         transportationType: 'other',
-        information: 'Transportation placeholder',
+        information: '',
         departureTime: Date.now()
     });
 
