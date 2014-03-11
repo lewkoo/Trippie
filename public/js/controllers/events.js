@@ -1,29 +1,29 @@
 'use strict';
 
-angular.module('trippie.events').controller('EventsController', ['$scope', '$routeParams', '$location', 'Global', 'Events', function ($scope, $routeParams, $location, Global, Events) {
+angular.module('trippie.events').controller('EventsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Events', function ($scope, $routeParams, $location, Global, Trips, Destinations, Events) {
     $scope.global = Global;
 
     $scope.today = function() {
-        $scope.dt = new Date();
+        $scope.eventStartDate = new Date();
+        $scope.eventEndDate = new Date();
         $scope.minDate = new Date();
     };
     $scope.today();
 
     $scope.create = function() {
-
-        console.log(this.dt);
-        console.log(this.dt.getUTCDate());
-        console.log(this.dt.toISOString());
-
         var event = new Events({
             name: this.name,
             eventStartDate: this.eventStartDate,
-            eventEndDate: this.eventEndDate
+            eventEndDate: this.eventEndDate,
+            destinationID: $routeParams.destinationId
         });
-        event.$save(function(response) {
-            $location.path('events/' + response._id);
+        var destination = $scope.destination;
+        event.$save(function() {
+            destination.eventIDs = event._id;
+            destination.$update(function() {
+                $location.path('trips/'+$routeParams.tripId+'/destinations/'+$routeParams.destinationId+'/events');
+            });
         });
-
         this.name = '';
         this.eventStartDate = null;
         this.eventEndDate = null;
@@ -69,6 +69,19 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
             eventId: $routeParams.eventId
         }, function(event) {
             $scope.event = event;
+        });
+
+        Trips.get({
+            tripId: $routeParams.tripId
+        }, function(trip) {
+            $scope.trip = trip;
+        });
+
+        Destinations.get({
+            tripId: $routeParams.tripId,
+            destinationId: $routeParams.destinationId
+        }, function(destination) {
+            $scope.destination = destination;
         });
     };
 

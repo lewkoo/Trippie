@@ -1,17 +1,8 @@
 'use strict';
 
-angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Events', 'Transportations', function ($scope, $routeParams, $location, Global, Trips, Destinations, Events, Transportations) {
+angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Transportations', function ($scope, $routeParams, $location, Global, Trips, Destinations, Transportations) {
 
     $scope.global = Global;
- 
-    $scope.today = function() {
-        $scope.eventStartDate = new Date();
-        $scope.eventEndDate = new Date();
-
-        $scope.minDate = new Date();
-    };
-    $scope.today();
-
 
     $scope.create = function() {
         var departTime = new Date();
@@ -54,22 +45,6 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         });
         
         this.name = '';
-    };
-
-    $scope.createEvent = function() {
-        var destination = $scope.destination;
-        var event = new Events({
-            name: this.name,
-            eventStartDate: this.eventStartDate.toISOString(),
-            eventEndDate: this.eventEndDate.toISOString(),
-            destinationID: $scope.destination._id
-        });
-        event.$save(function(){
-            destination.eventIDs = event._id;
-            destination.$update(function() {
-                $location.path('trips/' + $scope.trip._id);
-            });
-        });
     };
 
     $scope.remove = function() {

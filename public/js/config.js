@@ -36,7 +36,7 @@ angular.module('trippie').config(['$routeProvider',
             templateUrl: 'views/destinations/viewEvents.html'
         }).
         when('/trips/:tripId/destinations/:destinationId/createEvent', {
-            templateUrl: 'views/destinations/createEvent.html'
+            templateUrl: 'views/events/create.html'
         }).
         when('/', {
             templateUrl: 'views/index.html'
