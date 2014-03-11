@@ -50,7 +50,7 @@
                 'fetched from XHR', function() {
 
                     // test expected GET request
-                    $httpBackend.expectGET('trips/destinations/http:/lodgings').respond([{
+                    $httpBackend.expectGET('trips/http:/destinations/localhost:9876/lodgings').respond([{
                         name: 'A Place for Me',
                         address: '4331 Aiur Rd.',
                         arrivalDate: '2014-06-07'
@@ -126,7 +126,7 @@
                     scope.arrivalDate = '2014-06-07';
 
                     // test post request is sent
-                    $httpBackend.expectPOST('trips/destinations/http:/lodgings', postLodgingData()).respond(responseLodgingData());
+                    $httpBackend.expectPOST('trips/http:/destinations/localhost:9876/lodgings', postLodgingData()).respond(responseLodgingData());
 
                     // Run controller
                     scope.create();
@@ -159,7 +159,7 @@
                 scope.lodging = lodging;
 
                 // test PUT happens correctly
-                $httpBackend.expectPUT('trips/destinations/http:/lodgings').respond();
+                $httpBackend.expectPUT('trips/http:/destinations/localhost:9876/lodgings').respond();
                 //$httpBackend.expectPUT('/lodgings\/([0-9a-fA-F]{24})$/').respond();
 
                 // testing the body data is out for now until an idea for testing the dynamic updated array value is figured out
@@ -192,7 +192,7 @@
                     scope.lodgings.push(lodging);
 
                     // test expected rideshare DELETE request
-                    $httpBackend.expectDELETE('trips/destinations/http:/lodgings').respond();
+                    $httpBackend.expectDELETE('trips/http:/destinations/localhost:9876/lodgings').respond();
                     //$httpBackend.expectDELETE(/lodgings\/([0-9a-fA-F]{24})$/).respond(204);
 
                     // run controller
