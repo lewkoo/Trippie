@@ -47,7 +47,7 @@
             it('$scope.find() should create an array with at least one transportation object ' +
                 'fetched from XHR', function() {
                     // test expected GET request
-                    $httpBackend.expectGET('/trips/destinations/transportations').respond([{
+                    $httpBackend.expectGET('trips/destinations/transportations').respond([{
                         transportType: 'plane',
                         information: 'WS1119',
                         departureTime: new Date(2014, 12, 12)
@@ -126,7 +126,7 @@
                     };
 
                     // test post request is sent
-                    $httpBackend.expectPOST('/trips/destinations/transportations', postTransportationData()).respond(responseTransportationData());
+                    $httpBackend.expectPOST('trips/destinations/transportations', postTransportationData()).respond(responseTransportationData());
 
                     // Run controller
                     scope.create();
