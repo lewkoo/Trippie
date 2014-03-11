@@ -49,6 +49,10 @@ TransportationSchema.path('departureTime').validate(function(departureTime) {
     return departureTime;
 }, 'Transportation departure time cannot be blank');
 
+TransportationSchema.path('arrivalTime').validate(function(arrivalTime) {
+    return (arrivalTime >= this.departureTime);
+}, 'Arival time must be greater than or equal to departure time');
+
 /**
  * Model
  */

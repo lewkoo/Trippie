@@ -56,10 +56,6 @@ angular.module('trippie.transportations').controller('TransportationsController'
     };
 
     $scope.findOne = function() {
-
-
-
-
         Transportations.get({
             tripId: $routeParams.tripId,
             destinationId: $routeParams.destinationId,
