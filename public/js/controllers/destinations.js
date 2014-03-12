@@ -38,7 +38,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
                         i++;
                     }
                     trip.destinationList.splice(i, 0, $scope.destination);
-                    trip.$update({});
+                    trip.$update();
                     $location.path('trips/' + $scope.trip._id);
                 });
             });
@@ -52,8 +52,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
             var len = trip.destinationList.length;
             var i = 0, found = false;
             while(!found && i < len -1){
-                console.log(trip.destinationList[i]._id + ' == ' + $routeParams.destinationId);
-                if(trip.destinationList[i]._id == $routeParams.destinationId)
+                if(trip.destinationList[i]._id === $routeParams.destinationId)
                     found = true;
                 else
                     i++;
@@ -61,8 +60,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
             if(found)
                 trip.destinationList.splice(i, 1);
             Destinations.remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
-            console.log(JSON.stringify(trip));
-            trip.$update({});
+            trip.$update();
             $location.path('trips/' + $scope.trip._id);
         });
     };
