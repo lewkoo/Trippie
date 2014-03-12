@@ -33,7 +33,7 @@
     NSString *email = txtEmail.text;
     NSString *password = txtPassword.text;
     
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/api/"]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://ec2-54-201-230-18.us-west-2.compute.amazonaws.com:3000/api/"]];
     [manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:email password:password];
