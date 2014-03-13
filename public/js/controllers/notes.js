@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trippie.notes').controller('NotesController', ['$scope', '$routeParams', '$location', 'Global', 'Notes', function ($scope, $routeParams, $location, Global, Notes) {
+angular.module('trippie.notes').controller('NotesController', ['$scope', '$routeParams', '$location', '$route', '$modal', 'Global', 'Notes', function ($scope, $routeParams, $location, $route, $modal, Global, Notes) {
     $scope.global = Global;
 
     $scope.today = function() {
@@ -19,9 +19,9 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
             name: this.name,
             information: this.information
         });
-        note.$save(/*function(response) {
-            $location.path('events/' + response._id);
-        }*/);
+        note.$save(function() {
+            $route.reload();
+        });
 
         this.name = '';
         this.information = '';
@@ -70,4 +70,19 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
     //     // });
     // };
 
+    $scope.openModalCreate = function() {
+        $modal.open({
+            templateUrl: 'views/notes/partials/modalCreate.html',
+            controller: function ($scope, $modalInstance) {
+                $scope.save = function () {
+                    this.create();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }
+        });
+    };
 }]);
