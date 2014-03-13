@@ -6,6 +6,9 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
 
     $scope.create = function() {
         var departTime = new Date();
+        departTime.setMinutes(0);
+        departTime.setSeconds(0);
+        departTime.setMilliseconds(0);
         var transportation = new Transportations({
             departureTime: departTime.toISOString(),
             information: 'Transportation placeholder'
@@ -38,7 +41,9 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
                         i++;
                     }
                     trip.destinationList.splice(i, 0, $scope.destination);
-                    trip.$update();
+                    trip.$update(function(trip) {
+                        $scope.trip = trip;
+                    });
                     $location.path('trips/' + $scope.trip._id);
                 });
             });
