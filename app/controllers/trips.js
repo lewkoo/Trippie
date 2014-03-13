@@ -166,6 +166,7 @@ exports.update = function(req, res) {
     var trip = req.trip;
 
     trip = _.extend(trip, req.body);
+    trip.markModified('destinationList');
 
     trip.save(function(err) {
         if (err) {
