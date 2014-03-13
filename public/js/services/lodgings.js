@@ -1,11 +1,10 @@
 'use strict';
 
 //Lodgings service used for lodgings REST endpoint
-angular.module('trippie.lodgings').factory('Lodgings', ['$resource', function($resource) {
-	var url = document.URL;
-	var urlArray = url.split('/');
-	var tripId = urlArray[urlArray.length-4];
-	var destinationId = urlArray[urlArray.length-2];
+angular.module('trippie.lodgings').factory('Lodgings', ['$resource', '$routeParams', function($resource, $routeParams) {
+
+    var tripId = $routeParams.tripId;
+    var destinationId = $routeParams.destinationId;
 
     return $resource('trips/:tripId/destinations/:destinationId/lodgings', {
         tripId: tripId,
