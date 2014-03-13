@@ -23,8 +23,6 @@
             // Initialize the controller and a mock scope
             var DestinationsController,
                 scope,
-                trip,
-                destination,
                 $httpBackend,
                 $routeParams,
                 $location;
@@ -56,13 +54,13 @@
                 scope.tripId = '525a8422f6d0f87f0e000000';
                 scope.destinationList = ['525a8422f6d0f87f0e000001', '525a8422f6d0f87f0e000004', '525a8422f6d0f87f0e000005', '525a8422f6d0f87f0e000006'];
 
-                destination = new Destinations({
+                var destination = new Destinations({
                     name: scope.destName
                 });
                 destination._id = '525a8422f6d0f87f0e000003';
                 scope.destination = destination;
                 
-                trip = new Trips({
+                var trip = new Trips({
                     name: scope.tripName,
                     destinationList: scope.destinationList
                 });
