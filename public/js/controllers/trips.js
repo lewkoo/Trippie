@@ -48,8 +48,11 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     $scope.removeDestination = function(index) {
         var destination = $scope.trip.destinationList[index];
         $scope.trip.destinationList.splice(index, 1);
-        Destinations.remove({tripId: $routeParams.tripId, destinationId: destination._id});
-        $scope.trip.$update();
+        Destinations.remove({tripId: $routeParams.tripId, destinationId: destination._id}, function(){
+            $scope.trip.$update(function(trip){
+                $scope.trip = trip;
+            });
+        });
         $location.path('trips/' + $routeParams.tripId);
     };
 

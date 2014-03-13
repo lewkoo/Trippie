@@ -57,15 +57,18 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
             var len = trip.destinationList.length;
             var i = 0, found = false;
             while(!found && i < len -1){
-                if(trip.destinationList[i]._id === $routeParams.destinationId)
+                if(trip.destinationList[i]._id === $routeParams.destinationId || trip.destinationList[i] === $routeParams.destinationId)
                     found = true;
                 else
                     i++;
             }
             if(found)
                 trip.destinationList.splice(i, 1);
-            Destinations.remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
-            trip.$update();
+            Destinations.remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function(){
+                trip.$update(function(trip) {
+                    $scope.trip = trip;
+                });
+            });
             $location.path('trips/' + $scope.trip._id);
         });
     };
@@ -78,24 +81,17 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         });
     };
 
-    $scope.find = function() {
-        Destinations.query(function(destinations) {
-            $scope.destinations = destinations;
-        });
-    };
-
     $scope.findOne = function() {
         Trips.get({
             tripId: $routeParams.tripId
         }, function(trip) {
             $scope.trip = trip;
-        });
-
-        Destinations.get({
-            tripId: $routeParams.tripId,
-            destinationId: $routeParams.destinationId
-        }, function(destination) {
-            $scope.destination = destination;
+            Destinations.get({
+                tripId: $routeParams.tripId,
+                destinationId: $routeParams.destinationId
+            }, function(destination) {
+                $scope.destination = destination;
+            });
         });
     };
 }]);
