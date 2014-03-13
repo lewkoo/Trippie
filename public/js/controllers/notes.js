@@ -19,7 +19,7 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
             name: this.name,
             information: this.information
         });
-        note.$save(function() {
+        note.$save({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
             $route.reload();
         });
 
@@ -57,7 +57,7 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
 
     $scope.find = function() {
         
-        Notes.query(function(notes) {
+        Notes.query({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function(notes) {
             $scope.notes = notes;
         });
     };
