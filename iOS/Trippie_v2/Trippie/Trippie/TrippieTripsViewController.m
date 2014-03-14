@@ -50,6 +50,9 @@
     
     [self.session.manager GET:@"trips" parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"trip JSON: %@", responseObject);
+        
+        // The responseObject can be converted to (NSArray *) but I was having difficulty figuring out to do with it next
+        // I'm not sure if we needed to create custom classes for our objects or if we could just use the NSArray objects
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
