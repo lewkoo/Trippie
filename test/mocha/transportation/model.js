@@ -141,7 +141,7 @@ describe('<Unit Test>', function() {
                 var newArrivalTime = new Date(2014, 7, 12);
 
                 transportation.save(function(err) {
-                    transportation.arrivalTime = newDepartureTime;
+                    transportation.arrivalTime = newArrivalTime;
                     transportation.save(function(err) {
                         should.not.exist(err);
                         transportation.arrivalTime.should.equal(newArrivalTime);
