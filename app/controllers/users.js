@@ -49,7 +49,7 @@ exports.session = function(req, res) {
     var isApiCall = ((req.url).indexOf('api') > -1);
 
     if (isApiCall) {
-        res.jsonp(req.user || null);
+        res.jsonp({success: true});
     } else {
         res.redirect('/');
     }
