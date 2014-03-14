@@ -8,11 +8,13 @@
 
 #import "TrippieTripsViewController.h"
 #import "TrippieTripViewController.h"
+#import "SessionManager.h"
 #import "TrippieTrip.h"
 #import "TrippieDestination.h"
 
 @interface TrippieTripsViewController ()
 
+@property SessionManager *session;
 @property NSMutableArray *tripList;
 
 @end
@@ -32,6 +34,7 @@
 {
     [super viewDidLoad];
 
+    self.session = [SessionManager getInstance];
     self.tripList = [[NSMutableArray alloc] init];
     [self loadInitialData];
     
@@ -44,6 +47,12 @@
 
 - (void)loadInitialData {
     TrippieTrip *trip1 = [[TrippieTrip alloc] init];
+    
+    [self.session.manager GET:@"trips" parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"trip JSON: %@", responseObject);
+    } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
     
     NSDate *today = [NSDate date];
     trip1._id = @"5000000000000";
