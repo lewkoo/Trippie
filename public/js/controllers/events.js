@@ -13,20 +13,18 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
     $scope.create = function() {
         var event = new Events({
             name: this.name,
+            info: this.information,
             eventStartDate: this.eventStartDate,
             eventEndDate: this.eventEndDate,
             destinationID: $routeParams.destinationId
         });
         var destination = $scope.destination;
-        event.$save(function() {
+        event.$save({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
             destination.eventIDs = event._id;
-            destination.$update(function() {
+            destination.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
                 $location.path('trips/'+$routeParams.tripId+'/destinations/'+$routeParams.destinationId+'/events');
             });
         });
-        this.name = '';
-        this.eventStartDate = null;
-        this.eventEndDate = null;
     };
 
     $scope.remove = function(event) {
