@@ -66,7 +66,7 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
         var trip = $scope.trip;
 
         trip.$update(function(trip) {
-            $scope.trip = trip
+            $scope.trip = trip;
             $location.path('trips/' + trip._id);
         });
     };
