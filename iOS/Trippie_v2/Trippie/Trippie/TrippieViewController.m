@@ -39,12 +39,7 @@
     [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:email password:password];
     [manager POST:@"login" parameters:Nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign in successful"
-                                                        message:@"IT WORKED! WOOT!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [self performSegueWithIdentifier:@"login" sender:self];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign in failed"
