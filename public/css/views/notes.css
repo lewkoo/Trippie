@@ -2,8 +2,20 @@
 	background-color: rgb(238, 238, 238);
 	padding: 15px;
 	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.notes .add-link {
+	cursor: pointer;
 }
 
 .notes .name {
 	font-weight: bold;
+}
+
+.notes .note {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

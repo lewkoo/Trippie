@@ -166,6 +166,7 @@ exports.update = function(req, res) {
     var trip = req.trip;
 
     trip = _.extend(trip, req.body);
+    trip.markModified('destinationList');
 
     trip.save(function(err) {
         if (err) {
@@ -237,7 +238,7 @@ exports.show = function(req, res) {
  */
 exports.all = function(req, res) {
     var isApiCall = ((req.url).indexOf('api') > -1);
-    Trip.find( { user: req.user} ).sort('-created').exec(function(err, trips) {
+    Trip.find( { user: req.user} ).sort('-tripStartDate').exec(function(err, trips) {
         if (err) {
             if (isApiCall) {
                 res.status(400);

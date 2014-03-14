@@ -13,11 +13,15 @@
                     trip.destinationList[trip.destinationList.length -1]._id != destination._id"><a class="link" data-ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</a>
             </div>
     	</div>
-    	<div class='row'>
-            <div data-ng-include src="'/views/notes/partials/notes.html'">
-    	</div>
-        <div class='row'>
-            <div data-ng-include src="'/views/lodgings/partials/lodgings.html'">
-        </div>
     </div>
+
+    <div class='row'>
+        <div data-ng-include src="'/views/lodgings/partials/lodgings.html'"></div>
+    </div>
+
+    <div class='row'>
+            <div data-ng-include src="'/views/notes/partials/notes.html'"></div>
+    </div>
+
+    
 </section>

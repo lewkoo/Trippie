@@ -96,13 +96,13 @@ exports.show = function(req, res) {
  * List of Lodgings
  */
 exports.all = function(req, res) {
-    Lodging.find().sort('-created').populate('user', 'name username').exec(function(err, lodgings) {
+    Lodging.find({ destinationID: req.destination._id }).sort('-created').exec(function(err, notes) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(lodgings);
+            res.jsonp(notes);
         }
     });
 };

@@ -49,7 +49,7 @@
                 'fetched from XHR', function() {
 
                     // test expected GET request
-                    $httpBackend.expectGET('events').respond([{
+                    $httpBackend.expectGET('trips/destinations/events').respond([{
                         name: 'Soccer',
                         eventStartDate: new Date(2140, 12, 12),
                         eventEndDate: new Date(2140, 12, 12)

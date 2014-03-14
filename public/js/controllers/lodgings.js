@@ -11,7 +11,7 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
             departureDate: this.departureDate,
             information: this.information
         });
-        lodging.$save(function(response) {
+        lodging.$save({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function(response) {
             $location.path('lodgings/' + response._id);
         });
 
@@ -24,7 +24,7 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
 
     $scope.remove = function(lodging) {
         if (lodging) {
-            lodging.$remove();
+            lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
 
             for (var i in $scope.lodgings) {
                 if ($scope.lodgings[i] === lodging) {
@@ -33,7 +33,7 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
             }
         }
         else {
-            $scope.lodging.$remove();
+            $scope.lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
             $location.path('lodgings');
         }
     };
@@ -45,13 +45,13 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
         }
         lodging.updated.push(new Date().getTime());
 
-        lodging.$update(function() {
+        lodging.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
             $location.path('lodgings/' + lodging._id);
         });
     };
 
     $scope.find = function() {
-        Lodgings.query(function(lodgings) {
+        Lodgings.query({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function(lodgings) {
             $scope.lodgings = lodgings;
         });
     };

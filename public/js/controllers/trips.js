@@ -4,10 +4,14 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     $scope.global = Global;
 
     $scope.today = function() {
-        $scope.tripStartDate = new Date();
-        $scope.tripEndDate = new Date();
+        var date = new Date();
+        date.setMinutes(0);
+        date.setSeconds(0);
+        date.setMilliseconds(0);
 
-        $scope.minDate = new Date();
+        $scope.tripStartDate = date;
+        $scope.tripEndDate = date;
+        $scope.minDate = date;
     };
     $scope.today();
 
@@ -18,8 +22,9 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
             tripEndDate: this.tripEndDate.toISOString()
         });
 
-        trip.$save(function(response) {
-            $location.path('trips/' + response._id);
+        trip.$save(function(trip) {
+            $scope.trip = trip;
+            $location.path('trips/' + trip._id);
         });
 
         //clear the variables
@@ -48,19 +53,20 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     $scope.removeDestination = function(index) {
         var destination = $scope.trip.destinationList[index];
         $scope.trip.destinationList.splice(index, 1);
-        Destinations.remove({tripId: $routeParams.tripId, destinationId: destination._id});
-        $scope.trip.$update();
+        var destId = destination._id ? destination._id : destination;
+        Destinations.remove({tripId: $routeParams.tripId, destinationId: destId}, function(){
+            $scope.trip.$update(function(trip){
+                $scope.trip = trip;
+            });
+        });
         $location.path('trips/' + $routeParams.tripId);
     };
 
     $scope.update = function() {
         var trip = $scope.trip;
-        if (!trip.updated) {
-            trip.updated = [];
-        }
-        trip.updated.push(new Date().getTime());
 
-        trip.$update(function() {
+        trip.$update(function(trip) {
+            $scope.trip = trip;
             $location.path('trips/' + trip._id);
         });
     };
