@@ -73,6 +73,8 @@
                 'from XHR using a lodgingId URL parameter', function() {
                     // fixture URL parament
                     $routeParams.lodgingId = '525a8422f6d0f87f0e407a33';
+                    $routeParams.destinationId = '525a8422f6d0f87f0e407a32';
+                    $routeParams.tripId = '525a8422f6d0f87f0e407a31';
 
                     // fixture response object
                     var testLodgingData = function() {
@@ -84,9 +86,9 @@
                     };
 
                     // test expected GET request with response object
-                    $httpBackend.expectGET('trips').respond(testLodgingData());
-                    $httpBackend.expectGET('trips/destinations').respond(testLodgingData());
-                    $httpBackend.expectGET('trips/destinations/lodgings?lodgingId=525a8422f6d0f87f0e407a33').respond(testLodgingData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/lodgings\/([0-9a-fA-F]{24})$/).respond(testLodgingData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})/).respond(testLodgingData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})/).respond(testLodgingData());
 
                     // run controller
                     scope.findOne();
@@ -160,15 +162,6 @@
 
                 // test PUT happens correctly
                 $httpBackend.expectPUT('trips/destinations/lodgings').respond();
-                //$httpBackend.expectPUT('/lodgings\/([0-9a-fA-F]{24})$/').respond();
-
-                // testing the body data is out for now until an idea for testing the dynamic updated array value is figured out
-                //$httpBackend.expectPUT(/lodgings\/([0-9a-fA-F]{24})$/, putLodgingData()).respond();
-                /*
-                Error: Expected PUT /lodgings\/([0-9a-fA-F]{24})$/ with different data
-                EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","title":"An Lodging about MEAN","to":"MEAN is great!"}
-                GOT:      {"_id":"525a8422f6d0f87f0e407a33","title":"An Lodging about MEAN","to":"MEAN is great!","updated":[1383534772975]}
-                */
 
                 // run controller
                 scope.update();
