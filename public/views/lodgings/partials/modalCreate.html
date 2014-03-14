@@ -1,0 +1,49 @@
+<div ng-controller="LodgingsController">
+    <form class="form-horizontal">
+        <div class="modal-header">
+            Create lodging
+        </div>
+       
+        <div class="modal-body">
+           <div class="form-group">
+                <label for="name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" data-ng-model="name" id="name" placeholder="Name" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="col-md-2 control-label">Address</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" data-ng-model="address" id="address" placeholder="Address" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="arrivalDate" class="col-md-2 control-label">Arrival Date</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" data-ng-model="arrivalDate" id="arrivalDate" placeholder="Format: 2014-01-01" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="departureDate" class="col-md-2 control-label">Departure Date</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" data-ng-model="departureDate" id="departureDate" placeholder="Format: 2014-01-01" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="information" class="col-md-2 control-label">Information</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" data-ng-model="information" id="information" placeholder="Information" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="save()">Save</button>
+            <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

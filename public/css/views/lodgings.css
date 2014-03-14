@@ -5,6 +5,10 @@
 	margin-top: 10px;
 }
 
+.lodgings .add-link {
+	cursor: pointer;
+}
+
 .lodgings .name {
 	font-weight: bold;
 }
