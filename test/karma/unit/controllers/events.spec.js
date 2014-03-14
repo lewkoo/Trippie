@@ -72,18 +72,22 @@
                 'from XHR using a eventId URL parameter', function() {
                     // fixture URL parament
                     $routeParams.eventId = '525a8422f6d0f87f0e407a33';
+                    $routeParams.destinationId = '525a8422f6d0f87f0e407a32';
+                    $routeParams.tripId = '525a8422f6d0f87f0e407a31';
 
                     // fixture response object
                     var testEventData = function() {
                         return {
-                            name: 'Soccer',
-                            eventStartDate: new Date(2140, 12, 12),
-                            eventEndDate: new Date(2140, 12, 12)
+                        name: 'Soccer',
+                        eventStartDate: new Date(2140, 12, 12),
+                        eventEndDate: new Date(2140, 12, 12)
                         };
                     };
 
                     // test expected GET request with response object
-                    $httpBackend.expectGET(/events\/([0-9a-fA-F]{24})$/).respond(testEventData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/).respond(testEventData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})/).respond(testEventData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})/).respond(testEventData());
 
                     // run controller
                     scope.findOne();

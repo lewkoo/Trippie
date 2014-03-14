@@ -57,25 +57,25 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
     };
 
     $scope.findOne = function() {
-        Trips.get({
-            tripId: $routeParams.tripId
-        }, function(trip) {
-            $scope.trip = trip;
-        });
-
-        Destinations.get({
-            tripId: $routeParams.tripId,
-            destinationId: $routeParams.destinationId
-        }, function(destination) {
-            $scope.destination = destination;
-        });
-
         Lodgings.get({
             tripId: $routeParams.tripId,
             destinationId: $routeParams.destinationId,
             lodgingId: $routeParams.lodgingId
         }, function(lodging) {
             $scope.lodging = lodging;
+
+            Destinations.get({
+                tripId: $routeParams.tripId,
+                destinationId: $routeParams.destinationId
+            }, function(destination) {
+                $scope.destination = destination;
+
+                Trips.get({
+                    tripId: $routeParams.tripId
+                }, function(trip) {
+                    $scope.trip = trip;
+                });
+            });
         });
     };
 }]);

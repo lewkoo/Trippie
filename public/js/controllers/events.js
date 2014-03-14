@@ -66,22 +66,24 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
     $scope.findOne = function() {
         Events.get({
+            tripId: $routeParams.tripId,
+            destinationId: $routeParams.destinationId,
             eventId: $routeParams.eventId
         }, function(event) {
             $scope.event = event;
-        });
 
-        Trips.get({
-            tripId: $routeParams.tripId
-        }, function(trip) {
-            $scope.trip = trip;
-        });
+            Destinations.get({
+                tripId: $routeParams.tripId,
+                destinationId: $routeParams.destinationId
+            }, function(destination) {
+                $scope.destination = destination;
 
-        Destinations.get({
-            tripId: $routeParams.tripId,
-            destinationId: $routeParams.destinationId
-        }, function(destination) {
-            $scope.destination = destination;
+                Trips.get({
+                    tripId: $routeParams.tripId
+                }, function(trip) {
+                    $scope.trip = trip;
+                });
+            });
         });
     };
 
