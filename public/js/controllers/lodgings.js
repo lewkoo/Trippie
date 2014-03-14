@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '$routeParams', '$location', 'Global', 'Lodgings', 'Destinations', 'Trips', function ($scope, $routeParams, $location, Global, Lodgings, Destinations, Trips) {
+angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '$routeParams', '$location', '$route', '$modal', 'Global', 'Lodgings', 'Destinations', 'Trips', function ($scope, $routeParams, $location, $route, $modal, Global, Lodgings, Destinations, Trips) {
     $scope.global = Global;
 
     $scope.create = function() {
@@ -11,8 +11,8 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
             departureDate: this.departureDate,
             information: this.information
         });
-        lodging.$save({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function(response) {
-            $location.path('lodgings/' + response._id);
+        lodging.$save({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
+            $route.reload();
         });
 
         this.name = '';
@@ -76,6 +76,22 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
                     $scope.trip = trip;
                 });
             });
+        });
+    };
+
+    $scope.openModalCreate = function() {
+        $modal.open({
+            templateUrl: 'views/lodgings/partials/modalCreate.html',
+            controller: function ($scope, $modalInstance) {
+                $scope.save = function () {
+                    this.create();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }
         });
     };
 }]);
