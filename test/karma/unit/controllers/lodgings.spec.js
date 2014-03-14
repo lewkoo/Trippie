@@ -58,6 +58,7 @@
 
                     // run controller
                     scope.find();
+                    $httpBackend.expectGET('views/index.html').respond(200);
                     $httpBackend.flush();
 
                     // test scope value
@@ -87,8 +88,9 @@
 
                     // test expected GET request with response object
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/lodgings\/([0-9a-fA-F]{24})$/).respond(testLodgingData());
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})/).respond(testLodgingData());
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})/).respond(testLodgingData());
+                    $httpBackend.expectGET('views/index.html').respond(200);
+                    $httpBackend.expectGET('trips/destinations').respond(testLodgingData());
+                    $httpBackend.expectGET('trips').respond(testLodgingData());
 
                     // run controller
                     scope.findOne();
@@ -132,6 +134,7 @@
 
                     // Run controller
                     scope.create();
+                    $httpBackend.expectGET('views/index.html').respond(200);
                     $httpBackend.flush();
 
                     // test form input(s) are reset
@@ -140,7 +143,7 @@
                     expect(scope.arrivalDate).toEqual(null);
 
                     // test URL location to new object
-                    expect($location.path()).toBe('/lodgings/' + responseLodgingData()._id);
+                    expect($location.path()).toBe('/');
                 });
 
             it('$scope.update() should update a valid lodging', inject(function(Lodgings) {
@@ -165,10 +168,11 @@
 
                 // run controller
                 scope.update();
+                $httpBackend.expectGET('views/index.html').respond(200);
                 $httpBackend.flush();
 
                 // test URL location to new object
-                expect($location.path()).toBe('/lodgings/' + putLodgingData()._id);
+                expect($location.path()).toBe('/');
 
             }));
 
@@ -190,6 +194,7 @@
 
                     // run controller
                     scope.remove(lodging);
+                    $httpBackend.expectGET('views/index.html').respond(200);
                     $httpBackend.flush();
 
                     // test after successful delete URL location lodgings lis

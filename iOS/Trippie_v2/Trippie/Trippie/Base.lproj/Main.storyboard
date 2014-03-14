@@ -37,7 +37,6 @@
                                 </state>
                                 <connections>
                                     <action selector="signinPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="elU-0t-kIP"/>
-                                    <segue destination="zWi-wN-YLM" kind="push" id="UeA-XV-gbf"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="trippie_v1.png" translatesAutoresizingMaskIntoConstraints="NO" id="wji-o1-FxU">
@@ -51,6 +50,7 @@
                     <connections>
                         <outlet property="txtEmail" destination="lpZ-u4-JMi" id="iKO-ug-8ND"/>
                         <outlet property="txtPassword" destination="HLU-ce-GJ2" id="dYY-Jy-ihT"/>
+                        <segue destination="zWi-wN-YLM" kind="push" identifier="login" id="qPM-4x-jNM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

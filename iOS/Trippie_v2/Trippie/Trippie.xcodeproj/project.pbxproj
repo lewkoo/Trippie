@@ -46,6 +46,7 @@
 		9BC45B3018D298CA00D6A54D /* TrippieTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */; };
 		9BC45B3318D2AB7E00D6A54D /* TrippieDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B3218D2AB7E00D6A54D /* TrippieDestination.m */; };
 		9BC45B3618D2AD5100D6A54D /* TrippieTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B3518D2AD5100D6A54D /* TrippieTripViewController.m */; };
+		B8154BDB18D370AF004E53EC /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8154BDA18D370AF004E53EC /* SessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,8 @@
 		9BC45B3218D2AB7E00D6A54D /* TrippieDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieDestination.m; sourceTree = "<group>"; };
 		9BC45B3418D2AD5100D6A54D /* TrippieTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrippieTripViewController.h; sourceTree = "<group>"; };
 		9BC45B3518D2AD5100D6A54D /* TrippieTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieTripViewController.m; sourceTree = "<group>"; };
+		B8154BD918D370AF004E53EC /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		B8154BDA18D370AF004E53EC /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +286,8 @@
 				83F8199718D005A700195755 /* Supporting Files */,
 				9BC45B2E18D298CA00D6A54D /* TrippieTrip.h */,
 				9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */,
+				B8154BD918D370AF004E53EC /* SessionManager.h */,
+				B8154BDA18D370AF004E53EC /* SessionManager.m */,
 			);
 			path = Trippie;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 				836F874618D016E600CAF338 /* AFURLResponseSerialization.m in Sources */,
 				836F874418D016E600CAF338 /* AFURLConnectionOperation.m in Sources */,
 				836F874B18D016E600CAF338 /* UIButton+AFNetworking.m in Sources */,
+				B8154BDB18D370AF004E53EC /* SessionManager.m in Sources */,
 				836F874918D016E600CAF338 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				836F874318D016E600CAF338 /* AFSecurityPolicy.m in Sources */,
 				836F874E18D016E600CAF338 /* UIRefreshControl+AFNetworking.m in Sources */,
