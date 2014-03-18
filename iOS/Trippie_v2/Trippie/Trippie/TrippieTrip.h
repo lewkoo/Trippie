@@ -2,18 +2,20 @@
 //  TrippieTrip.h
 //  Trippie
 //
-//  Created by Jordan Wood on 2014-03-13.
+//  Created by David John Horsman on 2014-03-18.
 //  Copyright (c) 2014 Chris Ventura. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface TrippieTrip : NSObject
 
-@property NSString *_id;
-@property NSString *name;
-@property NSMutableArray *destinationList;
-@property NSDate *tripStartDate;
-@property NSDate *tripEndDate;
+@interface TrippieTrip : NSManagedObject
+
+@property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) id destinationList;
+@property (nonatomic, retain) NSDate * tripStartDate;
+@property (nonatomic, retain) NSDate * tripEndDate;
 
 @end

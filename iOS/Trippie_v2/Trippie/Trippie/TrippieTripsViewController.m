@@ -15,7 +15,7 @@
 @interface TrippieTripsViewController ()
 
 @property SessionManager *session;
-@property NSMutableArray *tripList;
+@property NSMutableArray *trips;
 
 @end
 
@@ -35,7 +35,7 @@
     [super viewDidLoad];
 
     self.session = [SessionManager getInstance];
-    self.tripList = [[NSMutableArray alloc] init];
+    self.trips = [[NSMutableArray alloc] init];
     [self loadInitialData];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -46,40 +46,31 @@
 }
 
 - (void)loadInitialData {
-    TrippieTrip *trip1 = [[TrippieTrip alloc] init];
-    
     [self.session.manager GET:@"trips" parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"trip JSON: %@", responseObject);
         
+        for (id trip in responseObject) {
+            NSString *tripId = [trip objectForKey:@"id"];
+            NSString *name = [trip objectForKey:@"name"];
+            NSArray *destinationList = (NSArray *)[trip objectForKey:@"destinationList"];
+            NSDate *tripStartDate = [trip objectForKey:@"tripStartDate"];
+            NSDate *tripEndDate = [trip objectForKey:@"tripEndDate"];
+            
+            TrippieTrip *trip = [[TrippieTrip alloc] init];
+            trip.id = tripId;
+            trip.name = name;
+            trip.destinationList = destinationList;
+            trip.tripStartDate = tripStartDate;
+            trip.tripEndDate = tripEndDate;
+            [self.trips addObject:trip];
+        }
+        
+        [self.tableView reloadData];
         // The responseObject can be converted to (NSArray *) but I was having difficulty figuring out to do with it next
         // I'm not sure if we needed to create custom classes for our objects or if we could just use the NSArray objects
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    NSDate *today = [NSDate date];
-    trip1._id = @"5000000000000";
-    trip1.name = @"Test Trip 1";
-    trip1.tripStartDate = today;
-    trip1.tripEndDate = today;
-    
-    TrippieDestination *dest1 = [[TrippieDestination alloc] init];
-    dest1.name = @"Dest 1";
-    dest1._id = @"5000000000001";
-    dest1.eventIDs = [[NSMutableArray alloc] init];
-    dest1.lodgingIDs = [[NSMutableArray alloc] init];
-    dest1.noteIDs = [[NSMutableArray alloc] init];
-    
-    TrippieDestination *dest2 = [[TrippieDestination alloc] init];
-    dest2.name = @"Dest 2";
-    dest2._id = @"5000000000002";
-    dest2.eventIDs = [[NSMutableArray alloc] init];
-    dest2.lodgingIDs = [[NSMutableArray alloc] init];
-    dest2.noteIDs = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *destinationList = [NSMutableArray arrayWithObjects:dest1, dest2, nil];
-    trip1.destinationList = destinationList;
-    [self.tripList addObject:trip1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,7 +90,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.tripList count];
+    return [self.trips count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,11 +98,13 @@
     static NSString *CellIdentifier = @"TripListPrototypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    TrippieTrip *theTrip = [self.tripList objectAtIndex:indexPath.row];
+    TrippieTrip *theTrip = (TrippieTrip *)[self.trips objectAtIndex:indexPath.row];
+    
+    NSLog(@"theTrip: %@", theTrip.name);
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
-    NSString *startDateString = [dateFormat stringFromDate:theTrip.tripStartDate];
+    NSString *startDateString = [dateFormat stringFromDate:[theTrip tripStartDate]];
     NSString *endDateString = [dateFormat stringFromDate:theTrip.tripEndDate];
     
     // get the labels
@@ -124,7 +117,7 @@
     [lblTripName setText:theTrip.name];
     [lblTripStart setText:[NSString stringWithFormat:@"Start: %@", startDateString]];
     [lblTripEnd setText:[NSString stringWithFormat:@"End: %@", endDateString]];
-    [lblTripDestinationCount setText:[NSString stringWithFormat:@"%d destinations", theTrip.destinationList.count]];
+    [lblTripDestinationCount setText:[NSString stringWithFormat:@"%d destinations", ((NSArray *)theTrip.destinationList).count]];
     
     return cell;
 }
@@ -134,7 +127,7 @@
     if ([[segue identifier] isEqualToString:@"tripSegue"]) {
         TrippieTripViewController *tripViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        tripViewController.trip = [self.tripList objectAtIndex:indexPath.row];
+        tripViewController.trip = [self.trips objectAtIndex:indexPath.row];
     }
 }
 
