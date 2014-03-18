@@ -1,4 +1,4 @@
-//
+    //
 //  TripsViewController.m
 //  Trippie
 //
@@ -15,7 +15,7 @@
 @interface TrippieTripsViewController ()
 
 @property SessionManager *session;
-@property NSMutableArray *tripList;
+@property NSArray *tripList;
 
 @end
 
@@ -46,40 +46,21 @@
 }
 
 - (void)loadInitialData {
-    TrippieTrip *trip1 = [[TrippieTrip alloc] init];
+//    TrippieTrip *trip1 = [[TrippieTrip alloc] init];
     
     [self.session.manager GET:@"trips" parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"trip JSON: %@", responseObject);
         
-        // The responseObject can be converted to (NSArray *) but I was having difficulty figuring out to do with it next
-        // I'm not sure if we needed to create custom classes for our objects or if we could just use the NSArray objects
+        // Still can't get this to work, I created a branch called ios-core-data-magical-record-testing to play with some stuff but it wasn't any
+        // more successful. I've tried skimming http://ios-blog.co.uk/tutorials/ios-connecting-to-an-online-service-and-persisting-data-with-coredata/
+        // and http://www.raywenderlich.com/59255/afnetworking-2-0-tutorial but I wasn't having much success with either...
+        self.tripList = (NSArray *)responseObject;
+        
+        [self.tableView reloadData];
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    NSDate *today = [NSDate date];
-    trip1._id = @"5000000000000";
-    trip1.name = @"Test Trip 1";
-    trip1.tripStartDate = today;
-    trip1.tripEndDate = today;
-    
-    TrippieDestination *dest1 = [[TrippieDestination alloc] init];
-    dest1.name = @"Dest 1";
-    dest1._id = @"5000000000001";
-    dest1.eventIDs = [[NSMutableArray alloc] init];
-    dest1.lodgingIDs = [[NSMutableArray alloc] init];
-    dest1.noteIDs = [[NSMutableArray alloc] init];
-    
-    TrippieDestination *dest2 = [[TrippieDestination alloc] init];
-    dest2.name = @"Dest 2";
-    dest2._id = @"5000000000002";
-    dest2.eventIDs = [[NSMutableArray alloc] init];
-    dest2.lodgingIDs = [[NSMutableArray alloc] init];
-    dest2.noteIDs = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *destinationList = [NSMutableArray arrayWithObjects:dest1, dest2, nil];
-    trip1.destinationList = destinationList;
-    [self.tripList addObject:trip1];
+//    [self.tripList addObject:trip1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,7 +88,7 @@
     static NSString *CellIdentifier = @"TripListPrototypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    TrippieTrip *theTrip = [self.tripList objectAtIndex:indexPath.row];
+    TrippieTrip *theTrip = (TrippieTrip *)[self.tripList objectAtIndex:indexPath.row];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];

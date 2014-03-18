@@ -21,7 +21,7 @@ static SessionManager *instance = nil;
         {
             
             instance= [SessionManager new];
-            instance.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://ec2-54-84-55-183.compute-1.amazonaws.com:3000/api/"]];
+            instance.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://ec2-54-186-105-73.us-west-2.compute.amazonaws.com/api/"]];
             [instance.manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
         }
     }
