@@ -8,13 +8,13 @@ var mongoose = require('mongoose'),
     _ = require('lodash');
 
 /**
- * Find notes by id
+ * Find note by id
  */
-exports.notes = function(req, res, next, id) {
-    Note.load(id, function(err, notes) {
+exports.note = function(req, res, next, id) {
+    Note.load(id, function(err, note) {
         if (err) return next(err);
-        if (!notes) return next(new Error('Failed to load notes ' + id));
-        req.notes = notes;
+        if (!note) return next(new Error('Failed to load note ' + id));
+        req.note = note;
         next();
     });
 };
@@ -68,19 +68,20 @@ exports.update = function(req, res) {
 };
 
 /**
- * Delete an notes
+ * Delete an note
  */
 exports.destroy = function(req, res) {
-    var notes = req.notes;
+    var note = req.note;
+    var destination = req.destination;
 
-    notes.remove(function(err) {
+    note.remove(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                notes: notes
+                note: note
             });
         } else {
-            res.jsonp(notes);
+            res.jsonp(note);
         }
     });
 };
@@ -89,7 +90,7 @@ exports.destroy = function(req, res) {
  * Show a notes
  */
 exports.show = function(req, res) {
-    res.jsonp(req.notes);
+    res.jsonp(req.note);
 };
 
 /**

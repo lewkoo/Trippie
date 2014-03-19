@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trippie.notes').controller('NotesController', ['$scope', '$routeParams', '$location', '$route', '$modal', 'Global', 'Notes', function ($scope, $routeParams, $location, $route, $modal, Global, Notes) {
+angular.module('trippie.notes').controller('NotesController', ['$scope', '$routeParams', '$location', '$route', '$modal', 'Global', 'Notes', 'Destinations', 'Trips', function ($scope, $routeParams, $location, $route, $modal, Global, Notes, Destinations, Trips) {
     $scope.global = Global;
 
     $scope.today = function() {
@@ -10,11 +10,6 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
     $scope.today();
 
     $scope.create = function() {
-
-        // console.log(this.dt);
-        // console.log(this.dt.getUTCDate());
-        // console.log(this.dt.toISOString());
-
         var note = new Notes({
             name: this.name,
             information: this.information
@@ -27,33 +22,54 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
         this.information = '';
     };
 
-    // $scope.remove = function(event) {
-    //     // if (event) {
-    //     //     event.$remove();
+    $scope.remove = function(note) {
+        if (confirm('Delete the note titled ' + note.name + '?')) {
+            if (note) {
+                Destinations.get({ tripId: $routeParams.tripId, destinationId: $routeParams.destinationId }, function(destination) {
+                    var noteList = destination.noteIDs;
+                    var len = noteList.length;
+                    var i = 0, found = false;
+                    while(!found && i !== len){
+                        var currNoteId = noteList[i]._id;
+                        var noteId = note._id;
+                        if(currNoteId === noteId){
+                            found = true;
+                        } else
+                            i++;
+                    }
+                    if(found) {
+                        noteList.splice(i, 1);
+                    }
 
-    //     //     for (var i in $scope.events) {
-    //     //         if ($scope.events[i] === event) {
-    //     //             $scope.events.splice(i, 1);
-    //     //         }
-    //     //     }
-    //     // }
-    //     // else {
-    //     //     $scope.event.$remove();
-    //     //     $location.path('events');
-    //     // }
-    // };
+                    destination.$update({ tripId: $routeParams.tripId }, function () {
+                        note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, noteId: note._id });
 
-    // $scope.update = function() {
-    //     // var event = $scope.event;
-    //     // if (!event.updated) {
-    //     //     event.updated = [];
-    //     // }
-    //     // event.updated.push(new Date().getTime());
+                        for (var j in $scope.notes) {
+                            if ($scope.notes[j] === note) {
+                                $scope.notes.splice(i, 1);
+                            }
+                        }
+                    }); 
+                });                
+            }
+            else {
+                $scope.note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
+                $location.path('notes');
+            }
+        }
+    };
 
-    //     // event.$update(function() {
-    //     //     $location.path('events/' + event._id);
-    //     // });
-    // };
+    $scope.update = function() {
+        var note = $scope.note;
+        if (!note.updated) {
+            note.updated = [];
+        }
+        note.updated.push(new Date().getTime());
+
+        note.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
+            $location.path('notes/' + note._id);
+        });
+    };
 
     $scope.find = function() {
         
@@ -62,13 +78,29 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
         });
     };
 
-    // $scope.findOne = function() {
-    //     // Events.get({
-    //     //     eventId: $routeParams.eventId
-    //     // }, function(event) {
-    //     //     $scope.event = event;
-    //     // });
-    // };
+    $scope.findOne = function(id) {
+        Notes.get({
+            tripId: $routeParams.tripId,
+            destinationId: $routeParams.destinationId,
+            noteId: id
+        }, function(note) {
+            $scope.note = note;
+
+            Destinations.get({
+                tripId: $routeParams.tripId,
+                destinationId: $routeParams.destinationId
+            }, function(destination) {
+                $scope.destination = destination;
+
+                Trips.get({
+                    tripId: $routeParams.tripId
+                }, function(trip) {
+                    $scope.trip = trip;
+                });
+            });
+        });
+
+    };
 
     $scope.openModalCreate = function() {
         $modal.open({

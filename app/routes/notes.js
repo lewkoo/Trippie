@@ -16,10 +16,10 @@ module.exports = function(app) {
 
     app.get('/trips/:tripId/destinations/:destinationId/notes', notes.all);
     app.post('/trips/:tripId/destinations/:destinationId/notes', authorization.requiresLogin, notes.create);
-    app.get('/trips/:tripId/destinations/:destinationId/notes/:notesId', notes.show);
-    app.put('/trips/:tripId/destinations/:destinationId/notes/:notesId', authorization.requiresLogin, hasAuthorization, notes.update);
-    app.del('/trips/:tripId/destinations/:destinationId/notes/:notesId', authorization.requiresLogin, hasAuthorization, notes.destroy);
+    app.get('/trips/:tripId/destinations/:destinationId/notes/:noteId', notes.show);
+    app.put('/trips/:tripId/destinations/:destinationId/notes/:noteId', authorization.requiresLogin, hasAuthorization, notes.update);
+    app.del('/trips/:tripId/destinations/:destinationId/notes/:noteId', authorization.requiresLogin, hasAuthorization, notes.destroy);
 
     // Finish with setting up the notesId param
-    app.param('notesId', notes.notes);
+    app.param('noteId', notes.note);
 };

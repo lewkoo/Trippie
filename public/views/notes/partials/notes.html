@@ -1,7 +1,9 @@
 <div class='col-md-12' data-ng-controller="NotesController" data-ng-init='find()'>
 	<div class="notes">
 		<div class='name'>Notes<span class="pull-right add-link" ng-click="openModalCreate()">+ Add</span></div> <!-- hid Add for now, not implemented -->
-		<div data-ng-repeat="note in notes" class='note'><b>{{note.name}}</b> - {{note.information}}</div>
+		<div data-ng-repeat="note in notes" class='note'><b><span ng-click="findOne(note._id)">{{note.name}}</span></b> - {{note.information}} 
+			<a ng-click="remove(note)" class='pull-right'>delete</a>
+		</div>
 		<div data-ng-hide="!notes || notes.length">No notes yet..</div>
 	</div>
 </div>
