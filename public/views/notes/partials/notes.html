@@ -2,7 +2,7 @@
 	<div class="notes">
 		<div class='name'>Notes<a class="pull-right add-link" ng-click="openModalCreate()">+ Add</a></div> <!-- hid Add for now, not implemented -->
 		<div data-ng-repeat="note in notes" class='note'><b><span ng-click="findOne(note._id)">{{note.name}}</span></b> - {{note.information}} 
-			<a ng-click="remove(note)" class='pull-right'>delete</a>
+			<a ng-click="remove(note)" class='pull-right pointer'>Delete</a>
 		</div>
 		<div data-ng-hide="!notes || notes.length">No notes yet..</div>
 	</div>
