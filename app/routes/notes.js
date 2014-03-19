@@ -2,6 +2,8 @@
 
 // Lodgings routes use notes controller
 var notes = require('../controllers/notes');
+var trips = require('../controllers/trips');
+var destinations = require('../controllers/destinations');
 var authorization = require('./middlewares/authorization');
 
 // Lodging authorization helpers
@@ -21,5 +23,7 @@ module.exports = function(app) {
     app.del('/trips/:tripId/destinations/:destinationId/notes/:noteId', authorization.requiresLogin, hasAuthorization, notes.destroy);
 
     // Finish with setting up the notesId param
+    app.param('destinationId', destinations.destination);
+    app.param('tripId', trips.trip);
     app.param('noteId', notes.note);
 };
