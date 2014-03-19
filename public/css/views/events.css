@@ -1,0 +1,21 @@
+.events {
+	background-color: rgb(238, 238, 238);
+	padding: 15px;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.events .add-link {
+	cursor: pointer;
+}
+
+.events .name {
+	font-weight: bold;
+}
+
+.events .event {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

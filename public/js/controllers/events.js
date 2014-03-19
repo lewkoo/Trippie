@@ -57,7 +57,7 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
     $scope.find = function() {
 
-        Events.query(function(events) {
+        Events.query({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId},function(events) {
             $scope.events = events;
         });
     };
@@ -83,6 +83,10 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
                 });
             });
         });
+    };
+
+    $scope.viewDetails = function () {
+        $scope.showEventDetails = !$scope.showEventDetails;
     };
 
 }]);

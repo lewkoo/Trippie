@@ -1,0 +1,19 @@
+<div class='col-md-12' data-ng-controller="EventsController" data-ng-init='find()'>
+	<div class="events">
+		<div class='name'>Events<!-- <span class="pull-right add-link" ng-click="openModalCreate()">+ Add</span> --></div>
+		<div data-ng-repeat="event in events" class='event'><b><span ng-click="findOne(event._id)">{{event.name}}</span></b> - 
+			<a class="pointer" data-ng-click='viewDetails()' data-ng-hide="showEventDetails"> View Details</a>
+			<a class="pointer" data-ng-click='viewDetails()' data-ng-show="showEventDetails"> Hide Details</a>
+			<!-- <a class='pull-right pointer'><span ng-click="remove(event)"></span>delete</a> -->
+	
+			<div class="details" data-ng-show="showEventDetails" style="padding-left:15px">
+				<b>Address</b>: {{event.address}}<br />
+			    <b>Start</b>: {{event.eventStartDate | date: 'short'}}<br />
+			    <b>End</b>: {{event.eventEndDate | date: 'short'}}<br />
+			    <b>Information</b>: {{event.information}}
+			</div>
+		</div>
+		<div data-ng-hide="!events || events.length">No events yet..</div>
+	</div>
+</div>
+    
