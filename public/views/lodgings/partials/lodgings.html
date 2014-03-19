@@ -7,8 +7,8 @@
 			
 			<div class="details" data-ng-show="showEventDetails === $index">
 				<b>Address</b>: {{lodging.address}}<br />
-			    <b>Arrival Date:</b>: {{lodging.arrivalDate | date: 'short'}}<br />
-			    <b>Depature Date:</b>: {{lodging.departureDate | date: 'short'}}<br />
+			    <b>Arrival Date</b>: {{lodging.arrivalDate | date: 'shortDate'}}<br />
+			    <b>Departure Date</b>: {{lodging.departureDate | date: 'shortDate'}}<br />
 			    <b>Information</b>: {{lodging.information}}<br/>
 			    <a ng-click="remove(lodging)" class='delete-link'>Delete</a>
 			</div>
