@@ -6,7 +6,7 @@
 			<a class="pointer" data-ng-click='viewDetails($index)' data-ng-show="showEventDetails === $index"> Hide Details</a>
 			
 			<div class="details" data-ng-show="showEventDetails === $index">
-				<b>Address</b>: {{event.address}}<br />
+				<b>Address</b>: {{lodging.address}}<br />
 			    <b>Arrival Date:</b>: {{lodging.arrivalDate | date: 'short'}}<br />
 			    <b>Depature Date:</b>: {{lodging.departureDate | date: 'short'}}<br />
 			    <b>Information</b>: {{lodging.information}}<br/>
