@@ -6,7 +6,7 @@
 			<a class="pointer" data-ng-click='viewDetails()' data-ng-show="showEventDetails"> Hide Details</a>
 			<!-- <a class='pull-right pointer'><span ng-click="remove(event)"></span>delete</a> -->
 	
-			<div class="details" data-ng-show="showEventDetails" style="padding-left:15px">
+			<div class="details" data-ng-show="showEventDetails">
 				<b>Address</b>: {{event.address}}<br />
 			    <b>Start</b>: {{event.eventStartDate | date: 'short'}}<br />
 			    <b>End</b>: {{event.eventEndDate | date: 'short'}}<br />

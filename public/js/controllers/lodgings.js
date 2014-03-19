@@ -115,4 +115,8 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
             }
         });
     };
+
+    $scope.viewDetails = function () {
+        $scope.showEventDetails = !$scope.showEventDetails;
+    };
 }]);

@@ -150,7 +150,7 @@ exports.showList = function(req, res) {
  * List
  */
 exports.all = function(req, res) {
-    Event.find({}).exec(function(err, events) {
+    Event.find({ destinationID: req.destination._id }).exec(function(err, events) {
         if (err) {
             res.render('error', {
                 status: 500

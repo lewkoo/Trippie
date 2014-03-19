@@ -16,3 +16,7 @@
 .lodgings .name {
 	font-weight: bold;
 }
+
+.lodgings .details {
+	padding-left: 15px;
+}

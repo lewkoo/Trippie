@@ -19,3 +19,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+.events .details {
+	padding-left: 15px;
+}
