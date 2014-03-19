@@ -72,7 +72,6 @@ exports.update = function(req, res) {
  */
 exports.destroy = function(req, res) {
     var note = req.note;
-    var destination = req.destination;
 
     note.remove(function(err) {
         if (err) {

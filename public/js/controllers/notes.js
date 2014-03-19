@@ -49,8 +49,8 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
                                 $scope.notes.splice(i, 1);
                             }
                         }
-                    }); 
-                });                
+                    });
+                });
             }
             else {
                 $scope.note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
