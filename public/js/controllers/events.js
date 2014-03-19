@@ -85,8 +85,11 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
         });
     };
 
-    $scope.viewDetails = function () {
-        $scope.showEventDetails = !$scope.showEventDetails;
+    $scope.viewDetails = function (index) {
+        if ($scope.showEventDetails === index)
+            $scope.showEventDetails = null;
+        else
+            $scope.showEventDetails = index;
     };
 
 }]);
