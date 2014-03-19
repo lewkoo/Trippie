@@ -1,10 +1,12 @@
 <div class='col-md-12' data-ng-controller="LodgingsController" data-ng-init='find()'>
 	<div class="lodgings">
 		<div class='name'>Lodgings<span class="pull-right add-link" ng-click="openModalCreate()">+ Add</span></div>
-		<div data-ng-repeat="lodging in lodgings"><b>{{lodging.name}}</b> : | <i>Address</i>: 
+		<div data-ng-repeat="lodging in lodgings"><b><span ng-click="findOne(lodging._id)">{{lodging.name}}</b> : | <i>Address</i>: 
 			{{lodging.address}} | <i>Arrival Date</i>: {{lodging.arrivalDate.substring(0,10)}}
 			| <i>Departure Date</i>: {{lodging.departureDate.substring(0,10)}}
-			| <i>Information</i>: {{lodging.information}}</div>
+			| <i>Information</i>: {{lodging.information}}
+			<a ng-click="remove(lodging)" class='pull-right delete-link'>delete</a>
+		</div>
 		<div data-ng-hide="!lodgings || lodgings.length">No lodgings yet..</div>
 	</div>
 </div>

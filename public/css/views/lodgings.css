@@ -9,6 +9,10 @@
 	cursor: pointer;
 }
 
+.lodgings .delete-link {
+	cursor: pointer;
+}
+
 .lodgings .name {
 	font-weight: bold;
 }
