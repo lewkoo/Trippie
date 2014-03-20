@@ -4,8 +4,6 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
     $scope.global = Global;
 
     $scope.today = function() {
-        $scope.eventStartDate = new Date();
-        $scope.eventEndDate = new Date();
         $scope.minDate = new Date();
     };
     $scope.today();
@@ -25,14 +23,14 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
     $scope.remove = function(event) {
         if (event) {
-            Destinations.get({ tripId: $routeParams.tripId, destinationId: $routeParams.destinationId }, function(destination) {
+            var mTripId = $routeParams.tripId;
+            var mDestinationId = $routeParams.destinationId;
+            Destinations.get({ tripId: mTripId, destinationId: mDestinationId }, function(destination) {
                 var eventList = destination.eventIDs;
                 var len = eventList.length;
                 var i = 0, found = false;
-                while(!found && i !== len){
-                    var currEventId = eventList[i]._id;
-                    var eventId = event._id;
-                    if(currEventId === eventId){
+                while (!found && i < len) {
+                    if (eventList[i]._id === event._id || eventList[i] === event._id) {
                         found = true;
                     } else
                         i++;
@@ -41,32 +39,25 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
                     eventList.splice(i, 1);
                 }
 
-                destination.$update({ tripId: $routeParams.tripId }, function () {
-                    event.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, eventId: event._id });
-
-                    for (var j in $scope.events) {
+                destination.$update({ tripId: mTripId, destinationId: mDestinationId }, function () {
+                    for (var j=0; j < $scope.events.length; j++) {
                         if ($scope.events[j] === event) {
                             $scope.events.splice(i, 1);
                         }
                     }
+                    event.$remove({tripId: mTripId, destinationId: mDestinationId, eventId: event._id });
+                    $location.path('trips/' + mTripId + '/destinations/' + mDestinationId);
                 });
             });
-        }
-        else {
-            $scope.event.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
-            $location.path('events');
         }
     };
 
     $scope.update = function() {
         var event = $scope.event;
-        if (!event.updated) {
-            event.updated = [];
-        }
-        event.updated.push(new Date().getTime());
-
-        event.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
-            $location.path('events/' + event._id);
+        var mTripId = $routeParams.tripId;
+        var mDestinationId = $routeParams.destinationId;
+        event.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, eventId: event._id}, function() {
+            $location.path('trips/' + mTripId + '/destinations/' + mDestinationId);
         });
     };
 
@@ -77,21 +68,23 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
     };
 
     $scope.findOne = function(id) {
+        var mTripId = $routeParams.tripId;
+        var mDestinationId = $routeParams.destinationId;
         Events.get({
-            tripId: $routeParams.tripId,
-            destinationId: $routeParams.destinationId,
+            tripId: mTripId,
+            destinationId: mDestinationId,
             eventId: id
         }, function(event) {
             $scope.event = event;
 
             Destinations.get({
-                tripId: $routeParams.tripId,
-                destinationId: $routeParams.destinationId
+                tripId: mTripId,
+                destinationId: mDestinationId
             }, function(destination) {
                 $scope.destination = destination;
 
                 Trips.get({
-                    tripId: $routeParams.tripId
+                    tripId: mTripId
                 }, function(trip) {
                     $scope.trip = trip;
                 });

@@ -30,15 +30,60 @@
             // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
             // This allows us to inject a service but then attach it to a variable
             // with the same name as the service.
-            beforeEach(inject(function($controller, $rootScope, _$location_, _$routeParams_, _$httpBackend_) {
+            beforeEach(inject(function($controller, $rootScope, _$location_, _$routeParams_, _$httpBackend_, Events, Destinations, Trips) {
 
                 scope = $rootScope.$new();
+
+                $routeParams = _$routeParams_;
+                $routeParams.tripId = '525a8422f6d0f87f0e000000';
+                $routeParams.destinationId = '525a8422f6d0f87f0e000001';
 
                 EventsController = $controller('EventsController', {
                     $scope: scope
                 });
 
-                $routeParams = _$routeParams_;
+                scope.eventId = '525a8422f6d0f87f0e000003';
+                scope.eventName = 'Test Event1';
+                scope.eventAddress = '123 Fake Street';
+                scope.eventInformation = 'Test Event Information';
+                var eventDate = new Date();
+                eventDate.setMinutes(0);
+                eventDate.setSeconds(0);
+                eventDate.setMilliseconds(0);
+                scope.eventStartDate = eventDate;
+                scope.eventEndDate = eventDate;
+
+                scope.destName = 'Test Destination';
+                scope.destinationId = '525a8422f6d0f87f0e000001';
+                scope.tripName = 'Test Trip';
+                scope.tripId = '525a8422f6d0f87f0e000000';
+                scope.destinationList = [scope.destinationId];
+
+                var event = new Events({
+                    name: scope.destName,
+                    address: scope.eventAddress,
+                    information: scope.eventInformation,
+                    eventStartDate: scope.eventStartDate,
+                    eventEndDate: scope.eventEndDate,
+                    destinationId: $routeParams.destinationId
+                });
+                event._id = scope.eventId;
+                scope.event = event;
+                scope.events = [scope.event];
+
+                var destination = new Destinations({
+                    name: scope.destName,
+                    eventIDs: [scope.eventId]
+                });
+                destination._id = scope.destinationId;
+                scope.destination = destination;
+                
+                var trip = new Trips({
+                    name: scope.tripName,
+                    destinationList: scope.destinationList
+                });
+                trip._id = scope.tripId;
+                scope.trip = trip;
 
                 $httpBackend = _$httpBackend_;
 
@@ -50,10 +95,15 @@
 
                     // test expected GET request
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events$/).respond([{
-                        name: 'Soccer',
-                        eventStartDate: new Date(2140, 12, 12),
-                        eventEndDate: new Date(2140, 12, 12)
+                        _id: scope.eventId,
+                        name: scope.destName,
+                        address: scope.eventAddress,
+                        information: scope.eventInformation,
+                        eventStartDate: scope.eventStartDate,
+                        eventEndDate: scope.eventEndDate,
+                        destinationId: $routeParams.destinationId
                     }]);
+                    $httpBackend.expectGET('views/index.html').respond(200);
 
                     // run controller
                     scope.find();
@@ -61,98 +111,170 @@
 
                     // test scope value
                     expect(scope.events).toEqualData([{
-                        name: 'Soccer',
-                        eventStartDate: new Date(2140, 12, 12),
-                        eventEndDate: new Date(2140, 12, 12)
+                        _id: scope.eventId,
+                        name: scope.destName,
+                        address: scope.eventAddress,
+                        information: scope.eventInformation,
+                        eventStartDate: scope.eventStartDate,
+                        eventEndDate: scope.eventEndDate,
+                        destinationId: scope.destinationId
                     }]);
 
                 });
 
             it('$scope.findOne() should create an array with one event object fetched ' +
                 'from XHR using a eventId URL parameter', function() {
-                    // fixture URL parament
-                    $routeParams.eventId = '525a8422f6d0f87f0e407a33';
-                    $routeParams.destinationId = '525a8422f6d0f87f0e407a32';
-                    $routeParams.tripId = '525a8422f6d0f87f0e407a31';
 
-                    // fixture response object
-                    var testEventData = function() {
-                        return {
-                        name: 'Soccer',
-                        eventStartDate: new Date(2140, 12, 12),
-                        eventEndDate: new Date(2140, 12, 12)
+                    var date = new Date();
+
+                    // expected response data
+                    var responseTripData = {
+                            _id: scope.trip._id,
+                            name: scope.trip.name,
+                            destinationList: scope.trip.destinationList
                         };
-                    };
+
+                    // expected response data
+                    var responseDestinationData = {
+                            _id: scope.destId,
+                            name: scope.destination.name,
+                            outgoingTransportationID: scope.destOutgoingTransportationID
+                        };
+
+                    // expected response data
+                    var responseEventData = {
+                            _id: scope.eventId,
+                            name: 'Soccer',
+                            eventStartDate: date,
+                            eventEndDate: date
+                        };
+
+                    // remove the trip, destination, and event
+                    scope.trip = {};
+                    scope.destination = {};
+                    scope.event = {};
 
                     // test expected GET request with response object
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/).respond(testEventData());
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})/).respond(testEventData());
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})/).respond(testEventData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/).respond(responseEventData);
+                    $httpBackend.expectGET('views/index.html').respond(200);
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/).respond(responseDestinationData);
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})$/).respond(responseTripData);
 
                     // run controller
-                    scope.findOne();
+                    scope.findOne(scope.eventId);
                     $httpBackend.flush();
 
+                    // test scope values
+                    expect(scope.trip).toEqualData({
+                        _id: scope.tripId,
+                        name: scope.tripName,
+                        destinationList: scope.destinationList
+                    });
+                    expect(scope.destination).toEqualData({
+                        _id: scope.destId,
+                        name: scope.destName,
+                        outgoingTransportationID: scope.destOutgoingTransportationID
+                    });
                     // test scope value
-                    expect(scope.event).toEqualData(testEventData());
+                    expect(scope.event).toEqualData({
+                        _id: scope.eventId,
+                        name: 'Soccer',
+                        eventStartDate: date,
+                        eventEndDate: date
+                    });
 
                 });
 
-            it('$scope.update() should update a valid event', inject(function(Events) {
+            it('$scope.update() should update a valid event', function() {
 
-                // fixture rideshare
-                var putEventData = function() {
-                    return {
-                        _id: '525a8422f6d0f87f0e407a33',
-                        name: 'Soccer',
-                        eventStartDate: new Date(2140, 12, 12),
-                        eventEndDate: new Date(2140, 12, 12), 
-                        information: 'Bring a ball'
-                    };
+                var date = new Date();
+
+                scope.event._id = scope.eventId;
+                scope.event.name = 'Soccer';
+                scope.event.information = 'Bring a ball';
+                scope.event.eventStartDate = date.toISOString();
+                scope.event.eventEndDate = date.toISOString();
+                scope.event.destinationId = scope.destinationId;
+                scope.event.address = '124 Fake Street';
+
+                // expected PUT data
+                var putEventData = {
+                    name:'Soccer',
+                    address:'124 Fake Street',
+                    information:'Bring a ball',
+                    eventStartDate:date.toISOString(),
+                    eventEndDate:date.toISOString(),
+                    destinationId:'525a8422f6d0f87f0e000001',
+                    _id:'525a8422f6d0f87f0e000003'
                 };
 
-                // mock event object from form
-                var event = new Events(putEventData());
-
-                // mock event in scope
-                scope.event = event;
+                // expected response data
+                var responseEventData = {
+                        name: 'Soccer',
+                        address: '124 Fake Street',
+                        information: 'Bring a ball',
+                        eventStartDate: date,
+                        eventEndDate: date, 
+                        destinationId: scope.destinationId,
+                        _id: scope.eventId
+                    };
 
                 // test PUT happens correctly
-                $httpBackend.expectPUT(/events\/([0-9a-fA-F]{24})$/).respond();
-
+                $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/, scope.event).respond(responseEventData);
+                $httpBackend.expectGET('views/index.html').respond(200);
+                $httpBackend.expectGET('views/destinations/view.html').respond(200);
                 // run controller
                 scope.update();
                 $httpBackend.flush();
 
-                // test URL location to new object
-                expect($location.path()).toBe('/events/' + putEventData()._id);
+                // test URL location
+                expect($location.path()).toBe('/trips/' + $routeParams.tripId + '/destinations/' + $routeParams.destinationId);
 
-            }));
+            });
 
-            it('$scope.remove() should send a DELETE request with a valid eventId' +
-                'and remove the event from the scope', inject(function(Events) {
+            it('$scope.remove() should GET the destination, remove the eventID from its eventIDs and update(PUT) the destination, ' +
+                'then DELETE the event, then remove the event from scope.events', function() {
 
-                    // fixture rideshare
-                    var event = new Events({
-                        _id: '525a8422f6d0f87f0e407a33'
-                    });
+                    // expected response data
+                    var responseDestinationData = {
+                            _id: scope.destId,
+                            name: scope.destination.name,
+                            eventIDs: [scope.eventId]
+                        };
 
-                    // mock rideshares in scope
-                    scope.events = [];
-                    scope.events.push(event);
+                    // expected PUT data
+                    var putDestinationData = {
+                            _id: scope.destId,
+                            name: scope.destination.name,
+                            eventIDs: []
+                        };
 
-                    // test expected rideshare DELETE request
-                    $httpBackend.expectDELETE(/events\/([0-9a-fA-F]{24})$/).respond(204);
+                    // expected response data
+                    var responseDestinationData2 = {
+                            _id: scope.destId,
+                            name: scope.destination.name,
+                            eventIDs: []
+                        };
+
+                    // test expected destination GET request
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/).respond(responseDestinationData);
+                    $httpBackend.expectGET('views/index.html').respond(200);
+                    // test expected destination PUT request
+                    $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/, putDestinationData).respond(responseDestinationData2);
+                    // test expected DELETE request
+                    $httpBackend.expectDELETE(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/).respond();
+                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
 
                     // run controller
-                    scope.remove(event);
+                    scope.remove(scope.event);
                     $httpBackend.flush();
 
-                    // test after successful delete URL location events lis
-                    //expect($location.path()).toBe('/events');
+                    // test URL location
+                    expect($location.path()).toBe('/trips/' + scope.tripId + '/destinations/' + scope.destinationId);
+                    // test removal of event from scope
                     expect(scope.events.length).toBe(0);
 
-                }));
+                });
         });
     });
 }());

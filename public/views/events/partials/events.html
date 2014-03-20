@@ -10,7 +10,7 @@
                 <span class="glyphicon glyphicon-calendar"></span><b>Start date:</b> {{event.eventStartDate | date:'longDate'}} <br/>
                 <span class="glyphicon glyphicon-calendar"></span><b>End Date:</b> {{event.eventEndDate | date:'longDate'}} <br/>
                 <b>Information</b>: {{event.information}} <br/>
-                <a ng-click="remove(event)" class='delete-link'>Delete</a>
+                <a ng-click="remove(event)" class='pointer delete-link'>Delete</a>
             </div>
         </div>
         <div data-ng-hide="!events || events.length">No events yet..</div>
