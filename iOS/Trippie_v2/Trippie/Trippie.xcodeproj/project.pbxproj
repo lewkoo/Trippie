@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83262ACF18DAA22300F60A3D /* TripTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83262ACE18DAA22300F60A3D /* TripTableViewController.m */; };
 		836F873F18D016E600CAF338 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871918D016E600CAF338 /* AFHTTPRequestOperation.m */; };
 		836F874018D016E600CAF338 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871B18D016E600CAF338 /* AFHTTPRequestOperationManager.m */; };
 		836F874118D016E600CAF338 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871D18D016E600CAF338 /* AFHTTPSessionManager.m */; };
@@ -60,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83262ACD18DAA22300F60A3D /* TripTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTableViewController.h; sourceTree = "<group>"; };
+		83262ACE18DAA22300F60A3D /* TripTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTableViewController.m; sourceTree = "<group>"; };
 		836F871818D016E600CAF338 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		836F871918D016E600CAF338 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		836F871A18D016E600CAF338 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */,
 				B8154BD918D370AF004E53EC /* SessionManager.h */,
 				B8154BDA18D370AF004E53EC /* SessionManager.m */,
+				83262ACD18DAA22300F60A3D /* TripTableViewController.h */,
+				83262ACE18DAA22300F60A3D /* TripTableViewController.m */,
 			);
 			path = Trippie;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83262ACF18DAA22300F60A3D /* TripTableViewController.m in Sources */,
 				836F873F18D016E600CAF338 /* AFHTTPRequestOperation.m in Sources */,
 				836F874C18D016E600CAF338 /* UIImageView+AFNetworking.m in Sources */,
 				9BC45B3318D2AB7E00D6A54D /* TrippieDestination.m in Sources */,
