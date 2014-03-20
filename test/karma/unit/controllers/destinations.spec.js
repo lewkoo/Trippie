@@ -78,7 +78,8 @@
 
                     // set misc data
 
-                    scope.updatedDestList = ['525a8422f6d0f87f0e000001', '525a8422f6d0f87f0e000003', '525a8422f6d0f87f0e000004', '525a8422f6d0f87f0e000005', '525a8422f6d0f87f0e000006'];
+                    scope.updatedDestList = ['525a8422f6d0f87f0e000001', {_id: scope.destination._id, name: scope.destination.name, outgoingTransportationID: scope.destOutgoingTransportationID},
+                     '525a8422f6d0f87f0e000004', '525a8422f6d0f87f0e000005', '525a8422f6d0f87f0e000006'];
 
                     // set form data
                     scope.name = scope.destName;
@@ -118,7 +119,9 @@
 
                     // expected PUT data
                     var putTripData = {
-                            destinationList: scope.updatedDestList
+                            _id: scope.trip._id,
+                            name: scope.trip.name,
+                            destinationList: scope.updatedDestList,
                         };
 
                     // expected response data
@@ -135,7 +138,7 @@
                     // test expected trip GET request
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})$/).respond(responseTripData);
                     // test expected trip PUT request
-                    $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})$/).respond(responseTripData2);
+                    $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})$/, putTripData).respond(responseTripData2);
 
                     // run controller
                     scope.create();
@@ -231,7 +234,7 @@
                             name: scope.destNameUpdated
                         };
 
-                    // test expected trip PUT request
+                    // test expected destination PUT request
                     $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/, putDestinationData).respond(responseDestinationData);
 
                     // run controller

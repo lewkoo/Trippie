@@ -34,20 +34,15 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     };
 
     $scope.remove = function(trip) {
-        if (trip) {
-            trip.$remove();
-
-            for (var i in $scope.trips) {
-                if ($scope.trips[i] === trip) {
-                    $scope.trips.splice(i, 1);
-                }
+        for (var i in $scope.trips) {
+            if ($scope.trips[i] === trip) {
+                $scope.trips.splice(i, 1);
             }
         }
-        else {
-            $scope.trip.$remove(function() {
-                $location.path('trips');
-            });
-        }
+
+        $scope.trip.$remove(function() {
+            $location.path('trips');
+        });
     };
 
     $scope.removeDestination = function(index) {

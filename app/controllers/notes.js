@@ -24,7 +24,6 @@ exports.note = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var note = new Note(req.body);
-    note.user = req.user;
     note.destinationID = req.destination._id;
 
     note.save(function(err) {

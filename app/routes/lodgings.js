@@ -2,6 +2,8 @@
 
 // Lodgings routes use lodgings controller
 var lodgings = require('../controllers/lodgings');
+var trips = require('../controllers/trips');
+var destinations = require('../controllers/destinations');
 var authorization = require('./middlewares/authorization');
 
 // Lodging authorization helpers
@@ -21,5 +23,7 @@ module.exports = function(app) {
     app.del('/trips/:tripId/destinations/:destinationId/lodgings/:lodgingId', authorization.requiresLogin, hasAuthorization, lodgings.destroy);
 
     // Finish with setting up the lodgingId param
+    app.param('destinationId', destinations.destination);
+    app.param('tripId', trips.trip);
     app.param('lodgingId', lodgings.lodging);
 };

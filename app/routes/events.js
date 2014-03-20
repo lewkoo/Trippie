@@ -8,7 +8,7 @@ var authorization = require('./middlewares/authorization');
 
 // Authorization helpers
 var hasAuthorization = function(req, res, next) {
-	if (req.event.id !== req.event.id){ //req.user.id) {
+	if (req.trip.user.id !== req.user.id) {
         return res.send(401, 'User is not authorized');
     }
     next();
@@ -16,13 +16,13 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(app) {
     app.get('/trips/:tripId/destinations/:destinationId/events', events.all);
-    app.put('/trips/:tripId/destinations/:destinationId/events', authorization.requiresLogin, events.create);
     app.post('/trips/:tripId/destinations/:destinationId/events', authorization.requiresLogin, events.create);
+    app.get('/trips/:tripId/destinations/:destinationId/events/:eventId', events.show);
     app.put('/trips/:tripId/destinations/:destinationId/events/:eventId', authorization.requiresLogin, hasAuthorization, events.update);
     app.del('/trips/:tripId/destinations/:destinationId/events/:eventId', authorization.requiresLogin, hasAuthorization, events.destroy);
 
     // Finish with setting up the params
-    app.param('eventId', events.event);
     app.param('destinationId', destinations.destination);
     app.param('tripId', trips.trip);
+    app.param('eventId', events.event);
 };

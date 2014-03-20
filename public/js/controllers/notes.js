@@ -23,39 +23,37 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
     };
 
     $scope.remove = function(note) {
-        if (confirm('Delete the note titled ' + note.name + '?')) {
-            if (note) {
-                Destinations.get({ tripId: $routeParams.tripId, destinationId: $routeParams.destinationId }, function(destination) {
-                    var noteList = destination.noteIDs;
-                    var len = noteList.length;
-                    var i = 0, found = false;
-                    while(!found && i !== len){
-                        var currNoteId = noteList[i]._id;
-                        var noteId = note._id;
-                        if(currNoteId === noteId){
-                            found = true;
-                        } else
-                            i++;
-                    }
-                    if(found) {
-                        noteList.splice(i, 1);
-                    }
+        if (note) {
+            Destinations.get({ tripId: $routeParams.tripId, destinationId: $routeParams.destinationId }, function(destination) {
+                var noteList = destination.noteIDs;
+                var len = noteList.length;
+                var i = 0, found = false;
+                while(!found && i !== len){
+                    var currNoteId = noteList[i]._id;
+                    var noteId = note._id;
+                    if(currNoteId === noteId){
+                        found = true;
+                    } else
+                        i++;
+                }
+                if(found) {
+                    noteList.splice(i, 1);
+                }
 
-                    destination.$update({ tripId: $routeParams.tripId }, function () {
-                        note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, noteId: note._id });
+                destination.$update({ tripId: $routeParams.tripId }, function () {
+                    note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, noteId: note._id });
 
-                        for (var j in $scope.notes) {
-                            if ($scope.notes[j] === note) {
-                                $scope.notes.splice(i, 1);
-                            }
+                    for (var j in $scope.notes) {
+                        if ($scope.notes[j] === note) {
+                            $scope.notes.splice(i, 1);
                         }
-                    });
+                    }
                 });
-            }
-            else {
-                $scope.note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
-                $location.path('notes');
-            }
+            });
+        }
+        else {
+            $scope.note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
+            $location.path('notes');
         }
     };
 

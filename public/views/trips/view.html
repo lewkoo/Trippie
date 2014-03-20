@@ -18,17 +18,19 @@
 
             <div class="destination-info">
                 <div class="row">
-                    <div class="col-sm-10"><a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}" class="name">{{destination.name}}</a></div>
-                    <div class="col-md-2 text-right destination-options">
-                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
-                        <span data-ng-if="!$first && !$last && trip.destinationList.length > 3"><a class="link" data-ng-click="removeDestination($index)"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
+                    <div class="col-sm-10">
+                        <a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}" class="name pointer">{{destination.name}}</a>
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <a class="pointer" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
+                        <a class="pointer" data-ng-if="!$first && !$last && trip.destinationList.length > 3" data-ng-click="removeDestination($index)"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/events">{{destination.eventIDs.length}} events</a><br/>
-                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}">{{destination.lodgingIDs.length}} lodgings</a><br/>
-                        <a class="" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}">{{destination.noteIDs.length}} notes</a><br/>
+                        <a class="pointer" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}">{{destination.eventIDs.length}} events</a><br/>
+                        <a class="pointer" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}">{{destination.lodgingIDs.length}} lodgings</a><br/>
+                        <a class="pointer" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}">{{destination.noteIDs.length}} notes</a><br/>
                     </div>
                 </div>
             </div>
@@ -42,7 +44,7 @@
             <br/>
             <div class="row" ng-if="!$last">
                 <div class="col-sm-12 text-center">
-                    <a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/create" class="name"><button type="button" class="btn btn-default" data-ng-click="">Insert Destination</button></a> <!-- TODO figure out flow for inserting dest -->
+                    <a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/create" class="name"><button type="button" class="btn btn-default" data-ng-click="">Insert Destination</button></a>
                 </div>
             </div>
             <br/>

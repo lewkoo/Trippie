@@ -18,7 +18,7 @@ angular.module('trippie').config(['$routeProvider',
             templateUrl: 'views/trips/view.html'
         }).
         // *************** Destinations *************** 
-        when('/trips/:tripId/destinations/:destinationId/', {
+        when('/trips/:tripId/destinations/:destinationId', {
             templateUrl: 'views/destinations/view.html'
         }).
         when('/trips/:tripId/destinations/:destinationId/create', {
@@ -33,10 +33,10 @@ angular.module('trippie').config(['$routeProvider',
         }).
         // *************** Events *************** 
         when('/trips/:tripId/destinations/:destinationId/events', {
-            templateUrl: 'views/destinations/viewEvents.html'
+            templateUrl: 'views/destinations/view.html'
         }).
-        when('/trips/:tripId/destinations/:destinationId/createEvent', {
-            templateUrl: 'views/events/create.html'
+        when('/trips/:tripId/destinations/:destinationId/events/:eventId', {
+            templateUrl: 'views/destinations/view.html'
         }).
         when('/', {
             templateUrl: 'views/index.html'

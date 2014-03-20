@@ -36,7 +36,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
                     var len = trip.destinationList.length;
                     var i = 0, found = false;
                     while(!found && i < len){
-                        if(trip.destinationList[i]._id === $scope.insertAfter)
+                        if(trip.destinationList[i]._id === $scope.insertAfter || trip.destinationList[i] === $scope.insertAfter)
                             found = true;
                         i++;
                     }

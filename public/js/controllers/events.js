@@ -1,11 +1,9 @@
 'use strict';
 
-angular.module('trippie.events').controller('EventsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Events', function ($scope, $routeParams, $location, Global, Trips, Destinations, Events) {
+angular.module('trippie.events').controller('EventsController', ['$scope', '$routeParams', '$route', '$modal', '$location', 'Global', 'Trips', 'Destinations', 'Events', function ($scope, $routeParams, $route, $modal, $location, Global, Trips, Destinations, Events) {
     $scope.global = Global;
 
     $scope.today = function() {
-        $scope.eventStartDate = new Date();
-        $scope.eventEndDate = new Date();
         $scope.minDate = new Date();
     };
     $scope.today();
@@ -13,75 +11,100 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
     $scope.create = function() {
         var event = new Events({
             name: this.name,
-            info: this.information,
+            information: this.information,
             eventStartDate: this.eventStartDate,
             eventEndDate: this.eventEndDate,
             destinationID: $routeParams.destinationId
         });
-        var destination = $scope.destination;
         event.$save({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
-            destination.eventIDs = event._id;
-            destination.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
-                $location.path('trips/'+$routeParams.tripId+'/destinations/'+$routeParams.destinationId+'/events');
-            });
+            $route.reload();
         });
     };
 
     $scope.remove = function(event) {
         if (event) {
-            event.$remove();
-
-            for (var i in $scope.events) {
-                if ($scope.events[i] === event) {
-                    $scope.events.splice(i, 1);
+            var mTripId = $routeParams.tripId;
+            var mDestinationId = $routeParams.destinationId;
+            Destinations.get({ tripId: mTripId, destinationId: mDestinationId }, function(destination) {
+                var eventList = destination.eventIDs;
+                var len = eventList.length;
+                var i = 0, found = false;
+                while (!found && i < len) {
+                    if (eventList[i]._id === event._id || eventList[i] === event._id) {
+                        found = true;
+                    } else
+                        i++;
                 }
-            }
-        }
-        else {
-            $scope.event.$remove();
-            $location.path('events');
+                if(found) {
+                    eventList.splice(i, 1);
+                }
+
+                destination.$update({ tripId: mTripId, destinationId: mDestinationId }, function () {
+                    for (var j=0; j < $scope.events.length; j++) {
+                        if ($scope.events[j] === event) {
+                            $scope.events.splice(i, 1);
+                        }
+                    }
+                    event.$remove({tripId: mTripId, destinationId: mDestinationId, eventId: event._id });
+                    $location.path('trips/' + mTripId + '/destinations/' + mDestinationId);
+                });
+            });
         }
     };
 
     $scope.update = function() {
         var event = $scope.event;
-        if (!event.updated) {
-            event.updated = [];
-        }
-        event.updated.push(new Date().getTime());
-
-        event.$update(function() {
-            $location.path('events/' + event._id);
+        var mTripId = $routeParams.tripId;
+        var mDestinationId = $routeParams.destinationId;
+        event.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, eventId: event._id}, function() {
+            $location.path('trips/' + mTripId + '/destinations/' + mDestinationId);
         });
     };
 
     $scope.find = function() {
-
-        Events.query({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId},function(events) {
+        Events.query({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function(events) {
             $scope.events = events;
         });
     };
 
-    $scope.findOne = function() {
+    $scope.findOne = function(id) {
+        var mTripId = $routeParams.tripId;
+        var mDestinationId = $routeParams.destinationId;
         Events.get({
-            tripId: $routeParams.tripId,
-            destinationId: $routeParams.destinationId,
-            eventId: $routeParams.eventId
+            tripId: mTripId,
+            destinationId: mDestinationId,
+            eventId: id
         }, function(event) {
             $scope.event = event;
 
             Destinations.get({
-                tripId: $routeParams.tripId,
-                destinationId: $routeParams.destinationId
+                tripId: mTripId,
+                destinationId: mDestinationId
             }, function(destination) {
                 $scope.destination = destination;
 
                 Trips.get({
-                    tripId: $routeParams.tripId
+                    tripId: mTripId
                 }, function(trip) {
                     $scope.trip = trip;
                 });
             });
+        });
+    };
+
+    $scope.openModalCreate = function() {
+        $modal.open({
+            templateUrl: 'views/events/partials/modalCreate.html',
+            controller: function ($scope, $modalInstance) {
+                $scope.save = function () {
+                    this.create();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }
         });
     };
 

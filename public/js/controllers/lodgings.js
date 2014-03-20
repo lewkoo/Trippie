@@ -23,39 +23,37 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
     };
 
     $scope.remove = function(lodging) {
-        if (confirm('Delete the lodging titled ' + lodging.name + '?')) {
-            if (lodging) {
-                Destinations.get({ tripId: $routeParams.tripId, destinationId: $routeParams.destinationId }, function(destination) {
-                    var lodgingList = destination.lodgingIDs;
-                    var len = lodgingList.length;
-                    var i = 0, found = false;
-                    while(!found && i !== len){
-                        var currNoteId = lodgingList[i]._id;
-                        var lodgingId = lodging._id;
-                        if(currNoteId === lodgingId){
-                            found = true;
-                        } else
-                            i++;
-                    }
-                    if(found) {
-                        lodgingList.splice(i, 1);
-                    }
+        if (lodging) {
+            Destinations.get({ tripId: $routeParams.tripId, destinationId: $routeParams.destinationId }, function(destination) {
+                var lodgingList = destination.lodgingIDs;
+                var len = lodgingList.length;
+                var i = 0, found = false;
+                while(!found && i !== len){
+                    var currNoteId = lodgingList[i]._id;
+                    var lodgingId = lodging._id;
+                    if(currNoteId === lodgingId){
+                        found = true;
+                    } else
+                        i++;
+                }
+                if(found) {
+                    lodgingList.splice(i, 1);
+                }
 
-                    destination.$update({ tripId: $routeParams.tripId }, function () {
-                        lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, lodgingId: lodging._id });
+                destination.$update({ tripId: $routeParams.tripId }, function () {
+                    lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, lodgingId: lodging._id });
 
-                        for (var j in $scope.lodgings) {
-                            if ($scope.lodgings[j] === lodging) {
-                                $scope.lodgings.splice(i, 1);
-                            }
+                    for (var j in $scope.lodgings) {
+                        if ($scope.lodgings[j] === lodging) {
+                            $scope.lodgings.splice(i, 1);
                         }
-                    });
+                    }
                 });
-            }
-            else {
-                $scope.lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
-                $location.path('lodgings');
-            }
+            });
+        }
+        else {
+            $scope.lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
+            $location.path('lodgings');
         }
     };
 
@@ -122,4 +120,5 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
         else
             $scope.showEventDetails = index;
     };
+    
 }]);
