@@ -34,32 +34,29 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     };
 
     $scope.remove = function(trip) {
-        if (trip) {
-            trip.$remove();
-
-            for (var i in $scope.trips) {
-                if ($scope.trips[i] === trip) {
-                    $scope.trips.splice(i, 1);
-                }
+        for (var i in $scope.trips) {
+            if ($scope.trips[i] === trip) {
+                $scope.trips.splice(i, 1);
             }
         }
-        else {
-            $scope.trip.$remove(function() {
-                $location.path('trips');
-            });
-        }
+
+        $scope.trip.$remove(function() {
+            $location.path('trips');
+        });
     };
 
     $scope.removeDestination = function(index) {
-        var destination = $scope.trip.destinationList[index];
-        $scope.trip.destinationList.splice(index, 1);
-        var destId = destination._id ? destination._id : destination;
-        Destinations.remove({tripId: $routeParams.tripId, destinationId: destId}, function(){
-            $scope.trip.$update(function(trip){
-                $scope.trip = trip;
+        if (confirm('Delete destination \"' + $scope.trip.destinationList[index].name + '\"?')) {
+            var destination = $scope.trip.destinationList[index];
+            $scope.trip.destinationList.splice(index, 1);
+            var destId = destination._id ? destination._id : destination;
+            Destinations.remove({tripId: $routeParams.tripId, destinationId: destId}, function(){
+                $scope.trip.$update(function(trip){
+                    $scope.trip = trip;
+                });
             });
-        });
-        $location.path('trips/' + $routeParams.tripId);
+            $location.path('trips/' + $routeParams.tripId);
+        }
     };
 
     $scope.update = function() {

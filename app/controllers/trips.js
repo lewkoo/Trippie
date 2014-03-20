@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
     Trip = mongoose.model('Trip'),
     Destination = mongoose.model('Destination'),
+    destinations = require('./destinations.js'),
     Transportation = mongoose.model('Transportation'),
     _ = require('lodash');
   
@@ -75,10 +76,7 @@ exports.create = function(req, res) {
                 trip: trip
             });
         } else {
-            console.log('Created:\n %s', startDestTransportation);
-
             startDest.outgoingTransportationID = startDestTransportation;
-
             startDest.save(startDestSaveFxn);
         }
     };
@@ -91,7 +89,6 @@ exports.create = function(req, res) {
                 trip: trip
             });
         } else {
-            console.log('Created:\n %s', startDest);
             trip.destinationList[0] = startDest._id;
             initialDestTransportation.save(initialDestTransportationSaveFxn);
         }
@@ -105,10 +102,7 @@ exports.create = function(req, res) {
                 trip: trip
             });
         } else {
-            console.log('Created:\n %s', initialDestTransportation);
-
             initialDest.outgoingTransportationID = initialDestTransportation;
-
             initialDest.save(initialDestSaveFxn);
         }
     };
@@ -116,15 +110,12 @@ exports.create = function(req, res) {
     // 4
     initialDestSaveFxn = function(err) {
         if (err) {
-            console.log('Debug: error');
             return res.send('users/signup', {
                 errors: err.errors,
                 trip: trip
             });
         } else {
-            console.log('Created:\n %s', initialDest);
             trip.destinationList[1] = initialDest._id;
-
             endDest.save(endDestSaveFxn);
         }
     };
@@ -137,7 +128,6 @@ exports.create = function(req, res) {
                 trip: trip
             });
         } else {
-            console.log('Created:\n %s', endDest);
             trip.destinationList[2] = endDest._id;
             trip.save(tripSaveFxn);
         }
@@ -151,7 +141,6 @@ exports.create = function(req, res) {
                 trip: trip
             });
         } else {
-            console.log('Created:\n %s', trip);
             res.jsonp(trip);
         }
     };
@@ -185,26 +174,22 @@ exports.update = function(req, res) {
  */
 exports.destroy = function(req, res) {
     var trip = req.trip;
-
-    var removeTransportation = function(err) {
-        if (err) {
-            console.log('Error deleting transportation: ' + trip.destinationList[i].outgoingTransportationID +
-                'in trip: ' + trip);
-        }
-    };
+    var mDestination, i;
 
     var removeDestination = function(err) {
         if (err) {
-            console.log('Error deleting destination: ' + trip.destinationList[i] + 'in trip: ' + trip);
+            console.log('Error deleting destination: (' + mDestination._id +
+                ') from trip: ' + trip.name + ' (' + trip._id + ')');
         }
     };
 
-    for (var i=0; i < trip.destinationList.length; i++) {
-        if (trip.destinationList[i].outgoingTransportationID) {
-            Transportation.remove({id: trip.destinationList[i].outgoingTransportationID._id}, removeTransportation);
-        }
-
-        trip.destinationList[i].remove(removeDestination);
+    // remove each destinations contained documents as well as each destination in destinationList
+    for (i=0; i < trip.destinationList.length; i++) {
+        mDestination = trip.destinationList[i];
+        // remove dest and its contained documents
+        destinations.destroyContainedDocuments(mDestination);
+        // remove the destination
+        mDestination.remove(removeDestination);
     }
 
     trip.remove(function(err) {

@@ -24,7 +24,6 @@ exports.lodging = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var lodging = new Lodging(req.body);
-    lodging.user = req.user;
     lodging.destinationID = req.destination._id;
 
     lodging.save(function(err) {
@@ -96,13 +95,13 @@ exports.show = function(req, res) {
  * List of Lodgings
  */
 exports.all = function(req, res) {
-    Lodging.find({ destinationID: req.destination._id }).sort('-created').exec(function(err, notes) {
+    Lodging.find({ destinationID: req.destination._id }).sort('-created').exec(function(err, lodgings) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(notes);
+            res.jsonp(lodgings);
         }
     });
 };

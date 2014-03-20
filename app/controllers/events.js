@@ -5,7 +5,6 @@
  */
 var mongoose = require('mongoose'),
     Event = mongoose.model('Event'),
-    Destination = mongoose.model('Destination'),
     _ = require('lodash');
   
 /**
@@ -24,26 +23,9 @@ exports.event = function(req, res, next, id) {
  * Create
  */
 exports.create = function(req, res) {
-    /*if(String(req.trip.user._id) === String(req.user._id)) {
-        console.log('reached create');
-    }
-        Destination.findOne({name: 'stubDestination', tripID: req.trip._id}).exec(function(err, destination)) {
-            if (err) {
-                res.render('error', {
-                    status: 500
-                });
-            } else {
-                if (!destination) {
-                    var event = new Event(req.body);
-                    var destination = new Destination({ 
-                        name: 'stubDestination',
-                        eventIDs: []
-                    });
-                    destination.save(function(err) {
-                        event = 
-                    });
-                    event = _.extend(event, destination);*/
     var event = new Event(req.body);
+    event.destinationID = req.destination._id;
+
     event.save(function(err) {
         if (err) {
             return res.send('users/signup', {
@@ -51,25 +33,19 @@ exports.create = function(req, res) {
                 event: event
             });
         } else {
-            res.jsonp(event);
-        }
-    });
-};
-/*
-exports.createEvent = function(req, res) {
-    var event = new Event(req.body);
-    event.save(function(err) {
-        if (err) {
-            return res.send('trips', {
-                errors: err.errors,
-                event: event
+            req.destination.eventIDs.push(event._id);
+            req.destination.save(function (err) {
+                if (err) {
+                    return res.send('users/signup', {
+                        errors: err.errors
+                    });
+                }
+                res.jsonp(event);
             });
-        } else {
-            res.jsonp(event);
         }
     });
 };
-*/
+
 /**
  * Update
  */
@@ -113,37 +89,7 @@ exports.destroy = function(req, res) {
  * Show
  */
 exports.show = function(req, res) {
-
-    if(String(req.event._id) === String(req.event._id))//String(req.user._id))
-    {
-        res.jsonp(req.event);
-    }else{
-        res.redirect('/');
-    }
-
-};
-
-/**
- * Show List
- */
-exports.showList = function(req, res) {
-    console.log('logging: '+req.body);
-    if(String(req.trip.user._id) === String(req.user._id))
-    {
-        console.log('reached showList');
-        Destination.findOne({name: 'stubDestination', tripID: req.trip._id}).exec(function(err, destination) {
-            if (err) {
-                res.render('error', {
-                    status: 500
-                });
-            } else {
-                res.jsonp(destination.eventIDs);
-            }
-        });
-    } else {
-        res.redirect('/');
-        console.log('showList redirect');
-    }
+    res.jsonp(req.event);
 };
 
 /**
