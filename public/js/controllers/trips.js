@@ -46,17 +46,15 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
     };
 
     $scope.removeDestination = function(index) {
-        if (confirm('Delete destination \"' + $scope.trip.destinationList[index].name + '\"?')) {
-            var destination = $scope.trip.destinationList[index];
-            $scope.trip.destinationList.splice(index, 1);
-            var destId = destination._id ? destination._id : destination;
-            Destinations.remove({tripId: $routeParams.tripId, destinationId: destId}, function(){
-                $scope.trip.$update(function(trip){
-                    $scope.trip = trip;
-                });
+        var destination = $scope.trip.destinationList[index];
+        $scope.trip.destinationList.splice(index, 1);
+        var destId = destination._id ? destination._id : destination;
+        Destinations.remove({tripId: $routeParams.tripId, destinationId: destId}, function(){
+            $scope.trip.$update(function(trip){
+                $scope.trip = trip;
             });
-            $location.path('trips/' + $routeParams.tripId);
-        }
+        });
+        $location.path('trips/' + $routeParams.tripId);
     };
 
     $scope.update = function() {
