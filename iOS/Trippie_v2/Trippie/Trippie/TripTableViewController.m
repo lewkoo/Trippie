@@ -66,4 +66,9 @@
     return cell;
 }
 
+- (IBAction)unwindToTrips:(UIStoryboardSegue *)segue
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
