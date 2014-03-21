@@ -25,4 +25,5 @@ module.exports = function(app, passport) {
 
     // ** REST CALLS **
     app.get('/api/trips', passport.authenticate('basic', { session: false }), trips.all);
+    app.post('/api/trips', passport.authenticate('basic', { session: false }), trips.create);
 };
