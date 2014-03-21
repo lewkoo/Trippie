@@ -62,14 +62,22 @@ describe('<Unit Test>', function() {
             });
 
         });
- 
-       afterEach(function(done) {
+        describe('Method Delete', function() {
+            it('should be able to delete without problems', function(done) {
+                return Destination.remove(destination._id, function(err, event) {
+                    should.not.exist(err);
+                    done();
+                });
+            });
+        });
+
+        afterEach(function(done) {
             Destination.remove({});
             Trip.remove({});
             User.remove({});
             done();
         });
-       after(function(done) {
+        after(function(done) {
             Destination.remove().exec();
             Trip.remove().exec();
             User.remove().exec();

@@ -233,6 +233,15 @@ describe('Method update', function() {
 });
 });
 
+describe('Method Delete', function() {
+    it('should be able to delete without problems', function(done) {
+        return Event.remove(event._id, function(err, event) {
+            should.not.exist(err);
+            done();
+        });
+    });
+});
+
 afterEach(function(done) {
     Event.remove({});
     Destination.remove({});

@@ -1,17 +1,17 @@
 <div class='col-md-12' data-ng-controller="LodgingsController" data-ng-init='find()'>
 	<div class="lodgings">
-		<div class='name'>Lodgings<a class="pull-right add-link" ng-click="openModalCreate()">+ Add</a></div>
+		<div class='name'>Lodgings<a class="pull-right" ng-click="openModalCreate()">+ Add</a></div>
 		<div data-ng-repeat="lodging in lodgings">
 			<b><span ng-click="findOne(lodging._id)">{{lodging.name}}</span></b> - 
-			<a class="pointer" data-ng-click='viewDetails($index)' data-ng-hide="showEventDetails === $index"> View Details</a>
-			<a class="pointer" data-ng-click='viewDetails($index)' data-ng-show="showEventDetails === $index"> Hide Details</a>
-			
-			<div class="details" data-ng-show="showEventDetails === $index">
-				<b>Address</b>: {{lodging.address}}<br />
-			    <b>Arrival Date</b>: {{lodging.arrivalDate | date: 'shortDate'}}<br />
-			    <b>Departure Date</b>: {{lodging.departureDate | date: 'shortDate'}}<br />
-			    <b>Information</b>: {{lodging.information}}<br/>
-			    <a ng-click="remove(lodging)" class='delete-link'>Delete</a>
+			<a class="pointer" data-ng-click='viewDetails($index)' data-ng-hide="showLodgingDetails === $index"> View Details</a>
+			<a class="pointer" data-ng-click='viewDetails($index)' data-ng-show="showLodgingDetails === $index"> Hide Details</a>
+			<div class="details" data-ng-show="showLodgingDetails === $index">
+				<b>Address:</b> {{lodging.address}}<br />
+			    <b>Arrival Date:</b> {{lodging.arrivalDate | date:'longDate'}}<br />
+			    <b>Depature Date:</b> {{lodging.departureDate | date:'longDate'}}<br />
+			    <b>Information:</b> 
+			    <div>{{lodging.information}}</div>
+			    <a ng-click="openModalEdit(lodging)">Edit</a>   -   <a ng-click="remove(lodging)">Delete</a><br/>
 			</div>
 		</div>
 		<div data-ng-hide="!lodgings || lodgings.length">No lodgings yet..</div>

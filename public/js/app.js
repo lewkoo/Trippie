@@ -11,7 +11,6 @@ angular.module('trippie', [
 	'trippie.destinations',
 	'trippie.events',
 	'trippie.notes',
-	'trippie.articles',
 	'trippie.transportations',
 	'trippie.lodgings',
 	'ui.bootstrap.datetimepicker',

@@ -5,6 +5,8 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
     $scope.today = function() {
         $scope.minDate = new Date();
+        $scope.eventStartDate = new Date();
+        $scope.eventEndDate = new Date();
     };
     $scope.today();
 
@@ -46,7 +48,6 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
                         }
                     }
                     event.$remove({tripId: mTripId, destinationId: mDestinationId, eventId: event._id });
-                    $location.path('trips/' + mTripId + '/destinations/' + mDestinationId);
                 });
             });
         }
@@ -54,10 +55,9 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
     $scope.update = function() {
         var event = $scope.event;
-        var mTripId = $routeParams.tripId;
-        var mDestinationId = $routeParams.destinationId;
+        
         event.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, eventId: event._id}, function() {
-            $location.path('trips/' + mTripId + '/destinations/' + mDestinationId);
+            $route.reload();
         });
     };
 
@@ -104,6 +104,39 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
                 $scope.cancel = function () {
                     $modalInstance.dismiss('cancel');
                 };
+            }
+        });
+    };
+
+    $scope.openModalEdit = function(event) {
+        $scope.event = event;
+        $modal.open({
+            templateUrl: 'views/events/partials/modalEdit.html',
+            controller: function ($scope, $modalInstance, event) {
+                var eventToUpdate = new Events({
+                    _id: event._id,
+                    name: event.name,
+                    information: event.information,
+                    eventStartDate: event.eventStartDate,
+                    eventEndDate: event.eventEndDate,
+                    destinationID: event.destinationId
+                });
+                $scope.eventToUpdate = eventToUpdate;
+                
+                $scope.updateEvent = function () {
+                    $scope.event = $scope.eventToUpdate;
+                    this.update();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                event: function () {
+                    return $scope.event;
+                }
             }
         });
     };

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83032B0918DBCB0D0065FEF3 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */; };
 		83262ACF18DAA22300F60A3D /* TripTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83262ACE18DAA22300F60A3D /* TripTableViewController.m */; };
 		836F873F18D016E600CAF338 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871918D016E600CAF338 /* AFHTTPRequestOperation.m */; };
 		836F874018D016E600CAF338 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871B18D016E600CAF338 /* AFHTTPRequestOperationManager.m */; };
@@ -61,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83032B0718DBCB0D0065FEF3 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
+		83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
 		83262ACD18DAA22300F60A3D /* TripTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTableViewController.h; sourceTree = "<group>"; };
 		83262ACE18DAA22300F60A3D /* TripTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTableViewController.m; sourceTree = "<group>"; };
 		836F871818D016E600CAF338 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -162,6 +165,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83032B0618DBCA320065FEF3 /* AddControllers */ = {
+			isa = PBXGroup;
+			children = (
+				83032B0718DBCB0D0065FEF3 /* AddTripViewController.h */,
+				83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */,
+			);
+			name = AddControllers;
+			sourceTree = "<group>";
+		};
 		836F871518D016E600CAF338 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +305,7 @@
 				B8154BDA18D370AF004E53EC /* SessionManager.m */,
 				83262ACD18DAA22300F60A3D /* TripTableViewController.h */,
 				83262ACE18DAA22300F60A3D /* TripTableViewController.m */,
+				83032B0618DBCA320065FEF3 /* AddControllers */,
 			);
 			path = Trippie;
 			sourceTree = "<group>";
@@ -433,6 +446,7 @@
 				83262ACF18DAA22300F60A3D /* TripTableViewController.m in Sources */,
 				836F873F18D016E600CAF338 /* AFHTTPRequestOperation.m in Sources */,
 				836F874C18D016E600CAF338 /* UIImageView+AFNetworking.m in Sources */,
+				83032B0918DBCB0D0065FEF3 /* AddTripViewController.m in Sources */,
 				9BC45B3318D2AB7E00D6A54D /* TrippieDestination.m in Sources */,
 				83F819A118D005A700195755 /* TrippieAppDelegate.m in Sources */,
 				836F874018D016E600CAF338 /* AFHTTPRequestOperationManager.m in Sources */,

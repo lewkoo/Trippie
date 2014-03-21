@@ -15,4 +15,6 @@
 @property NSArray *tripList;
 @property NSArray *finTripList;
 
+- (IBAction)unwindToTrips:(UIStoryboardSegue *)segue;
+
 @end

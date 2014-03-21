@@ -47,21 +47,21 @@ exports.create = function(req, res) {
 };
 
 /**
- * Update a notes
+ * Update a note
  */
 exports.update = function(req, res) {
-    var notes = req.notes;
+    var note = req.note;
 
-    notes = _.extend(notes, req.body);
+    note = _.extend(note, req.body);
 
-    notes.save(function(err) {
+    note.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                notes: notes
+                note: note
             });
         } else {
-            res.jsonp(notes);
+            res.jsonp(note);
         }
     });
 };
