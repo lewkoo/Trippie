@@ -5,18 +5,6 @@
 	margin-top: 10px;
 }
 
-.lodgings .add-link {
-	cursor: pointer;
-}
-
-.lodgings .delete-link {
-	cursor: pointer;
-}
-
-.lodgings .name {
-	font-weight: bold;
-}
-
 .lodgings .details {
 	padding-left: 15px;
 }

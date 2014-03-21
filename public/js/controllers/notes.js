@@ -17,9 +17,6 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
         note.$save({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
             $route.reload();
         });
-
-        this.name = '';
-        this.information = '';
     };
 
     $scope.remove = function(note) {
@@ -51,21 +48,12 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
                 });
             });
         }
-        else {
-            $scope.note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
-            $location.path('notes');
-        }
     };
 
     $scope.update = function() {
         var note = $scope.note;
-        if (!note.updated) {
-            note.updated = [];
-        }
-        note.updated.push(new Date().getTime());
-
-        note.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
-            $location.path('notes/' + note._id);
+        note.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, noteId: note._id}, function() {
+            $route.reload();
         });
     };
 
@@ -115,4 +103,36 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
             }
         });
     };
+
+    $scope.openModalEdit = function(note) {
+        $scope.note = note;
+        $modal.open({
+            templateUrl: 'views/notes/partials/modalEdit.html',
+            controller: function ($scope, $modalInstance, note) {
+                var noteToUpdate = new Notes({
+                    _id: note._id,
+                    name: note.name,
+                    information: note.information,
+                    destinationId: note.destinationId
+                });
+                $scope.noteToUpdate = noteToUpdate;
+
+                $scope.updateNote = function () {
+                    $scope.note = $scope.noteToUpdate;
+                    this.update();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                note: function () {
+                    return $scope.note;
+                }
+            }
+        });
+    };
+
 }]);

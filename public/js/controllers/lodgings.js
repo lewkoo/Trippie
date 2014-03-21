@@ -51,21 +51,13 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
                 });
             });
         }
-        else {
-            $scope.lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId});
-            $location.path('lodgings');
-        }
     };
 
     $scope.update = function() {
         var lodging = $scope.lodging;
-        if (!lodging.updated) {
-            lodging.updated = [];
-        }
-        lodging.updated.push(new Date().getTime());
 
-        lodging.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId}, function() {
-            $location.path('lodgings/' + lodging._id);
+        lodging.$update({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, lodgingId: lodging._id}, function() {
+            $route.reload();
         });
     };
 
@@ -114,11 +106,44 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
         });
     };
 
+    $scope.openModalEdit = function(lodging) {
+        $scope.lodging = lodging;
+        $modal.open({
+            templateUrl: 'views/lodgings/partials/modalEdit.html',
+            controller: function ($scope, $modalInstance, lodging) {
+                var lodgingToUpdate = new Lodgings({
+                    _id: lodging._id,
+                    name: lodging.name,
+                    address: lodging.address,
+                    information: lodging.information,
+                    arrivalDate: lodging.arrivalDate,
+                    departureDate: lodging.departureDate
+                });
+                $scope.lodgingToUpdate = lodgingToUpdate;
+                
+                $scope.updateLodging = function () {
+                    $scope.lodging = $scope.lodgingToUpdate;
+                    this.update();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                lodging: function () {
+                    return $scope.lodging;
+                }
+            }
+        });
+    };
+
     $scope.viewDetails = function (index) {
-        if ($scope.showEventDetails === index)
-            $scope.showEventDetails = null;
+        if ($scope.showLodgingDetails === index)
+            $scope.showLodgingDetails = null;
         else
-            $scope.showEventDetails = index;
+            $scope.showLodgingDetails = index;
     };
     
 }]);
