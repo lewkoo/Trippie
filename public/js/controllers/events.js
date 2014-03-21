@@ -5,6 +5,8 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
 
     $scope.today = function() {
         $scope.minDate = new Date();
+        $scope.eventStartDate = new Date();
+        $scope.eventEndDate = new Date();
     };
     $scope.today();
 
