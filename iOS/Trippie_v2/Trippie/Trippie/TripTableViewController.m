@@ -13,6 +13,7 @@
 
 - (void)viewDidLoad
 {
+    self.navigationItem.hidesBackButton = YES;
     self.session = [SessionManager getInstance];
     [super viewDidLoad];
     self.finTripList = [[NSArray alloc] init];
@@ -68,7 +69,9 @@
 
 - (IBAction)unwindToTrips:(UIStoryboardSegue *)segue
 {
+    [self loadInitialData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

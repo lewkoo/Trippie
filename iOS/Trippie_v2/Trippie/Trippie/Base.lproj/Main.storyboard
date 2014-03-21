@@ -250,22 +250,26 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </tableViewSection>
                         </sections>
                         <connections>
-                            <outlet property="dataSource" destination="pCH-Nr-dEO" id="KQq-9W-K6y"/>
                             <outlet property="delegate" destination="pCH-Nr-dEO" id="gaj-4s-Ma3"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add New Trip" id="zp2-pI-b7V">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="gee-xT-OHx">
                             <connections>
-                                <segue destination="XmT-Lp-Hm6" kind="unwind" unwindAction="unwindToTrips:" id="mO3-Gz-76q"/>
+                                <segue destination="XmT-Lp-Hm6" kind="unwind" identifier="unwindToTrips" unwindAction="unwindToTrips:" id="mO3-Gz-76q"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="done" id="QAO-Yb-kDI">
+                        <barButtonItem key="rightBarButtonItem" title="Add Trip" id="QAO-Yb-kDI">
                             <connections>
-                                <segue destination="XmT-Lp-Hm6" kind="unwind" unwindAction="unwindToTrips:" id="KTH-3B-lRa"/>
+                                <action selector="addTrip" destination="pCH-Nr-dEO" id="eO0-lE-hML"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dpEndDate" destination="saz-pw-i5r" id="yuh-tG-lRu"/>
+                        <outlet property="dpStartDate" destination="XUl-nV-zll" id="w9J-BE-bjQ"/>
+                        <outlet property="txtTripName" destination="dnG-zL-yZM" id="RUJ-LQ-mAV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vel-FZ-faw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="XmT-Lp-Hm6" userLabel="Exit" sceneMemberID="exit"/>

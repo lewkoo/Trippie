@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SessionManager.h"
 
 @interface AddTripViewController : UITableViewController
+
+
+@property SessionManager *session;
+@property (weak, nonatomic) IBOutlet UITextField *txtTripName;
+@property (weak, nonatomic) IBOutlet UIDatePicker *dpStartDate;
+@property (weak, nonatomic) IBOutlet UIDatePicker *dpEndDate;
+
+-(IBAction)addTrip;
 
 @end
