@@ -3,6 +3,13 @@
 angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '$routeParams', '$location', '$route', '$modal', 'Global', 'Lodgings', 'Destinations', 'Trips', function ($scope, $routeParams, $location, $route, $modal, Global, Lodgings, Destinations, Trips) {
     $scope.global = Global;
 
+    $scope.today = function() {
+        $scope.minDate = new Date();
+        $scope.arrivalDate = new Date();
+        $scope.departureDate = new Date();
+    };
+    $scope.today();
+
     $scope.create = function() {
         var lodging = new Lodgings({
             name: this.name,
