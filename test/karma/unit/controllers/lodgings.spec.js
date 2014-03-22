@@ -110,7 +110,8 @@
                         return {
                             name: 'A Place for Me',
                             address: '4331 Aiur Rd.',
-                            arrivalDate: '2014-06-07'
+                            arrivalDate: '2014-06-07',
+			    departureDate: '2014-06-08'
                         };
                     };
 
@@ -120,7 +121,8 @@
                             _id: '525cf20451979dea2c000001',
                             name: 'A Place for Me',
                             address: '4331 Aiur Rd.',
-                            arrivalDate: '2014-06-07'
+                            arrivalDate: '2014-06-07',
+			    departureDate: '2014-06-08'
                         };
                     };
 
@@ -128,6 +130,7 @@
                     scope.name = 'A Place for Me';
                     scope.address = '4331 Aiur Rd.';
                     scope.arrivalDate = '2014-06-07';
+		    scope.departureDate = '2014-06-08';
 
                     // test post request is sent
                     $httpBackend.expectPOST('trips/destinations/lodgings', postLodgingData()).respond(responseLodgingData());
@@ -141,6 +144,7 @@
                     expect(scope.name).toEqual('');
                     expect(scope.address).toEqual('');
                     expect(scope.arrivalDate).toEqual(null);
+                    expect(scope.departureDate).toEqual(null);
 
                     // test URL location to new object
                     expect($location.path()).toBe('/');
