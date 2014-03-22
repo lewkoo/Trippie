@@ -222,13 +222,13 @@
                 // test PUT happens correctly
                 $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/, scope.event).respond(responseEventData);
                 $httpBackend.expectGET('views/index.html').respond(200);
-                $httpBackend.expectGET('views/destinations/view.html').respond(200);
+                
                 // run controller
                 scope.update();
                 $httpBackend.flush();
 
                 // test URL location
-                expect($location.path()).toBe('/trips/' + $routeParams.tripId + '/destinations/' + $routeParams.destinationId);
+                expect($location.path()).toBe('/');
 
             });
 
