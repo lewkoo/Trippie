@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		83032B0918DBCB0D0065FEF3 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */; };
 		83262ACF18DAA22300F60A3D /* TripTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83262ACE18DAA22300F60A3D /* TripTableViewController.m */; };
+		8353C18818DDF89E00391EE0 /* TripDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353C18718DDF89E00391EE0 /* TripDetailsViewController.m */; };
 		836F873F18D016E600CAF338 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871918D016E600CAF338 /* AFHTTPRequestOperation.m */; };
 		836F874018D016E600CAF338 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871B18D016E600CAF338 /* AFHTTPRequestOperationManager.m */; };
 		836F874118D016E600CAF338 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871D18D016E600CAF338 /* AFHTTPSessionManager.m */; };
@@ -34,7 +35,7 @@
 		83F8199D18D005A700195755 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F8199C18D005A700195755 /* main.m */; };
 		83F819A118D005A700195755 /* TrippieAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F819A018D005A700195755 /* TrippieAppDelegate.m */; };
 		83F819A418D005A700195755 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F819A218D005A700195755 /* Main.storyboard */; };
-		83F819A718D005A700195755 /* TrippieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F819A618D005A700195755 /* TrippieViewController.m */; };
+		83F819A718D005A700195755 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F819A618D005A700195755 /* LoginViewController.m */; };
 		83F819A918D005A700195755 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83F819A818D005A700195755 /* Images.xcassets */; };
 		83F819B018D005A700195755 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F819AF18D005A700195755 /* XCTest.framework */; };
 		83F819B118D005A700195755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F8199018D005A700195755 /* Foundation.framework */; };
@@ -66,6 +67,8 @@
 		83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
 		83262ACD18DAA22300F60A3D /* TripTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTableViewController.h; sourceTree = "<group>"; };
 		83262ACE18DAA22300F60A3D /* TripTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTableViewController.m; sourceTree = "<group>"; };
+		8353C18618DDF89E00391EE0 /* TripDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDetailsViewController.h; sourceTree = "<group>"; };
+		8353C18718DDF89E00391EE0 /* TripDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripDetailsViewController.m; sourceTree = "<group>"; };
 		836F871818D016E600CAF338 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		836F871918D016E600CAF338 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		836F871A18D016E600CAF338 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -114,8 +117,8 @@
 		83F8199F18D005A700195755 /* TrippieAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrippieAppDelegate.h; sourceTree = "<group>"; };
 		83F819A018D005A700195755 /* TrippieAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrippieAppDelegate.m; sourceTree = "<group>"; };
 		83F819A318D005A700195755 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		83F819A518D005A700195755 /* TrippieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrippieViewController.h; sourceTree = "<group>"; };
-		83F819A618D005A700195755 /* TrippieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrippieViewController.m; sourceTree = "<group>"; };
+		83F819A518D005A700195755 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		83F819A618D005A700195755 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		83F819A818D005A700195755 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		83F819AE18D005A700195755 /* TrippieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrippieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F819AF18D005A700195755 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -172,6 +175,24 @@
 				83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */,
 			);
 			name = AddControllers;
+			sourceTree = "<group>";
+		};
+		8353C18418DDF3D600391EE0 /* ObjectClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9BC45B2E18D298CA00D6A54D /* TrippieTrip.h */,
+				9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */,
+			);
+			name = ObjectClasses;
+			sourceTree = "<group>";
+		};
+		8353C18518DDF3F600391EE0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B8154BD918D370AF004E53EC /* SessionManager.h */,
+				B8154BDA18D370AF004E53EC /* SessionManager.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		836F871518D016E600CAF338 /* Resources */ = {
@@ -287,25 +308,25 @@
 		83F8199618D005A700195755 /* Trippie */ = {
 			isa = PBXGroup;
 			children = (
+				83F819A818D005A700195755 /* Images.xcassets */,
+				83F8199718D005A700195755 /* Supporting Files */,
+				8353C18518DDF3F600391EE0 /* Utilities */,
 				836F871518D016E600CAF338 /* Resources */,
+				8353C18418DDF3D600391EE0 /* ObjectClasses */,
+				83032B0618DBCA320065FEF3 /* AddControllers */,
+				83F819A218D005A700195755 /* Main.storyboard */,
 				83F8199F18D005A700195755 /* TrippieAppDelegate.h */,
 				83F819A018D005A700195755 /* TrippieAppDelegate.m */,
-				83F819A218D005A700195755 /* Main.storyboard */,
 				9B12291D18D1072E0069793A /* TrippieTripsViewController.h */,
 				9B12291E18D1072E0069793A /* TrippieTripsViewController.m */,
 				9BC45B3418D2AD5100D6A54D /* TrippieTripViewController.h */,
 				9BC45B3518D2AD5100D6A54D /* TrippieTripViewController.m */,
-				83F819A518D005A700195755 /* TrippieViewController.h */,
-				83F819A618D005A700195755 /* TrippieViewController.m */,
-				83F819A818D005A700195755 /* Images.xcassets */,
-				83F8199718D005A700195755 /* Supporting Files */,
-				9BC45B2E18D298CA00D6A54D /* TrippieTrip.h */,
-				9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */,
-				B8154BD918D370AF004E53EC /* SessionManager.h */,
-				B8154BDA18D370AF004E53EC /* SessionManager.m */,
+				83F819A518D005A700195755 /* LoginViewController.h */,
+				83F819A618D005A700195755 /* LoginViewController.m */,
 				83262ACD18DAA22300F60A3D /* TripTableViewController.h */,
 				83262ACE18DAA22300F60A3D /* TripTableViewController.m */,
-				83032B0618DBCA320065FEF3 /* AddControllers */,
+				8353C18618DDF89E00391EE0 /* TripDetailsViewController.h */,
+				8353C18718DDF89E00391EE0 /* TripDetailsViewController.m */,
 			);
 			path = Trippie;
 			sourceTree = "<group>";
@@ -386,7 +407,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Trippie;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Chris Ventura";
 				TargetAttributes = {
 					83F8198C18D005A700195755 = {
@@ -468,7 +489,8 @@
 				836F874518D016E600CAF338 /* AFURLRequestSerialization.m in Sources */,
 				836F874818D016E600CAF338 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				836F874718D016E600CAF338 /* AFURLSessionManager.m in Sources */,
-				83F819A718D005A700195755 /* TrippieViewController.m in Sources */,
+				83F819A718D005A700195755 /* LoginViewController.m in Sources */,
+				8353C18818DDF89E00391EE0 /* TripDetailsViewController.m in Sources */,
 				83F8199D18D005A700195755 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,7 +545,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -563,7 +584,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -630,7 +650,6 @@
 		83F819C318D005A700195755 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Trippie.app/Trippie";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -653,7 +672,6 @@
 		83F819C418D005A700195755 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Trippie.app/Trippie";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
