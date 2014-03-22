@@ -227,9 +227,6 @@
                 scope.update();
                 $httpBackend.flush();
 
-                // test URL location
-                expect($location.path()).toBe('/');
-
             });
 
             it('$scope.remove() should GET the destination, remove the eventID from its eventIDs and update(PUT) the destination, ' +
@@ -263,14 +260,11 @@
                     $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/, putDestinationData).respond(responseDestinationData2);
                     // test expected DELETE request
                     $httpBackend.expectDELETE(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/).respond();
-                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
 
                     // run controller
                     scope.remove(scope.event);
                     $httpBackend.flush();
 
-                    // test URL location
-                    expect($location.path()).toBe('/trips/' + scope.tripId + '/destinations/' + scope.destinationId);
                     // test removal of event from scope
                     expect(scope.events.length).toBe(0);
 
