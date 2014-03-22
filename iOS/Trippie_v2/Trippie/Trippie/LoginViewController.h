@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrippieViewController : UIViewController
+@interface LoginViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *txtEmail;
 @property (strong, nonatomic) IBOutlet UITextField *txtPassword;

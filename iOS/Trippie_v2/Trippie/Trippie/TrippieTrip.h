@@ -10,10 +10,12 @@
 
 @interface TrippieTrip : NSObject
 
-@property NSString *_id;
-@property NSString *name;
-@property NSMutableArray *destinationList;
-@property NSDate *tripStartDate;
-@property NSDate *tripEndDate;
+@property (nonatomic, strong) NSString *_id;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSMutableArray *destinationList;
+@property (nonatomic, strong) NSDate *tripStartDate;
+@property (nonatomic, strong) NSDate *tripEndDate;
+
+- (id) initWithData:(NSDictionary *) object;
 
 @end

@@ -14,6 +14,7 @@
 @property SessionManager *session;
 @property NSArray *tripList;
 @property NSArray *finTripList;
+@property NSString *currTripId;
 
 - (IBAction)unwindToTrips:(UIStoryboardSegue *)segue;
 

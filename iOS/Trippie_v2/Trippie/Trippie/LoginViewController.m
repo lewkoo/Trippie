@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Chris Ventura. All rights reserved.
 //
 
-#import "TrippieViewController.h"
+#import "LoginViewController.h"
 #import "SessionManager.h"
 
-@interface TrippieViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation TrippieViewController
+@implementation LoginViewController
 @synthesize txtEmail;
 @synthesize txtPassword;
 

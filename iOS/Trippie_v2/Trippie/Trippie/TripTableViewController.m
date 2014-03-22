@@ -7,6 +7,7 @@
 //
 
 #import "TripTableViewController.h"
+#import "TripDetailsViewController.h"
 #import "SessionManager.h"
 
 @implementation TripTableViewController
@@ -59,12 +60,26 @@
     
     // get custom labels
     UILabel *lblTripName = (UILabel *)[cell viewWithTag:100];
-    UILabel *lblTripDetails = (UILabel *)[cell viewWithTag:101];
     
     // set custom labels
     [lblTripName setText:[tempDictionary objectForKey:@"name"]];
-    [lblTripDetails setText:[NSString stringWithFormat:@"Start: %@", [tempDictionary objectForKey:@"tripStartDate"]]];
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"pushToTripDetails"])
+    {
+        // Get reference to the destination view controller
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *trip = [self.tripList objectAtIndex:indexPath.row];
+        TripDetailsViewController *dest = [segue destinationViewController];
+        dest.tripId = [trip objectForKey:@"_id"];
+    }
+    
 }
 
 - (IBAction)unwindToTrips:(UIStoryboardSegue *)segue
