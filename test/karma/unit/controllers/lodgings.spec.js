@@ -153,9 +153,10 @@
             it('$scope.update() should update a valid lodging', inject(function(Lodgings) {
 
                 // fixture rideshare
+		var lodgingId = '525a8422f6d0f87f0e407a33';
                 var putLodgingData = function() {
                     return {
-                        _id: '525a8422f6d0f87f0e407a33',
+                        _id: lodgingId,
                         name: 'A Place for Me',
                         to: 'Out back'
                     };
@@ -168,7 +169,7 @@
                 scope.lodging = lodging;
 
                 // test PUT happens correctly
-                $httpBackend.expectPUT('trips/destinations/lodgings').respond();
+                $httpBackend.expectPUT('trips/destinations/lodgings/' + lodgingId).respond();
 
                 // run controller
                 scope.update();
