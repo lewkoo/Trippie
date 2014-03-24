@@ -30,8 +30,11 @@ exports.create = function(req, res) {
     var trip = new Trip(req.body);
     trip.user = req.user;
 
-
     var name = req.user.homeAddress ? req.user.homeAddress : '';
+    var departTime = new Date();
+    departTime.setMinutes(0);
+    departTime.setSeconds(0);
+    departTime.setMilliseconds(0);
     
     // Destination Objects
     var startDest = new Destination({
@@ -48,15 +51,15 @@ exports.create = function(req, res) {
 
     // Transportation Objects
     var startDestTransportation = new Transportation({
-        transportationType: 'other',
+        transportType: 'other',
         information: '',
-        departureTime: Date.now()
+        departureTime: departTime
     });
 
     var initialDestTransportation = new Transportation({
-        transportationType: 'other',
+        transportType: 'other',
         information: '',
-        departureTime: Date.now()
+        departureTime: departTime
     });
 
     // Destination Save Functions

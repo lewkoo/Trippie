@@ -70,6 +70,8 @@
                 $httpBackend = _$httpBackend_;
 
                 $location = _$location_;
+
+                $location.url('/trips/' + scope.tripId + '/destinations/' + scope.destId);
             }));
 
             it('$scope.create() with valid form data should send a POST request to make a transportation, ' +
@@ -77,6 +79,7 @@
                 'then change the location to trips/:tripID', function() {
 
                     // set misc data
+                    scope.insertAfterDest = {_id: scope.destId};
 
                     scope.updatedDestList = ['525a8422f6d0f87f0e000001', {_id: scope.destination._id, name: scope.destination.name, outgoingTransportationID: scope.destOutgoingTransportationID},
                      '525a8422f6d0f87f0e000004', '525a8422f6d0f87f0e000005', '525a8422f6d0f87f0e000006'];
@@ -196,8 +199,10 @@
 
                     // test expected trip GET request
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})$/).respond(responseTripData);
+                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
                     // test expected destination DELETE request
                     $httpBackend.expectDELETE(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/).respond();
+                    $httpBackend.expectGET('views/trips/view.html').respond(200);
                     // test expected trip PUT request
                     $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})$/, putTripData).respond(responseTripData2);
 
@@ -219,6 +224,7 @@
                 'then change the location to trips/:tripID/destinations/:destinationId', function() {
 
                     // set misc data
+                    $location.url('/trips/' + scope.tripId + '/destinations/' + scope.destination._id);
                     scope.destNameUpdated = 'New Test Dest'
                     scope.destination.name = scope.destNameUpdated;
 
@@ -236,6 +242,7 @@
 
                     // test expected destination PUT request
                     $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/, putDestinationData).respond(responseDestinationData);
+                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
 
                     // run controller
                     scope.update();
@@ -272,6 +279,7 @@
 
                     // test expected trip GET request
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})$/).respond(responseTripData);
+                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
                     // test expected destination GET request
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/).respond(responseDestinationData);
 
