@@ -48,6 +48,9 @@ exports.update = function(req, res) {
     var destination = req.destination;
 
     destination = _.extend(destination, req.body);
+    destination.markModified('noteIDs');
+    destination.markModified('lodgingIDs');
+    destination.markModified('eventIDs');
 
     destination.save(function(err) {
         if (err) {

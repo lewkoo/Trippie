@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', 'Transportations', function ($scope, $routeParams, $location, Global, Trips, Destinations, Transportations) {
+angular.module('trippie.destinations').controller('DestinationsController', ['$scope', '$routeParams', '$route', '$modal', '$location', 'Global', 'Trips', 'Destinations', 'Transportations', function ($scope, $routeParams, $route, $modal, $location, Global, Trips, Destinations, Transportations) {
 
     $scope.global = Global;
 
@@ -14,11 +14,11 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
             transportType: 'other'
         });
 
-        $scope.insertAfter = $routeParams.destinationId;
-
         var destination = new Destinations({
             name: this.name
         });
+
+        $scope.insertAfter = $scope.insertAfterDest._id;
 
         var promiseTransSave = transportation.$save({ tripId: $scope.trip._id, destinationId: $scope.destination._id }, function(trans) {
             $scope.transportation = trans;
@@ -44,12 +44,10 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
                     trip.$update(function(trip) {
                         $scope.trip = trip;
                     });
-                    $location.path('trips/' + $scope.trip._id);
+                    $route.reload();
                 });
             });
         });
-        
-        this.name = '';
     };
 
     $scope.remove = function() {
@@ -77,7 +75,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         var destination = $scope.destination;
         
         destination.$update({tripId: $scope.trip._id}, function() {
-            $location.path('trips/' + $scope.trip._id + '/destinations/' + $scope.destination._id);
+            $route.reload();
         });
     };
 
@@ -92,6 +90,69 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
             }, function(destination) {
                 $scope.destination = destination;
             });
+        });
+    };
+
+    $scope.openModalCreate = function(insertAfterDestination) {
+        $modal.open({
+            templateUrl: 'views/destinations/partials/modalCreate.html',
+            controller: function ($scope, $modalInstance, destination, trip) {
+                $scope.save = function () {
+                    $scope.insertAfterDest = destination;
+                    $scope.destination = destination;
+                    $scope.trip = trip;
+                    this.create();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                destination: function () {
+                    return insertAfterDestination;
+                },
+                trip: function () {
+                    return $scope.trip;
+                }
+            }
+        });
+    };
+
+    $scope.openModalEdit = function(destination) {
+        $modal.open({
+            templateUrl: 'views/destinations/partials/modalEdit.html',
+            controller: function ($scope, $modalInstance, destination, trip) {
+                var destinationToUpdate = new Destinations({
+                    _id: destination._id,
+                    name: destination.name,
+                    outgoingTransportationID: destination.outgoingTransportationID,
+                    eventIDs: destination.eventIDs,
+                    lodgingIDs: destination.lodgingIDs,
+                    noteIDs: destination.noteIDs
+                });
+                $scope.destinationToUpdate = destinationToUpdate;
+                
+                $scope.updateDestination = function () {
+                    $scope.trip = trip;
+                    $scope.destination = $scope.destinationToUpdate;
+                    this.update();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                destination: function () {
+                    return destination;
+                },
+                trip: function () {
+                    return $scope.trip;
+                }
+            }
         });
     };
 }]);

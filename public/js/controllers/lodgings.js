@@ -35,10 +35,11 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
                 var lodgingList = destination.lodgingIDs;
                 var len = lodgingList.length;
                 var i = 0, found = false;
-                while(!found && i !== len){
-                    var currNoteId = lodgingList[i]._id;
-                    var lodgingId = lodging._id;
-                    if(currNoteId === lodgingId){
+                var lodgingId = lodging._id;
+                var currLodgingId;
+                while(!found && i < len){
+                    currLodgingId = lodgingList[i]._id;
+                    if(currLodgingId === lodgingId){
                         found = true;
                     } else
                         i++;
@@ -48,13 +49,13 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
                 }
 
                 destination.$update({ tripId: $routeParams.tripId }, function () {
-                    lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, lodgingId: lodging._id });
-
                     for (var j in $scope.lodgings) {
                         if ($scope.lodgings[j] === lodging) {
                             $scope.lodgings.splice(i, 1);
                         }
                     }
+                    
+                    lodging.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, lodgingId: lodging._id });
                 });
             });
         }

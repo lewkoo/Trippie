@@ -1,6 +1,9 @@
 <section data-ng-controller="TripsController" data-ng-init="findOne()" class="trip-details">
     <div class="container-fluid">
-    	<!-- Trip info -->
+    	<div class="row">
+            <a class="link" href="/#!/trips"><span class="glyphicon glyphicon-arrow-left"></span> Back to your trips</a>
+        </div><br/>
+        <!-- Trip info -->
         <div class="row trip-info">
     		<div class="col-md-10">
                 <div class="trip-name">{{trip.name}}</div>
@@ -14,7 +17,7 @@
     	</div>
 
         <!-- Destinations -->
-        <div data-ng-repeat="destination in trip.destinationList" class="col-md-10 col-md-offset-1 destination">
+        <div data-ng-controller="DestinationsController" data-ng-repeat="destination in trip.destinationList" class="col-md-10 col-md-offset-1 destination">
 
             <div class="destination-info">
                 <div class="row">
@@ -22,7 +25,7 @@
                         <a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}" class="name pointer">{{destination.name}}</a>
                     </div>
                     <div class="col-sm-2 text-right">
-                        <a class="pointer" data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
+                        <a ng-click="openModalEdit(destination)"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
                         <a class="pointer" data-ng-if="!$first && !$last && trip.destinationList.length > 3" data-ng-click="removeDestination($index)"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                     </div>
                 </div>
@@ -42,7 +45,7 @@
             <br/>
             <div class="row" ng-if="!$last">
                 <div class="col-sm-12 text-center">
-                    <a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/create" class="name"><button type="button" class="btn btn-default" data-ng-click="">Insert Destination</button></a>
+                    <button type="button" class="btn btn-default" data-ng-click="openModalCreate(destination)">Insert Destination</button>
                 </div>
             </div>
             <br/>

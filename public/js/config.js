@@ -21,37 +21,6 @@ angular.module('trippie').config(['$routeProvider',
         when('/trips/:tripId/destinations/:destinationId', {
             templateUrl: 'views/destinations/view.html'
         }).
-        when('/trips/:tripId/destinations/:destinationId/create', {
-            templateUrl: 'views/destinations/create.html'
-        }).
-        when('/trips/:tripId/destinations/:destinationId/edit', {
-            templateUrl: 'views/destinations/edit.html'
-        }).
-        // *************** Transportations *************** 
-        when('/trips/:tripId/transportations/:transportationId/edit', {
-            templateUrl: 'views/transportations/edit.html'
-        }).
-        // *************** Events *************** 
-        when('/trips/:tripId/destinations/:destinationId/events', {
-            templateUrl: 'views/destinations/view.html'
-        }).
-        when('/trips/:tripId/destinations/:destinationId/events/:eventId', {
-            templateUrl: 'views/destinations/view.html'
-        }).
-        // *************** Notes *************** 
-        when('/trips/:tripId/destinations/:destinationId/notes', {
-            templateUrl: 'views/destinations/view.html'
-        }).
-        when('/trips/:tripId/destinations/:destinationId/notes/:noteId', {
-            templateUrl: 'views/destinations/view.html'
-        }).
-        // *************** Events *************** 
-        when('/trips/:tripId/destinations/:destinationId/lodgings', {
-            templateUrl: 'views/destinations/view.html'
-        }).
-        when('/trips/:tripId/destinations/:destinationId/lodgings/:lodgingId', {
-            templateUrl: 'views/destinations/view.html'
-        }).
         when('/', {
             templateUrl: 'views/index.html'
         }).
