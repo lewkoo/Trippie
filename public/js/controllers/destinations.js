@@ -11,7 +11,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
         departTime.setMilliseconds(0);
         var transportation = new Transportations({
             departureTime: departTime.toISOString(),
-            information: 'Transportation placeholder'
+            transportType: 'other'
         });
 
         $scope.insertAfter = $routeParams.destinationId;
