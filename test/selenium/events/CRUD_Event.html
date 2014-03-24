@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://ec2-54-186-105-73.us-west-2.compute.amazonaws.com/" />
-<title>New Test</title>
+<title>CRUD_Event</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">New Test</td></tr>
+<tr><td rowspan="1" colspan="3">CRUD_Event</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -59,37 +59,7 @@
 <tr>
 	<td>type</td>
 	<td>id=name</td>
-	<td>Mainframe</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[36]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[42]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[42]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//button[@type='button'])[75]</td>
-	<td></td>
+	<td>Nanaimo</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -118,27 +88,127 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=div.trip-name.ng-binding</td>
-	<td>Mainframe</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>link=Milwaukee</td>
+	<td>//div[2]/div/div/div/a</td>
 	<td>Milwaukee</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>css=div.col-sm-6 &gt; a.pointer.ng-binding</td>
+	<td>0 events</td>
+</tr>
+<tr>
 	<td>click</td>
-	<td>link=Trips</td>
+	<td>link=Milwaukee</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>//section/div[2]/div/div[2]</td>
+	<td>link=+ Add</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Mainframe</td>
+	<td>link=+ Add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Swim at Beach</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=information</td>
+	<td>Bring goggles</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=View Details</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=View Details</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.ng-binding</td>
+	<td>Swim at Beach</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.details.ng-binding &gt; div.ng-binding</td>
+	<td>Bring goggles</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.details.ng-binding &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=information</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=information</td>
+	<td>Bring goggles and a towel</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementHeight</td>
+	<td>css=div.details.ng-binding &gt; a</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>link=View Details</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=View Details</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.details.ng-binding &gt; div.ng-binding</td>
+	<td>Bring goggles and a towel</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementNotPresent</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div/div/div/div[2]</td>
+	<td>No events yet..</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Back to Nanaimo</td>
 	<td></td>
 </tr>
 <tr>
@@ -167,6 +237,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForElementNotPresent</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>link=example@test.com</td>
 	<td></td>
@@ -175,16 +250,6 @@
 	<td>clickAndWait</td>
 	<td>link=Signout</td>
 	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>css=h2</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>css=h2</td>
-	<td>Your all-in-one travel companion.</td>
 </tr>
 <tr>
 	<td>open</td>
