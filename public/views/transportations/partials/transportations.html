@@ -1,0 +1,11 @@
+<div data-ng-controller="TransportationsController" data-ng-init="findOne(destination._id)">
+    <div class="col-md-10">
+        <div class='type'><b><span>Transportation Type: {{transportation.transportType}}</span></b></div>
+        <div class='departureTime'><b><span>Departure Time: {{transportation.departureTime | date:'medium'}}</span></b></div> 
+        <div class='arrivalTime'><b><span>Arrival Time: {{transportation.arrivalTime | date:'medium'}}</span></b></div>
+        <div class='information'><b><span>Information: {{transportation.information}}</span></b></div>
+    </div>
+    <div class="col-sm-2 text-right">
+        <a class="pointer" ng-click="openModalEdit(transportation)"><span class="glyphicon glyphicon-edit"></span> Edit</a><br/>
+    </div>
+</div>

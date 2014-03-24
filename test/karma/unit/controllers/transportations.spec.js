@@ -53,8 +53,6 @@
                         departureTime: new Date(2014, 12, 12)
                     }]);
 
-                    debugger;
-
                     // run controller
                     scope.find();
                     $httpBackend.flush();

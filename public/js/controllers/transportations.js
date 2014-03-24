@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('trippie.transportations').controller('TransportationsController', ['$scope', '$routeParams', '$location', 'Global', 'Transportations', 'Destinations', 'Trips', function ($scope, $routeParams, $location, Global, Transportations, Destinations, Trips) {
+angular.module('trippie.transportations').controller('TransportationsController', ['$scope', '$routeParams', '$route', '$modal', '$location', 'Global', 'Transportations', 'Destinations', 'Trips', function ($scope, $routeParams, $route, $modal, $location, Global, Transportations, Destinations, Trips) {
     $scope.global = Global;
 
     $scope.create = function() {
@@ -39,13 +39,9 @@ angular.module('trippie.transportations').controller('TransportationsController'
 
     $scope.update = function() {
         var transportation = $scope.transportation;
-        if (!transportation.updated) {
-            transportation.updated = [];
-        }
-        transportation.updated.push(new Date().getTime());
 
-        transportation.$update(function() {
-            $location.path('transportations/' + $scope.transportation._id);
+        transportation.$update({tripId: $routeParams.tripId, transportationId: transportation._id}, function() {
+            $route.reload();
         });
     };
 
@@ -55,26 +51,83 @@ angular.module('trippie.transportations').controller('TransportationsController'
         });
     };
 
-    $scope.findOne = function() {
-        Transportations.get({
-            tripId: $routeParams.tripId,
-            destinationId: $routeParams.destinationId,
-            transportationId: $routeParams.transportationId
-        }, function(transportation) {
-            $scope.transportation = transportation;
+    $scope.findOne = function(destinationID) {
+        var mTripID = $routeParams.tripId;
+
+        Trips.get({
+            tripId: mTripID
+        }, function(trip) {
+            $scope.trip = trip;
 
             Destinations.get({
                 tripId: $routeParams.tripId,
-                destinationId: $routeParams.destinationId
+                destinationId: destinationID
             }, function(destination) {
                 $scope.destination = destination;
 
-                Trips.get({
-                    tripId: $routeParams.tripId
-                }, function(trip) {
-                    $scope.trip = trip;
-                });
+                if ($scope.destination.outgoingTransportationID) {
+                    Transportations.get({
+                        tripId: $routeParams.tripId,
+                        destinationId: destinationID,
+                        transportationId: $scope.destination.outgoingTransportationID._id
+                    }, function(transportation) {
+                        $scope.transportation = transportation;
+                    });
+                }
             });
+        });
+    };
+
+    $scope.openModalEdit = function(transportation) {
+        $scope.transportation = transportation;
+        $modal.open({
+            templateUrl: 'views/transportations/partials/modalEdit.html',
+            controller: function ($scope, $modalInstance, transportation) {
+                var transportationToUpdate = new Transportations({
+                    _id: transportation._id,
+                    transportType: transportation.transportType,
+                    information: transportation.information,
+                    departureTime: transportation.departureTime,
+                    arrivalTime: transportation.arrivalTime
+                });
+                $scope.transportationToUpdate = transportationToUpdate;
+                $scope.transportTypeOptions = [{name: 'Bus', value: 'bus', id:'0'}, {name: 'Car', value: 'car', id:'1'},
+                    {name: 'Plane', value: 'plane', id:'2'}, {name: 'Train', value: 'train', id:'3'}, {name: 'Other', value:'other', id:'4'}];
+
+                switch (transportationToUpdate.transportType) {
+                    case 'bus':
+                        $scope.selectedTransportType = $scope.transportTypeOptions[0];
+                        break;
+                    case 'car':
+                        $scope.selectedTransportType = $scope.transportTypeOptions[1];
+                        break;
+                    case 'plane':
+                        $scope.selectedTransportType = $scope.transportTypeOptions[2];
+                        break;
+                    case 'train':
+                        $scope.selectedTransportType = $scope.transportTypeOptions[3];
+                        break;
+                    default:
+                        $scope.selectedTransportType = $scope.transportTypeOptions[4];
+                        break;
+                }
+                
+                $scope.updateTransportation = function () {
+                    $scope.transportationToUpdate.transportType = $scope.transportationToUpdate.transportType.value;
+                    $scope.transportation = $scope.transportationToUpdate;
+                    this.update();
+                    $modalInstance.close();
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            },
+            resolve: {
+                transportation: function () {
+                    return $scope.transportation;
+                }
+            }
         });
     };
 }]);

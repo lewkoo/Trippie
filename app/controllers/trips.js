@@ -48,13 +48,13 @@ exports.create = function(req, res) {
 
     // Transportation Objects
     var startDestTransportation = new Transportation({
-        transportationType: 'other',
+        transportType: 'other',
         information: '',
         departureTime: Date.now()
     });
 
     var initialDestTransportation = new Transportation({
-        transportationType: 'other',
+        transportType: 'other',
         information: '',
         departureTime: Date.now()
     });

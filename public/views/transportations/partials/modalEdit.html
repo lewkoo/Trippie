@@ -1,0 +1,44 @@
+<div ng-controller="TransportationsController">
+    <form class="form-horizontal">
+        <div class="modal-header">
+            Edit transportation
+        </div>
+       
+        <div class="modal-body">
+            <div class="row form-group">
+                <label for="transportType" class="col-md-3 control-label">Type</label>
+                <div class="col-md-9">
+                    <select name="transportType" class="form-control" data-ng-options="i.name for i in transportTypeOptions" data-ng-model="transportationToUpdate.transportType" id="transportType"></select>
+                </div>
+            </div>
+            
+            <div class="row form-group">
+                <label for="information" class="col-md-3 control-label">Information</label>
+                <div class="col-md-9">
+                    <textarea rows="3" maxlength="255" class="form-control" data-ng-model="transportationToUpdate.information" id="information"></textarea>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="form-group col-md-6 datepicker">
+                    <label for="transportationDepartureTime" class="control-label">Departure Date</label>
+                    <div class="well well-sm">
+                        <datetimepicker min="minDate" id="transportationDepartureTime" ng-model="transportationToUpdate.departureTime" show-weeks="false"></datetimepicker>
+                    </div>  
+                </div>
+
+                <div class="form-group col-md-6 datepicker">
+                    <label for="transportationArrivalTime" class="control-label">Arrival Date</label>
+                    <div class="well well-sm">
+                        <datetimepicker min="transportationDepartureTime" id="transportationArrivalTime" ng-model="transportationToUpdate.arrivalTime" show-weeks="false"></datetimepicker>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="updateTransportation()">Update</button>
+            <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

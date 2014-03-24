@@ -34,11 +34,9 @@
                     </div>
                 </div>
             </div>
-            <div class="transportation-info" ng-if="!$last">
+            <div  class="transportation-info" ng-if="!$last">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <a data-ng-href="/#!/trips/{{trip._id}}/destinations/{{destination._id}}/transportations/{{destination.outgoingTransportationID}}/edit">Transportation</a>
-                    </div>
+                    <div data-ng-include src="'/views/transportations/partials/transportations.html'"></div>
                 </div>
             </div>
             <br/>
