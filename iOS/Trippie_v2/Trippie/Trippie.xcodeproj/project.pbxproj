@@ -45,10 +45,8 @@
 		83F819FF18D00C2F00195755 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F819FE18D00C2F00195755 /* SystemConfiguration.framework */; };
 		83F81A0118D00C6500195755 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F81A0018D00C6500195755 /* CFNetwork.framework */; };
 		83F81A0318D00C7300195755 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F81A0218D00C7300195755 /* MobileCoreServices.framework */; };
-		9B12291F18D1072E0069793A /* TrippieTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B12291E18D1072E0069793A /* TrippieTripsViewController.m */; };
 		9BC45B3018D298CA00D6A54D /* TrippieTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */; };
 		9BC45B3318D2AB7E00D6A54D /* TrippieDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B3218D2AB7E00D6A54D /* TrippieDestination.m */; };
-		9BC45B3618D2AD5100D6A54D /* TrippieTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B3518D2AD5100D6A54D /* TrippieTripViewController.m */; };
 		B8154BDB18D370AF004E53EC /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8154BDA18D370AF004E53EC /* SessionManager.m */; };
 /* End PBXBuildFile section */
 
@@ -129,14 +127,10 @@
 		83F819FE18D00C2F00195755 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		83F81A0018D00C6500195755 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		83F81A0218D00C7300195755 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		9B12291D18D1072E0069793A /* TrippieTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrippieTripsViewController.h; sourceTree = "<group>"; };
-		9B12291E18D1072E0069793A /* TrippieTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieTripsViewController.m; sourceTree = "<group>"; };
 		9BC45B2E18D298CA00D6A54D /* TrippieTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrippieTrip.h; sourceTree = "<group>"; };
 		9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieTrip.m; sourceTree = "<group>"; };
 		9BC45B3118D2AB7E00D6A54D /* TrippieDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrippieDestination.h; sourceTree = "<group>"; };
 		9BC45B3218D2AB7E00D6A54D /* TrippieDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieDestination.m; sourceTree = "<group>"; };
-		9BC45B3418D2AD5100D6A54D /* TrippieTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrippieTripViewController.h; sourceTree = "<group>"; };
-		9BC45B3518D2AD5100D6A54D /* TrippieTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieTripViewController.m; sourceTree = "<group>"; };
 		B8154BD918D370AF004E53EC /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		B8154BDA18D370AF004E53EC /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -317,10 +311,6 @@
 				83F819A218D005A700195755 /* Main.storyboard */,
 				83F8199F18D005A700195755 /* TrippieAppDelegate.h */,
 				83F819A018D005A700195755 /* TrippieAppDelegate.m */,
-				9B12291D18D1072E0069793A /* TrippieTripsViewController.h */,
-				9B12291E18D1072E0069793A /* TrippieTripsViewController.m */,
-				9BC45B3418D2AD5100D6A54D /* TrippieTripViewController.h */,
-				9BC45B3518D2AD5100D6A54D /* TrippieTripViewController.m */,
 				83F819A518D005A700195755 /* LoginViewController.h */,
 				83F819A618D005A700195755 /* LoginViewController.m */,
 				83262ACD18DAA22300F60A3D /* TripTableViewController.h */,
@@ -484,8 +474,6 @@
 				836F874118D016E600CAF338 /* AFHTTPSessionManager.m in Sources */,
 				9BC45B3018D298CA00D6A54D /* TrippieTrip.m in Sources */,
 				836F874A18D016E600CAF338 /* UIAlertView+AFNetworking.m in Sources */,
-				9BC45B3618D2AD5100D6A54D /* TrippieTripViewController.m in Sources */,
-				9B12291F18D1072E0069793A /* TrippieTripsViewController.m in Sources */,
 				836F874518D016E600CAF338 /* AFURLRequestSerialization.m in Sources */,
 				836F874818D016E600CAF338 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				836F874718D016E600CAF338 /* AFURLSessionManager.m in Sources */,
