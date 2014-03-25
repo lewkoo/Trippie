@@ -17,4 +17,6 @@
 @property NSMutableArray *lodgingIDs;
 @property NSMutableArray *noteIDs;
 
+- (id) initWithData:(NSDictionary *) object;
+
 @end

@@ -10,4 +10,19 @@
 
 @implementation TrippieDestination
 
+@synthesize _id;
+@synthesize name;
+@synthesize outgoingTransportationID;
+
+- (id) initWithData:(NSDictionary *) destDictionary;
+{
+    if ((self = [super init])) {
+        self._id = [destDictionary objectForKey:@"_id"];
+        self.name = [destDictionary objectForKey:@"name"];
+        self.outgoingTransportationID = [destDictionary objectForKey:@"outgoingTransportationID"];
+    }
+    
+    return self;
+}
+
 @end

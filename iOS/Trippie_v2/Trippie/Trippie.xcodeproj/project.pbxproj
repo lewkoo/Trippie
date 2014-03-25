@@ -48,6 +48,7 @@
 		9BC45B3318D2AB7E00D6A54D /* TrippieDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B3218D2AB7E00D6A54D /* TrippieDestination.m */; };
 		B8154BDB18D370AF004E53EC /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8154BDA18D370AF004E53EC /* SessionManager.m */; };
 		DD1674B518E2100F003BCD38 /* TrippieTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1674B418E2100F003BCD38 /* TrippieTripTests.m */; };
+		DDB84F4B18E22E1C008D385C /* TrippieDestinationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB84F4A18E22E1C008D385C /* TrippieDestinationTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		B8154BD918D370AF004E53EC /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		B8154BDA18D370AF004E53EC /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 		DD1674B418E2100F003BCD38 /* TrippieTripTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieTripTests.m; sourceTree = "<group>"; };
+		DDB84F4A18E22E1C008D385C /* TrippieDestinationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieDestinationTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +341,7 @@
 			children = (
 				83F819B618D005A700195755 /* Supporting Files */,
 				DD1674B418E2100F003BCD38 /* TrippieTripTests.m */,
+				DDB84F4A18E22E1C008D385C /* TrippieDestinationTests.m */,
 			);
 			path = TrippieTests;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB84F4B18E22E1C008D385C /* TrippieDestinationTests.m in Sources */,
 				DD1674B518E2100F003BCD38 /* TrippieTripTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
