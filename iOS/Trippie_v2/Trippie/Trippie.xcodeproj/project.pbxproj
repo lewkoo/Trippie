@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		83032B0918DBCB0D0065FEF3 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */; };
-		83140B9018E201AE0062D401 /* my_first.feature in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7A18E201AE0062D401 /* my_first.feature */; };
+		83140B9018E201AE0062D401 /* login.feature in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7A18E201AE0062D401 /* login.feature */; };
 		83140B9118E201AE0062D401 /* launch_steps.rb in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7C18E201AE0062D401 /* launch_steps.rb */; };
 		83140B9218E201AE0062D401 /* env.rb in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7E18E201AE0062D401 /* env.rb */; };
 		83140B9318E201AE0062D401 /* frank.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7F18E201AE0062D401 /* frank.xcconfig */; };
@@ -81,7 +81,7 @@
 /* Begin PBXFileReference section */
 		83032B0718DBCB0D0065FEF3 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
 		83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
-		83140B7A18E201AE0062D401 /* my_first.feature */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = my_first.feature; sourceTree = "<group>"; };
+		83140B7A18E201AE0062D401 /* login.feature */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = login.feature; sourceTree = "<group>"; };
 		83140B7C18E201AE0062D401 /* launch_steps.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = launch_steps.rb; sourceTree = "<group>"; };
 		83140B7E18E201AE0062D401 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
 		83140B7F18E201AE0062D401 /* frank.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = frank.xcconfig; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		83140B7918E201AE0062D401 /* features */ = {
 			isa = PBXGroup;
 			children = (
-				83140B7A18E201AE0062D401 /* my_first.feature */,
+				83140B7A18E201AE0062D401 /* login.feature */,
 				83140B7B18E201AE0062D401 /* step_definitions */,
 				83140B7D18E201AE0062D401 /* support */,
 			);
@@ -545,7 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				836F875018D016E600CAF338 /* trippie_v1.png in Resources */,
-				83140B9018E201AE0062D401 /* my_first.feature in Resources */,
+				83140B9018E201AE0062D401 /* login.feature in Resources */,
 				83140B9718E201AE0062D401 /* frankify.xcconfig in Resources */,
 				83140B9518E201AE0062D401 /* Frankified.app in Resources */,
 				83F819A918D005A700195755 /* Images.xcassets in Resources */,
