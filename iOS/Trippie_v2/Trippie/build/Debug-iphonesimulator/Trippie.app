@@ -1,0 +1,1 @@
+/Users/Chris/Development/Trippie/iOS/Trippie_v2/Trippie/Frank/frankified_build/Trippie.app
