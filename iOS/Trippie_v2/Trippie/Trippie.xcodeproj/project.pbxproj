@@ -41,13 +41,13 @@
 		83F819B118D005A700195755 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F8199018D005A700195755 /* Foundation.framework */; };
 		83F819B218D005A700195755 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F8199418D005A700195755 /* UIKit.framework */; };
 		83F819BA18D005A700195755 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83F819B818D005A700195755 /* InfoPlist.strings */; };
-		83F819BC18D005A700195755 /* TrippieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F819BB18D005A700195755 /* TrippieTests.m */; };
 		83F819FF18D00C2F00195755 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F819FE18D00C2F00195755 /* SystemConfiguration.framework */; };
 		83F81A0118D00C6500195755 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F81A0018D00C6500195755 /* CFNetwork.framework */; };
 		83F81A0318D00C7300195755 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F81A0218D00C7300195755 /* MobileCoreServices.framework */; };
 		9BC45B3018D298CA00D6A54D /* TrippieTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B2F18D298CA00D6A54D /* TrippieTrip.m */; };
 		9BC45B3318D2AB7E00D6A54D /* TrippieDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC45B3218D2AB7E00D6A54D /* TrippieDestination.m */; };
 		B8154BDB18D370AF004E53EC /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8154BDA18D370AF004E53EC /* SessionManager.m */; };
+		DD1674B518E2100F003BCD38 /* TrippieTripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1674B418E2100F003BCD38 /* TrippieTripTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +122,6 @@
 		83F819AF18D005A700195755 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		83F819B718D005A700195755 /* TrippieTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TrippieTests-Info.plist"; sourceTree = "<group>"; };
 		83F819B918D005A700195755 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		83F819BB18D005A700195755 /* TrippieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrippieTests.m; sourceTree = "<group>"; };
 		83F819FC18D00BF100195755 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		83F819FE18D00C2F00195755 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		83F81A0018D00C6500195755 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -133,6 +132,7 @@
 		9BC45B3218D2AB7E00D6A54D /* TrippieDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieDestination.m; sourceTree = "<group>"; };
 		B8154BD918D370AF004E53EC /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		B8154BDA18D370AF004E53EC /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+		DD1674B418E2100F003BCD38 /* TrippieTripTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrippieTripTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,8 +337,8 @@
 		83F819B518D005A700195755 /* TrippieTests */ = {
 			isa = PBXGroup;
 			children = (
-				83F819BB18D005A700195755 /* TrippieTests.m */,
 				83F819B618D005A700195755 /* Supporting Files */,
+				DD1674B418E2100F003BCD38 /* TrippieTripTests.m */,
 			);
 			path = TrippieTests;
 			sourceTree = "<group>";
@@ -487,7 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83F819BC18D005A700195755 /* TrippieTests.m in Sources */,
+				DD1674B518E2100F003BCD38 /* TrippieTripTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
