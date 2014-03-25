@@ -10,6 +10,12 @@ angular.module('trippie.lodgings').controller('LodgingsController', ['$scope', '
     };
     $scope.today();
 
+    $scope.$watch('arrivalDate', function(newValue) {
+        if ($scope.departureDate && $scope.departureDate.getTime() < newValue.getTime()) {
+            $scope.departureDate = newValue;
+        }
+    });
+
     $scope.create = function() {
         var lodging = new Lodgings({
             name: this.name,

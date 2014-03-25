@@ -20,14 +20,14 @@
             </div>
 
             <div class="row text-center">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 datepicker">
                     <label for="eventStartDate" class="control-label">Start Date</label>
                     <div class="well well-sm">
                         <datepicker min="minDate" id="eventStartDate" ng-model="eventStartDate" show-weeks="false"></datepicker>
                     </div>  
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 datepicker">
                     <label for="eventEndDate" class="control-label">End Date</label>
                     <div class="well well-sm">
                         <datepicker min="eventStartDate" id="eventEndDate" ng-model="eventEndDate" show-weeks="false"></datepicker>

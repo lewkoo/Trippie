@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('trippie.trips').controller('TripsController', ['$scope', '$routeParams', '$location', 'Global', 'Trips', 'Destinations', function ($scope, $routeParams, $location, Global, Trips, Destinations) {
+
     $scope.global = Global;
 
     $scope.today = function() {
@@ -14,6 +15,12 @@ angular.module('trippie.trips').controller('TripsController', ['$scope', '$route
         $scope.minDate = date;
     };
     $scope.today();
+
+    $scope.$watch('tripStartDate', function(newValue) {
+        if ($scope.tripEndDate && $scope.tripEndDate.getTime() < newValue.getTime()) {
+            $scope.tripEndDate = newValue;
+        }
+    });
 
     $scope.create = function() {
         var trip = new Trips({
