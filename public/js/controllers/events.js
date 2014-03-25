@@ -10,6 +10,12 @@ angular.module('trippie.events').controller('EventsController', ['$scope', '$rou
     };
     $scope.today();
 
+    $scope.$watch('eventStartDate', function(newValue) {
+        if ($scope.eventEndDate && $scope.eventEndDate.getTime() < newValue.getTime()) {
+            $scope.eventEndDate = newValue;
+        }
+    });
+
     $scope.create = function() {
         var event = new Events({
             name: this.name,

@@ -1,4 +1,4 @@
-//
+    //
 //  TripDetailsViewController.m
 //  Trippie
 //
@@ -21,6 +21,7 @@
 @synthesize lblName;
 @synthesize lblStartDate;
 @synthesize lblEndDate;
+@synthesize tblDestinationList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,6 +63,7 @@
     lblName.text = self.tripData.name;
     lblStartDate.text = [dateFormatter stringFromDate:self.tripData.tripStartDate];
     lblEndDate.text = [dateFormatter stringFromDate:self.tripData.tripEndDate];
+    [tblDestinationList reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +72,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [self.tripData.destinationList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:  (NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    NSDictionary *tempDictionary = [self.tripData.destinationList objectAtIndex:indexPath.row];
+    
+    // get custom labels
+    UILabel *lblTripName = (UILabel *)[cell viewWithTag:100];
+    
+    // set custom labels
+    [lblTripName setText:[tempDictionary objectForKey:@"name"]];
+    return cell;
+}
 /*
 #pragma mark - Navigation
 

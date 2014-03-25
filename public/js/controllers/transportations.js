@@ -68,7 +68,6 @@ angular.module('trippie.transportations').controller('TransportationsController'
                 if ($scope.destination.outgoingTransportationID) {
                     Transportations.get({
                         tripId: $routeParams.tripId,
-                        destinationId: destinationID,
                         transportationId: $scope.destination.outgoingTransportationID._id
                     }, function(transportation) {
                         $scope.transportation = transportation;

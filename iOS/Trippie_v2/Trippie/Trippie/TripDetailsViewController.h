@@ -10,11 +10,12 @@
 #import "SessionManager.h"
 #import "TrippieTrip.h"
 
-@interface TripDetailsViewController : UIViewController
+@interface TripDetailsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblStartDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblEndDate;
+@property (weak, nonatomic) IBOutlet UITableView *tblDestinationList;
 
 @property (nonatomic, strong) NSString *tripId;
 @property SessionManager *session;

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *_id;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSMutableArray *destinationList;
+@property (nonatomic, strong) NSArray *destinationList;
 @property (nonatomic, strong) NSDate *tripStartDate;
 @property (nonatomic, strong) NSDate *tripEndDate;
 
