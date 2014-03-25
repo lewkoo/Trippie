@@ -20,7 +20,7 @@ angular.module('trippie.destinations').controller('DestinationsController', ['$s
             name: this.name
         });
 
-        var promiseTransSave = transportation.$save({ tripId: $scope.trip._id, destinationId: $scope.destination._id }, function(trans) {
+        var promiseTransSave = transportation.$save({ tripId: $scope.trip._id }, function(trans) {
             $scope.transportation = trans;
         });
 

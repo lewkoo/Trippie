@@ -41,7 +41,7 @@
                     $scope: scope
                 });
 
-                scope.transInformation = 'Transportation placeholder';
+                scope.transportType = 'other';
                 var departTime = new Date();
                 departTime.setMinutes(0);
                 departTime.setSeconds(0);
@@ -87,13 +87,13 @@
                     // expected POST data
                     var postTransportationData = {
                             departureTime: scope.transDepartureTime,
-                            information: scope.transInformation
+                            transportType: scope.transportType
                         };
 
                     // expected response data
                     var responseTransportationData = {
                             _id: scope.destOutgoingTransportationID,
-                            information: scope.transInformation,
+                            transportType: scope.transportType,
                             departureTime: scope.transDepartureTime
                         };
 
@@ -132,7 +132,7 @@
                         };
 
                     // test expected transportation POST request
-                    $httpBackend.expectPOST(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/transportations$/, postTransportationData).respond(responseTransportationData);
+                    $httpBackend.expectPOST(/trips\/([0-9a-fA-F]{24})\/transportations$/, postTransportationData).respond(responseTransportationData);
                     // test expected destination POST request
                     $httpBackend.expectPOST(/trips\/([0-9a-fA-F]{24})\/destinations$/, postDestinationData).respond(responseDestinationData);
                     // test expected trip GET request
@@ -147,7 +147,7 @@
                     // test scope values
                     expect(scope.transportation).toEqualData({
                         _id: scope.destOutgoingTransportationID,
-                        information: scope.transInformation,
+                        transportType: scope.transportType,
                         departureTime: scope.transDepartureTime
                     });
                     expect(scope.destination).toEqualData({
