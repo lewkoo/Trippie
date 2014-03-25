@@ -21,7 +21,7 @@
     if ((self = [super init])) {
         self._id = [tripDictionary objectForKey:@"_id"];
         self.name = [tripDictionary objectForKey:@"name"];
-        self.destinationList = [tripDictionary objectForKey:@"destinationList"];
+        self.destinationList = (NSArray*)[tripDictionary objectForKey:@"destinationList"];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
