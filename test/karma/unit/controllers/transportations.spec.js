@@ -47,11 +47,13 @@
             it('$scope.find() should create an array with at least one transportation object ' +
                 'fetched from XHR', function() {
                     // test expected GET request
-                    $httpBackend.expectGET('trips/destinations/transportations').respond([{
+                    $httpBackend.expectGET('trips/transportations').respond([{
                         transportType: 'plane',
                         information: 'WS1119',
                         departureTime: new Date(2014, 12, 12)
                     }]);
+                    // test expected view GET request
+                    $httpBackend.expectGET('views/index.html') .respond(200);
 
                     // run controller
                     scope.find();
@@ -68,12 +70,31 @@
 
             it('$scope.findOne() should create an array with one transportation object fetched ' +
                 'from XHR using a transportationId URL parameter', function() {
+                    var destinationID = '525a8422f6d0f87f0e407a32';
+
                     // fixture URL parament
-                    $routeParams.transportationId = '525a8422f6d0f87f0e407a33';
-                    $routeParams.destinationId = '525a8422f6d0f87f0e407a32';
                     $routeParams.tripId = '525a8422f6d0f87f0e407a31';
 
                     // fixture response object
+                    var testTripData = function() {
+                        return {
+                            destinationList: ['525a8422f6d0f87f0e407a32', '525a8422f6d0f87f0e407a33', '525a8422f6d0f87f0e407a34'],
+                            tripStartDate: new Date(2014, 12, 12),
+                            name: 'Crazy Trip',
+                            user: '525m8422a6d0f87e0u407p00'
+                        };
+                    };
+                    var testDestinationData = function() {
+                        return {
+                            name: 'Las Vegas',
+                            outgoingTransportationID: {
+                                _id: '525a8422f6d0f87f0e407a33',
+                                transportType: 'plane',
+                                information: 'WS1119',
+                                departureTime: new Date(2014, 12, 12)
+                            }
+                        };
+                    };
                     var testTransportationData = function() {
                         return {
                             transportType: 'plane',
@@ -83,12 +104,13 @@
                     };
 
                     // test expected GET request with response object
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/transportations\/([0-9a-fA-F]{24})$/).respond(testTransportationData());
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})/).respond(testTransportationData());
-                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})/).respond(testTransportationData());
+                    $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})$/).respond(testTripData());
+                    $httpBackend.expectGET('views/index.html') .respond(200);
+                    $httpBackend.expectGET(/trips\/destinations\/([0-9a-fA-F]{24})$/).respond(testDestinationData());
+                    $httpBackend.expectGET(/trips\/transportations\/([0-9a-fA-F]{24})$/).respond(testTransportationData());
 
                     // run controller
-                    scope.findOne();
+                    scope.findOne(destinationID);
                     $httpBackend.flush();
 
                     // test scope value
@@ -124,7 +146,8 @@
                     };
 
                     // test post request is sent
-                    $httpBackend.expectPOST('trips/destinations/transportations', postTransportationData()).respond(responseTransportationData());
+                    $httpBackend.expectPOST('trips/transportations', postTransportationData()).respond(responseTransportationData());
+                    $httpBackend.expectGET('views/index.html') .respond(200);
 
                     // Run controller
                     scope.create();
@@ -136,7 +159,7 @@
                     expect(scope.departureTime).toEqual(null);
 
                     // test URL location to new object
-                    expect($location.path()).toBe('/transportations/' + responseTransportationData()._id);
+                    expect($location.path()).toBe('/');
                 });
 
             it('$scope.update() should update a valid transportation', inject(function(Transportations) {
@@ -159,13 +182,14 @@
 
                 // test PUT happens correctly
                 $httpBackend.expectPUT(/transportations\/([0-9a-fA-F]{24})$/).respond();
+                $httpBackend.expectGET('views/index.html') .respond(200);
 
                 // run controller
                 scope.update();
                 $httpBackend.flush();
 
                 // test URL location to new object
-                expect($location.path()).toBe('/transportations/' + putTransportationData()._id);
+                expect($location.path()).toBe('/');
 
             }));
 
@@ -183,6 +207,7 @@
 
                     // test expected rideshare DELETE request
                     $httpBackend.expectDELETE(/transportations\/([0-9a-fA-F]{24})$/).respond(204);
+                    $httpBackend.expectGET('views/index.html') .respond(200);
 
                     // run controller
                     scope.remove(transportation);
