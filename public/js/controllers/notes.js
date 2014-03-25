@@ -25,9 +25,10 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
                 var noteList = destination.noteIDs;
                 var len = noteList.length;
                 var i = 0, found = false;
-                while(!found && i !== len){
-                    var currNoteId = noteList[i]._id;
-                    var noteId = note._id;
+                var noteId = note._id;
+                var currNoteId;
+                while(!found && i < len){
+                    currNoteId = noteList[i]._id;
                     if(currNoteId === noteId){
                         found = true;
                     } else
@@ -38,13 +39,13 @@ angular.module('trippie.notes').controller('NotesController', ['$scope', '$route
                 }
 
                 destination.$update({ tripId: $routeParams.tripId }, function () {
-                    note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, noteId: note._id });
-
                     for (var j in $scope.notes) {
                         if ($scope.notes[j] === note) {
                             $scope.notes.splice(i, 1);
                         }
                     }
+                    
+                    note.$remove({tripId: $routeParams.tripId, destinationId: $routeParams.destinationId, noteId: note._id });
                 });
             });
         }

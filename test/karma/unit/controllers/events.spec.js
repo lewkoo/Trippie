@@ -88,6 +88,8 @@
                 $httpBackend = _$httpBackend_;
 
                 $location = _$location_;
+
+                $location.url('/trips/' + scope.tripId + '/destinations/' + scope.destinationId);
             }));
 
             it('$scope.find() should create an array with at least one event object ' +
@@ -103,7 +105,7 @@
                         eventEndDate: scope.eventEndDate,
                         destinationId: $routeParams.destinationId
                     }]);
-                    $httpBackend.expectGET('views/index.html').respond(200);
+                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
 
                     // run controller
                     scope.find();
@@ -156,7 +158,7 @@
 
                     // test expected GET request with response object
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/).respond(responseEventData);
-                    $httpBackend.expectGET('views/index.html').respond(200);
+                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/).respond(responseDestinationData);
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})$/).respond(responseTripData);
 
@@ -221,7 +223,7 @@
 
                 // test PUT happens correctly
                 $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})\/events\/([0-9a-fA-F]{24})$/, scope.event).respond(responseEventData);
-                $httpBackend.expectGET('views/index.html').respond(200);
+                $httpBackend.expectGET('views/destinations/view.html').respond(200);
                 
                 // run controller
                 scope.update();
@@ -255,7 +257,7 @@
 
                     // test expected destination GET request
                     $httpBackend.expectGET(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/).respond(responseDestinationData);
-                    $httpBackend.expectGET('views/index.html').respond(200);
+                    $httpBackend.expectGET('views/destinations/view.html').respond(200);
                     // test expected destination PUT request
                     $httpBackend.expectPUT(/trips\/([0-9a-fA-F]{24})\/destinations\/([0-9a-fA-F]{24})$/, putDestinationData).respond(responseDestinationData2);
                     // test expected DELETE request
