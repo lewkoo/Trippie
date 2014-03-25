@@ -177,21 +177,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F81A0318D00C7300195755 /* MobileCoreServices.framework in Frameworks */,
-				83140BA018E201AF0062D401 /* libShelley.a in Frameworks */,
 				83F81A0118D00C6500195755 /* CFNetwork.framework in Frameworks */,
-				83140B9C18E201AF0062D401 /* libCocoaLumberjack.a in Frameworks */,
 				83F819FF18D00C2F00195755 /* SystemConfiguration.framework in Frameworks */,
-				83140B9918E201AE0062D401 /* libCocoaAsyncSocketMac.a in Frameworks */,
 				83F8199318D005A700195755 /* CoreGraphics.framework in Frameworks */,
-				83140B9F18E201AF0062D401 /* libFrankMac.a in Frameworks */,
-				83140B9E18E201AF0062D401 /* libFrank.a in Frameworks */,
-				83140B9A18E201AE0062D401 /* libCocoaHTTPServer.a in Frameworks */,
-				83140B9B18E201AF0062D401 /* libCocoaHTTPServerMac.a in Frameworks */,
 				83F8199518D005A700195755 /* UIKit.framework in Frameworks */,
-				83140BA118E201AF0062D401 /* libShelleyMac.a in Frameworks */,
 				83F8199118D005A700195755 /* Foundation.framework in Frameworks */,
-				83140B9818E201AE0062D401 /* libCocoaAsyncSocket.a in Frameworks */,
-				83140B9D18E201AF0062D401 /* libCocoaLumberjackMac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +403,6 @@
 		83F8199618D005A700195755 /* Trippie */ = {
 			isa = PBXGroup;
 			children = (
-				83140B7818E201AE0062D401 /* Frank */,
 				83F819A818D005A700195755 /* Images.xcassets */,
 				83F8199718D005A700195755 /* Supporting Files */,
 				8353C18518DDF3F600391EE0 /* Utilities */,
@@ -549,13 +538,8 @@
 				83140B9718E201AE0062D401 /* frankify.xcconfig in Resources */,
 				83140B9518E201AE0062D401 /* Frankified.app in Resources */,
 				83F819A918D005A700195755 /* Images.xcassets in Resources */,
-				83140B9218E201AE0062D401 /* env.rb in Resources */,
-				83140B9618E201AE0062D401 /* Trippie.app in Resources */,
 				83F8199B18D005A700195755 /* InfoPlist.strings in Resources */,
-				83140B9418E201AE0062D401 /* frank_static_resources.bundle in Resources */,
-				83140B9118E201AE0062D401 /* launch_steps.rb in Resources */,
 				83F819A418D005A700195755 /* Main.storyboard in Resources */,
-				83140B9318E201AE0062D401 /* frank.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
