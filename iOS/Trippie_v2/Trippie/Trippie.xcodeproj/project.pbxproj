@@ -8,24 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		83032B0918DBCB0D0065FEF3 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */; };
-		83140B9018E201AE0062D401 /* my_first.feature in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7A18E201AE0062D401 /* my_first.feature */; };
-		83140B9118E201AE0062D401 /* launch_steps.rb in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7C18E201AE0062D401 /* launch_steps.rb */; };
-		83140B9218E201AE0062D401 /* env.rb in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7E18E201AE0062D401 /* env.rb */; };
-		83140B9318E201AE0062D401 /* frank.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 83140B7F18E201AE0062D401 /* frank.xcconfig */; };
-		83140B9418E201AE0062D401 /* frank_static_resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83140B8018E201AE0062D401 /* frank_static_resources.bundle */; };
-		83140B9518E201AE0062D401 /* Frankified.app in Resources */ = {isa = PBXBuildFile; fileRef = 83140B8218E201AE0062D401 /* Frankified.app */; };
-		83140B9618E201AE0062D401 /* Trippie.app in Resources */ = {isa = PBXBuildFile; fileRef = 83140B8318E201AE0062D401 /* Trippie.app */; };
-		83140B9718E201AE0062D401 /* frankify.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 83140B8418E201AE0062D401 /* frankify.xcconfig */; };
-		83140B9818E201AE0062D401 /* libCocoaAsyncSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8518E201AE0062D401 /* libCocoaAsyncSocket.a */; };
-		83140B9918E201AE0062D401 /* libCocoaAsyncSocketMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8618E201AE0062D401 /* libCocoaAsyncSocketMac.a */; };
-		83140B9A18E201AE0062D401 /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8718E201AE0062D401 /* libCocoaHTTPServer.a */; };
-		83140B9B18E201AF0062D401 /* libCocoaHTTPServerMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8818E201AE0062D401 /* libCocoaHTTPServerMac.a */; };
-		83140B9C18E201AF0062D401 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8918E201AE0062D401 /* libCocoaLumberjack.a */; };
-		83140B9D18E201AF0062D401 /* libCocoaLumberjackMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8A18E201AE0062D401 /* libCocoaLumberjackMac.a */; };
-		83140B9E18E201AF0062D401 /* libFrank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8B18E201AE0062D401 /* libFrank.a */; };
-		83140B9F18E201AF0062D401 /* libFrankMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8C18E201AE0062D401 /* libFrankMac.a */; };
-		83140BA018E201AF0062D401 /* libShelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8D18E201AE0062D401 /* libShelley.a */; };
-		83140BA118E201AF0062D401 /* libShelleyMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83140B8E18E201AE0062D401 /* libShelleyMac.a */; };
 		83262ACF18DAA22300F60A3D /* TripTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83262ACE18DAA22300F60A3D /* TripTableViewController.m */; };
 		8353C18818DDF89E00391EE0 /* TripDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353C18718DDF89E00391EE0 /* TripDetailsViewController.m */; };
 		836F873F18D016E600CAF338 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F871918D016E600CAF338 /* AFHTTPRequestOperation.m */; };
@@ -81,24 +63,6 @@
 /* Begin PBXFileReference section */
 		83032B0718DBCB0D0065FEF3 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
 		83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
-		83140B7A18E201AE0062D401 /* my_first.feature */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = my_first.feature; sourceTree = "<group>"; };
-		83140B7C18E201AE0062D401 /* launch_steps.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = launch_steps.rb; sourceTree = "<group>"; };
-		83140B7E18E201AE0062D401 /* env.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = env.rb; sourceTree = "<group>"; };
-		83140B7F18E201AE0062D401 /* frank.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = frank.xcconfig; sourceTree = "<group>"; };
-		83140B8018E201AE0062D401 /* frank_static_resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = frank_static_resources.bundle; sourceTree = "<group>"; };
-		83140B8218E201AE0062D401 /* Frankified.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Frankified.app; sourceTree = "<group>"; };
-		83140B8318E201AE0062D401 /* Trippie.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Trippie.app; sourceTree = "<group>"; };
-		83140B8418E201AE0062D401 /* frankify.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = frankify.xcconfig; sourceTree = "<group>"; };
-		83140B8518E201AE0062D401 /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCocoaAsyncSocket.a; sourceTree = "<group>"; };
-		83140B8618E201AE0062D401 /* libCocoaAsyncSocketMac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCocoaAsyncSocketMac.a; sourceTree = "<group>"; };
-		83140B8718E201AE0062D401 /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCocoaHTTPServer.a; sourceTree = "<group>"; };
-		83140B8818E201AE0062D401 /* libCocoaHTTPServerMac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCocoaHTTPServerMac.a; sourceTree = "<group>"; };
-		83140B8918E201AE0062D401 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCocoaLumberjack.a; sourceTree = "<group>"; };
-		83140B8A18E201AE0062D401 /* libCocoaLumberjackMac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCocoaLumberjackMac.a; sourceTree = "<group>"; };
-		83140B8B18E201AE0062D401 /* libFrank.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFrank.a; sourceTree = "<group>"; };
-		83140B8C18E201AE0062D401 /* libFrankMac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFrankMac.a; sourceTree = "<group>"; };
-		83140B8D18E201AE0062D401 /* libShelley.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libShelley.a; sourceTree = "<group>"; };
-		83140B8E18E201AE0062D401 /* libShelleyMac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libShelleyMac.a; sourceTree = "<group>"; };
 		83262ACD18DAA22300F60A3D /* TripTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTableViewController.h; sourceTree = "<group>"; };
 		83262ACE18DAA22300F60A3D /* TripTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTableViewController.m; sourceTree = "<group>"; };
 		8353C18618DDF89E00391EE0 /* TripDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDetailsViewController.h; sourceTree = "<group>"; };
@@ -177,21 +141,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F81A0318D00C7300195755 /* MobileCoreServices.framework in Frameworks */,
-				83140BA018E201AF0062D401 /* libShelley.a in Frameworks */,
 				83F81A0118D00C6500195755 /* CFNetwork.framework in Frameworks */,
-				83140B9C18E201AF0062D401 /* libCocoaLumberjack.a in Frameworks */,
 				83F819FF18D00C2F00195755 /* SystemConfiguration.framework in Frameworks */,
-				83140B9918E201AE0062D401 /* libCocoaAsyncSocketMac.a in Frameworks */,
 				83F8199318D005A700195755 /* CoreGraphics.framework in Frameworks */,
-				83140B9F18E201AF0062D401 /* libFrankMac.a in Frameworks */,
-				83140B9E18E201AF0062D401 /* libFrank.a in Frameworks */,
-				83140B9A18E201AE0062D401 /* libCocoaHTTPServer.a in Frameworks */,
-				83140B9B18E201AF0062D401 /* libCocoaHTTPServerMac.a in Frameworks */,
 				83F8199518D005A700195755 /* UIKit.framework in Frameworks */,
-				83140BA118E201AF0062D401 /* libShelleyMac.a in Frameworks */,
 				83F8199118D005A700195755 /* Foundation.framework in Frameworks */,
-				83140B9818E201AE0062D401 /* libCocoaAsyncSocket.a in Frameworks */,
-				83140B9D18E201AF0062D401 /* libCocoaLumberjackMac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,71 +169,6 @@
 				83032B0818DBCB0D0065FEF3 /* AddTripViewController.m */,
 			);
 			name = AddControllers;
-			sourceTree = "<group>";
-		};
-		83140B7818E201AE0062D401 /* Frank */ = {
-			isa = PBXGroup;
-			children = (
-				83140B7918E201AE0062D401 /* features */,
-				83140B7F18E201AE0062D401 /* frank.xcconfig */,
-				83140B8018E201AE0062D401 /* frank_static_resources.bundle */,
-				83140B8118E201AE0062D401 /* frankified_build */,
-				83140B8418E201AE0062D401 /* frankify.xcconfig */,
-				83140B8518E201AE0062D401 /* libCocoaAsyncSocket.a */,
-				83140B8618E201AE0062D401 /* libCocoaAsyncSocketMac.a */,
-				83140B8718E201AE0062D401 /* libCocoaHTTPServer.a */,
-				83140B8818E201AE0062D401 /* libCocoaHTTPServerMac.a */,
-				83140B8918E201AE0062D401 /* libCocoaLumberjack.a */,
-				83140B8A18E201AE0062D401 /* libCocoaLumberjackMac.a */,
-				83140B8B18E201AE0062D401 /* libFrank.a */,
-				83140B8C18E201AE0062D401 /* libFrankMac.a */,
-				83140B8D18E201AE0062D401 /* libShelley.a */,
-				83140B8E18E201AE0062D401 /* libShelleyMac.a */,
-				83140B8F18E201AE0062D401 /* plugins */,
-			);
-			path = Frank;
-			sourceTree = SOURCE_ROOT;
-		};
-		83140B7918E201AE0062D401 /* features */ = {
-			isa = PBXGroup;
-			children = (
-				83140B7A18E201AE0062D401 /* my_first.feature */,
-				83140B7B18E201AE0062D401 /* step_definitions */,
-				83140B7D18E201AE0062D401 /* support */,
-			);
-			path = features;
-			sourceTree = "<group>";
-		};
-		83140B7B18E201AE0062D401 /* step_definitions */ = {
-			isa = PBXGroup;
-			children = (
-				83140B7C18E201AE0062D401 /* launch_steps.rb */,
-			);
-			path = step_definitions;
-			sourceTree = "<group>";
-		};
-		83140B7D18E201AE0062D401 /* support */ = {
-			isa = PBXGroup;
-			children = (
-				83140B7E18E201AE0062D401 /* env.rb */,
-			);
-			path = support;
-			sourceTree = "<group>";
-		};
-		83140B8118E201AE0062D401 /* frankified_build */ = {
-			isa = PBXGroup;
-			children = (
-				83140B8218E201AE0062D401 /* Frankified.app */,
-				83140B8318E201AE0062D401 /* Trippie.app */,
-			);
-			path = frankified_build;
-			sourceTree = "<group>";
-		};
-		83140B8F18E201AE0062D401 /* plugins */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = plugins;
 			sourceTree = "<group>";
 		};
 		8353C18418DDF3D600391EE0 /* ObjectClasses */ = {
@@ -413,7 +302,6 @@
 		83F8199618D005A700195755 /* Trippie */ = {
 			isa = PBXGroup;
 			children = (
-				83140B7818E201AE0062D401 /* Frank */,
 				83F819A818D005A700195755 /* Images.xcassets */,
 				83F8199718D005A700195755 /* Supporting Files */,
 				8353C18518DDF3F600391EE0 /* Utilities */,
@@ -545,17 +433,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				836F875018D016E600CAF338 /* trippie_v1.png in Resources */,
-				83140B9018E201AE0062D401 /* my_first.feature in Resources */,
-				83140B9718E201AE0062D401 /* frankify.xcconfig in Resources */,
-				83140B9518E201AE0062D401 /* Frankified.app in Resources */,
 				83F819A918D005A700195755 /* Images.xcassets in Resources */,
-				83140B9218E201AE0062D401 /* env.rb in Resources */,
-				83140B9618E201AE0062D401 /* Trippie.app in Resources */,
 				83F8199B18D005A700195755 /* InfoPlist.strings in Resources */,
-				83140B9418E201AE0062D401 /* frank_static_resources.bundle in Resources */,
-				83140B9118E201AE0062D401 /* launch_steps.rb in Resources */,
 				83F819A418D005A700195755 /* Main.storyboard in Resources */,
-				83140B9318E201AE0062D401 /* frank.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
