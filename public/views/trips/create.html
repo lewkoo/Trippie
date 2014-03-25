@@ -14,7 +14,7 @@
 
 			<div class="row">
 				<!-- trip.tripStartDate picker -->
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-6 datepicker">
 					<label for="tripStartDate" class="control-label">Start Date</label>
 					<div class="well well-sm">
 						<datepicker min="minDate" id="tripStartDate" ng-model="tripStartDate" show-weeks="false"></datepicker>
@@ -22,7 +22,7 @@
 				</div>
 
 				<!-- trip.tripEndDate picker -->
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-6 datepicker">
 					<label for="tripEndDate" class="control-label">End Date</label>
 					<div class="well well-sm">
 						<datepicker min="tripStartDate" id="tripEndDate" ng-model="tripEndDate" show-weeks="false"></datepicker>
