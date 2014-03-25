@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dpEndDate;
 
 -(IBAction)addTrip;
+- (void) addTripHandler: (NSDictionary*) params;
 
 @end

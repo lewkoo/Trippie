@@ -23,6 +23,10 @@
                              @"tripStartDate": startDate,
                              @"tripEndDate": endDate};
     
+    [self addTripHandler: params];
+}
+
+- (void) addTripHandler: (NSDictionary*) params {
     SessionManager *session = [SessionManager getInstance];
     [session.manager POST:@"trips" parameters:params success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"trip JSON: %@", responseObject);
