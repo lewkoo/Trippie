@@ -5,7 +5,7 @@ Scenario:
     Inputting a username and password to move from the 'Login' screen to the 'Trips' screen
 
 Given I launch the app
-When I type "example@test.com" into the "txtEmail" text field
-When I type "abc123" into the "txtPassword" text field
-When I touch the button marked "Sign In"
-Then I should see a navigation bar titled "My Trips"
+Then I should be on the login screen
+Then I fill out the fields
+Then I click the Sign in button
+Then I should be on the trip screen
