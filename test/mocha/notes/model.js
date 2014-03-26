@@ -51,6 +51,25 @@ describe('<Unit Test>', function() {
             });
         });
 
+        /* Load */
+        describe('Method Load', function() {
+            it('should be able to load without problems', function(done) {
+                return Note.load(note._id, function(err, note) {
+                    should.not.exist(err);
+                    done();
+                });
+            });
+
+            it('should not be able to load with junk id', function(done) {
+                var id = '1232341234';
+                return Note.load(id, function(err, note) {
+                    should.exist(err);
+                    done();
+                });
+            });
+        });
+
+        /* Save */
         describe('Method Save', function() {
             it('should be able to save without problems', function(done) {
                 return note.save(function(err) {
@@ -67,7 +86,40 @@ describe('<Unit Test>', function() {
                     done();
                 });
             });
+        });
 
+        /* Update */
+        describe('Method update', function() {
+            it('should update the name in the database', function(done) {
+                var newNoteName = 'The Radisson';
+                note.name = newNoteName;
+                note.update({'_id': note._id}, {$set: {'name': newNoteName}}, function(err, dbNote){
+                    if (!err){
+                       dbNote.name.should.equal(newNoteName);
+                    }
+                    done();
+               });
+            });
+            it('should update the info in the database', function(done) {
+                var newInfo = 'sick Hotel';
+                note.information = newInfo;
+                note.update({'_id': note._id}, {$set: {'information': newInfo}}, function(err, dbNote){
+                    if (!err){
+                       dbNote.information.should.equal(newInfo);
+                    }
+                    done();
+                });
+            });
+        });
+
+        /* Delete */
+        describe('Method Delete', function() {
+            it('should be able to delete without problems', function(done) {
+                return Note.remove(note._id, function(err, note) {
+                    should.not.exist(err);
+                    done();
+                });
+            });
         });
 
         afterEach(function(done) {
