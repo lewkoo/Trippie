@@ -78,6 +78,38 @@ describe('<Unit Test>', function() {
                 });
             });
 
+             /* Optional fields */
+            it('should be able to save without information data', function(done) {
+                note.information = null;
+ 
+                return note.save(function(err) {
+                   should.not.exist(err);
+                   done();
+               });
+            });
+
+            it('should be able to save with special characters for data', function(done) {
+                note.name = '!@#$%^&*()_+|}{:?><';
+                note.address = '!@#$%^&*()_+|}{:?><';
+                note.information = '!@#$%^&*()_+|}{:?><';
+ 
+                return note.save(function(err) {
+                   should.not.exist(err);
+                   done();
+               });
+            });
+
+           it('should be able to save with foreign characters for data', function(done) {
+                note.name = 'ÀÂÄÈÉÊËÎÏÔŒÙÛÜŸàâäèéêëîïôœùûüÿ';
+                note.address = 'ÀÂÄÈÉÊËÎÏÔŒÙÛÜŸàâäèéêëîïôœùûüÿ';
+                note.information = 'ÀÂÄÈÉÊËÎÏÔŒÙÛÜŸàâäèéêëîïôœùûüÿ';
+ 
+                return note.save(function(err) {
+                   should.not.exist(err);
+                   done();
+               });
+            });
+
             it('should be able to show an error when try to save without name', function(done) {
                 note.name = '';
 

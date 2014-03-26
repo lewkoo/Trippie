@@ -45,6 +45,7 @@ describe('<Unit Test>', function() {
                             address: '123 Test St',
                             destinationID: destination,
                             arrivalDate: '2014-02-09',
+                            departureDate: '2014-02-10',
                             information: '12345'
                         });
                         done();
@@ -80,6 +81,47 @@ describe('<Unit Test>', function() {
                 });
             });
 
+            /* Optional fields */
+           it('should be able to save without departure date', function(done) {
+               lodging.departureDate = '';
+
+               return lodging.save(function(err) {
+                   should.not.exist(err);
+                   done();
+               });
+           });
+
+           it('should be able to save without information', function(done) {
+               lodging.information = null;
+
+               return lodging.save(function(err) {
+                  should.not.exist(err);
+                  done();
+              });
+           });
+
+           it('should be able to save with special characters for data', function(done) {
+                lodging.name = '!@#$%^&*()_+|}{:?><';
+                lodging.address = '!@#$%^&*()_+|}{:?><';
+                lodging.information = '!@#$%^&*()_+|}{:?><';
+ 
+                return lodging.save(function(err) {
+                   should.not.exist(err);
+                   done();
+               });
+            });
+
+           it('should be able to save with foreign characters for data', function(done) {
+                lodging.name = 'ÀÂÄÈÉÊËÎÏÔŒÙÛÜŸàâäèéêëîïôœùûüÿ';
+                lodging.address = 'ÀÂÄÈÉÊËÎÏÔŒÙÛÜŸàâäèéêëîïôœùûüÿ';
+                lodging.information = 'ÀÂÄÈÉÊËÎÏÔŒÙÛÜŸàâäèéêëîïôœùûüÿ';
+ 
+                return lodging.save(function(err) {
+                   should.not.exist(err);
+                   done();
+               });
+            });
+
             it('should be able to show an error when try to save without name', function(done) {
                 lodging.name = '';
 
@@ -100,6 +142,24 @@ describe('<Unit Test>', function() {
 
             it('should be able to show an error when try to save without arrivalDate', function(done) {
                 lodging.arrivalDate = null;
+
+                return lodging.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
+            it('should be able to show an error when try to save with invalid arrival date', function(done) {
+                lodging.arrivalDate = '12d342dfn5136s';
+
+                return lodging.save(function(err) {
+                    should.exist(err);
+                    done();
+                });
+            });
+
+            it('should be able to show an error when try to save with invalid departure date', function(done) {
+                lodging.departureDate = '12d342dfn51zzzzzz36s';
 
                 return lodging.save(function(err) {
                     should.exist(err);
