@@ -441,7 +441,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="3368" y="-533"/>
         </scene>
-        <!--Trip Details View Controller-->
+        <!--Trip Details View Controller - Trip Details-->
         <scene sceneID="ABh-F5-yTt">
             <objects>
                 <viewController id="g9N-sY-lzy" customClass="TripDetailsViewController" sceneMemberID="viewController">
@@ -520,7 +520,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bES-xi-kuA"/>
+                    <navigationItem key="navigationItem" title="Trip Details" id="bES-xi-kuA"/>
                     <connections>
                         <outlet property="lblEndDate" destination="nat-CY-3dp" id="wwX-aA-VEa"/>
                         <outlet property="lblName" destination="Hto-Wb-idj" id="eb9-kZ-UN7"/>
