@@ -108,6 +108,28 @@ describe('<Unit Test>', function() {
             });
         });
 
+        describe('Method Find', function() {
+                it('should be able to find the saved lodging', function(done) {
+                    lodging.save(function(err) {
+                        Lodging.find({}, function(err, lodgings) {
+                            lodgings.should.have.length(1);
+                            done();
+                    });
+                });
+            });
+        });
+
+        describe('Method FindOne', function() {
+            it('should be able to read a lodging', function(done) {
+                lodging.save(function(err) {
+                    Lodging.findOne({}, function(err, dbLodging) {
+                        should.exist(dbLodging);
+                        done();
+                    });
+                });
+            });
+        });
+
         /* Update */
         describe('Method update', function() {
             it('should update the name in the database', function(done) {

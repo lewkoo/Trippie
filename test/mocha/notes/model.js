@@ -88,6 +88,28 @@ describe('<Unit Test>', function() {
             });
         });
 
+        describe('Method Find', function() {
+                it('should be able to find the saved note', function(done) {
+                    note.save(function(err) {
+                        Note.find({}, function(err, notes) {
+                            notes.should.have.length(1);
+                            done();
+                    });
+                });
+            });
+        });
+
+        describe('Method FindOne', function() {
+            it('should be able to read a note', function(done) {
+                note.save(function(err) {
+                    Note.findOne({}, function(err, dbNote) {
+                        should.exist(dbNote);
+                        done();
+                    });
+                });
+            });
+        });
+
         /* Update */
         describe('Method update', function() {
             it('should update the name in the database', function(done) {
